@@ -28,7 +28,8 @@ logs/thesis/final_campaign/analysis/
 
 Raw data, fitted artifacts and run logs are intentionally excluded from Git.
 Their exact paths and hashes are recorded in `pipeline/dataset_lock.json` and
-the campaign manifest.
+the campaign manifest. The recorded camera data and campaign logs are
+available from the author on request.
 
 ## Repository layout
 
