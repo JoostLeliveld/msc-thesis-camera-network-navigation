@@ -315,6 +315,10 @@ def test_capture_transport_contract_requires_local_isolation_and_marks_override_
     assert any('IGN_IP' in violation for violation in diagnostic['violations'])
 
 
+@pytest.mark.skipif(
+    not (REPO_ROOT / 'src/sim/models_external/Large_Crate').is_dir(),
+    reason='external models not fetched (bash src/sim/fetch_external_models.sh)',
+)
 def test_capture_inventory_fingerprints_world_models_launch_and_robot_assets() -> None:
     inventory = _build_simulation_asset_inventory(
         world_path=REPO_ROOT / 'src/sim/gazebo_worlds/worlds/warehouse_v2.world.sdf',
