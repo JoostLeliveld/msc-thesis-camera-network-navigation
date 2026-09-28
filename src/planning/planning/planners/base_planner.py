@@ -181,7 +181,6 @@ class UnicyclePlannerBase:
         optimizer_terminal_goal_tolerance_m=0.0,
         use_nogo_cost=False,
         nogo_penalty_type='warning_band',
-        nogo_weight=0.0,
         nogo_safe_distance=0.0,
         nogo_logbarrier_eps=0.05,
         nogo_warning_band=0.05,
@@ -409,14 +408,13 @@ class UnicyclePlannerBase:
         from unav_common.navigation_parameters import validate_navigation_parameters
         # Reject invalid tuning before the legacy clamps can silently change it.
         validate_navigation_parameters({
-            'nogo_weight': nogo_weight, 'nogo_safe_distance': nogo_safe_distance,
+            'nogo_safe_distance': nogo_safe_distance,
             'nogo_logbarrier_eps': nogo_logbarrier_eps,
             'nogo_warning_band': nogo_warning_band, 'nogo_near_weight': nogo_near_weight,
             'nogo_belief_kappa': nogo_belief_kappa,
         })
         self.use_nogo_cost = bool(use_nogo_cost)
         self.nogo_penalty_type = str(nogo_penalty_type or 'warning_band').strip().lower()
-        self.nogo_weight = float(max(nogo_weight, 0.0))
         self.nogo_safe_distance = float(max(nogo_safe_distance, 0.0))
         self.nogo_logbarrier_eps = float(max(nogo_logbarrier_eps, 1e-6))
         self.nogo_warning_band = float(max(nogo_warning_band, 1e-6))
@@ -469,7 +467,6 @@ class UnicyclePlannerBase:
                 nogo_geometry = str(visibility_geometry_json or '')
             nogo_cfg = NogoCostConfig(
                 penalty_type=self.nogo_penalty_type,
-                weight=self.nogo_weight,
                 safe_distance=self.nogo_safe_distance,
                 logbarrier_eps=self.nogo_logbarrier_eps,
                 warning_band=self.nogo_warning_band,
@@ -491,7 +488,6 @@ class UnicyclePlannerBase:
             # the zero-clearance gate and fail the release's 0.10 m body margin.
             collision_cfg = NogoCostConfig(
                 penalty_type='warning_band',
-                weight=self.nogo_weight,
                 safe_distance=0.0,
                 logbarrier_eps=self.nogo_logbarrier_eps,
                 warning_band=self.nogo_warning_band,
@@ -1360,7 +1356,7 @@ class UnicyclePlannerBase:
         # Model.signature is a rounded human diagnostic; it is not an exact
         # identity for constants frozen into a symbolic graph.
         settings = tuple(getattr(model,name,None) for name in (
-            'mode','penalty_type','weight','safe_distance','logbarrier_eps',
+            'mode','penalty_type','safe_distance','logbarrier_eps',
             'warning_band','near_weight'))
         prisms = tuple(tuple(float(getattr(p,name)) for name in
                        ('xmin','xmax','ymin','ymax','zmin','zmax')) for p in model.prisms)

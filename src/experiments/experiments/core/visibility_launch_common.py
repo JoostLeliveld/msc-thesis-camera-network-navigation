@@ -164,7 +164,6 @@ PAPER_LAUNCH_DEFAULTS: Dict[str, str] = {
     'local_use_visibility_model': 'false',
     'local_use_belief_nogo_cost': 'false',
     'local_nogo_penalty_type': '',
-    'local_nogo_weight': '-1.0',
     'local_nogo_safe_distance': '-1.0',
     'local_goal_prior_u_std_start': '-1.0',
     'local_goal_prior_v_std_start': '-1.0',
@@ -291,8 +290,6 @@ VISIBILITY_FALLBACK_DEFAULTS: Dict[str, object] = {
     'visibility_target_height_m': 0.0,
     'use_nogo_cost': 'true',
     'nogo_penalty_type': 'warning_band',
-    # Camera-ready IWAI value. At 40 the clearance term cannot compete.
-    'nogo_weight': 2000.0,
     # Robot half-width 0.275 + 0.05 lane-keeping margin. The former 0.55-0.585
     # (circumscribed radius) left the 1.10 m lanes a NEGATIVE lateral budget,
     # i.e. structurally infeasible before any uncertainty existed.
@@ -670,9 +667,6 @@ def parse_common_launch_config(context) -> Dict[str, object]:
         'local_nogo_penalty_type': _launch_value(
             context, 'local_nogo_penalty_type', PAPER_LAUNCH_DEFAULTS['local_nogo_penalty_type']
         ).strip().lower(),
-        'local_nogo_weight': float(_launch_value(
-            context, 'local_nogo_weight', PAPER_LAUNCH_DEFAULTS['local_nogo_weight']
-        )),
         'local_nogo_safe_distance': float(_launch_value(
             context, 'local_nogo_safe_distance', PAPER_LAUNCH_DEFAULTS['local_nogo_safe_distance']
         )),
@@ -817,7 +811,6 @@ def parse_common_launch_config(context) -> Dict[str, object]:
         )),
         'use_nogo_cost': _launch_value(context, 'use_nogo_cost', str(VISIBILITY_FALLBACK_DEFAULTS['use_nogo_cost'])).strip().lower(),
         'nogo_penalty_type': _launch_value(context, 'nogo_penalty_type', str(VISIBILITY_FALLBACK_DEFAULTS['nogo_penalty_type'])).strip().lower(),
-        'nogo_weight': float(_launch_value(context, 'nogo_weight', str(VISIBILITY_FALLBACK_DEFAULTS['nogo_weight']))),
         'nogo_safe_distance': float(_launch_value(context, 'nogo_safe_distance', str(VISIBILITY_FALLBACK_DEFAULTS['nogo_safe_distance']))),
         'nogo_logbarrier_eps': float(_launch_value(context, 'nogo_logbarrier_eps', str(VISIBILITY_FALLBACK_DEFAULTS['nogo_logbarrier_eps']))),
         'nogo_warning_band': float(_launch_value(context, 'nogo_warning_band', str(VISIBILITY_FALLBACK_DEFAULTS['nogo_warning_band']))),
@@ -1708,7 +1701,6 @@ def build_shared_nodes(cfg: Dict[str, object]) -> Dict[str, object]:
                 'perception_use_geometry_occlusion': cfg['perception_use_geometry_occlusion'],
                 'use_nogo_cost': cfg.get('resolved_use_nogo_cost', False),
                 'nogo_penalty_type': cfg['nogo_penalty_type'],
-                'nogo_weight': cfg['nogo_weight'],
                 'nogo_safe_distance': cfg['nogo_safe_distance'],
                 'nogo_logbarrier_eps': cfg['nogo_logbarrier_eps'],
                 'nogo_warning_band': cfg['nogo_warning_band'],
@@ -1803,7 +1795,6 @@ def build_shared_nodes(cfg: Dict[str, object]) -> Dict[str, object]:
                 'local_use_visibility_model': cfg.get('local_use_visibility_model', False),
                 'local_use_belief_nogo_cost': cfg.get('local_use_belief_nogo_cost', False),
                 'local_nogo_penalty_type': cfg.get('local_nogo_penalty_type', ''),
-                'local_nogo_weight': cfg.get('local_nogo_weight', -1.0),
                 'local_nogo_safe_distance': cfg.get('local_nogo_safe_distance', -1.0),
                 # Record the resolved local goal prior, not the logger's -1
                 # sentinel.  The planner already receives these values below;
@@ -2455,7 +2446,6 @@ def build_agent_runtime_actions(cfg: Dict[str, object]) -> List[object]:
                 'optimizer_control_block_steps', 1),
             'use_nogo_cost': cfg['resolved_use_nogo_cost'],
             'nogo_penalty_type': cfg['nogo_penalty_type'],
-            'nogo_weight': cfg['nogo_weight'],
             'nogo_safe_distance': cfg['nogo_safe_distance'],
             'nogo_logbarrier_eps': cfg['nogo_logbarrier_eps'],
             'nogo_warning_band': cfg['nogo_warning_band'],
@@ -2500,7 +2490,6 @@ def build_agent_runtime_actions(cfg: Dict[str, object]) -> List[object]:
             'local_use_visibility_model': cfg.get('local_use_visibility_model', False),
             'local_use_belief_nogo_cost': cfg.get('local_use_belief_nogo_cost', False),
             'local_nogo_penalty_type': cfg.get('local_nogo_penalty_type', ''),
-            'local_nogo_weight': cfg.get('local_nogo_weight', -1.0),
             'local_nogo_safe_distance': cfg.get('local_nogo_safe_distance', -1.0),
             'local_goal_prior_u_std_start': cfg.get('local_goal_prior_u_std_start', -1.0),
             'local_goal_prior_v_std_start': cfg.get('local_goal_prior_v_std_start', -1.0),

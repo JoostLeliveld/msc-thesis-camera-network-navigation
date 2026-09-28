@@ -190,7 +190,6 @@ def _validate_visibility_defaults(visibility_defaults: Dict[str, Any]) -> None:
         "visibility_prior_occ",
         "visibility_beta",
         "visibility_target_height_m",
-        "nogo_weight",
         "nogo_safe_distance",
         "nogo_logbarrier_eps",
         "nogo_warning_band",

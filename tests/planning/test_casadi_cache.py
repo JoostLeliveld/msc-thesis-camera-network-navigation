@@ -23,7 +23,7 @@ def test_global_validity_uses_swept_rectangle_in_narrow_lane():
     geometry = json.dumps({'prisms': [dict(xmin=-3, xmax=3, ymin=-.35, ymax=.35,
                                            zmin=0, zmax=1)]})
     p = planner(horizon=1, dt=1., use_nogo_cost=True, nogo_mode='keep_in',
-                nogo_weight=40., nogo_safe_distance=.55, driveable_geometry_json=geometry)
+                nogo_safe_distance=.55, driveable_geometry_json=geometry)
     # Rectangle fits even though the centre is inside the soft 0.55 m band.
     valid = p._trajectory_plan_diagnostics(np.zeros(3), np.eye(3)*.01, [[.1, 0]], [1, 0])
     assert valid['rollout_valid']

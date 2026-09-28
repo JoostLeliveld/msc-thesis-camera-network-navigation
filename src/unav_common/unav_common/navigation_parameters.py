@@ -23,7 +23,7 @@ NONNEGATIVE = frozenset({
     'state_reject_inflate_m2', 'stale_belief_inflate_m2_per_s',
     'stale_belief_inflate_cap_m2', 'goal_success_hold_s',
     'nogo_safe_distance', 'pixel_correction_nis_threshold',
-    'nogo_weight', 'nogo_near_weight', 'control_weight', 'risk_weight_obs',
+    'nogo_near_weight', 'control_weight', 'risk_weight_obs',
     'ambiguity_weight', 'observation_risk_scale', 'ambiguity_term_scale',
     'optimizer_terminal_goal_tolerance_m',
 })

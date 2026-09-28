@@ -148,7 +148,7 @@ def test_optional_mixture_uses_same_objective_for_selection(tmp_path,method,x,te
 def test_geometry_cache_identity_preserves_small_changes_in_embedded_constants():
     from planning.core.nogo_cost import NogoCostConfig,NogoZoneCostModel
     scene=json.dumps({'prisms':[dict(xmin=-1.,xmax=1.,ymin=-1.,ymax=1.,zmin=0.,zmax=2.)]})
-    model=NogoZoneCostModel(NogoCostConfig(geometry_json=scene,weight=1.,safe_distance=.35))
+    model=NogoZoneCostModel(NogoCostConfig(geometry_json=scene,safe_distance=.35))
     original=UnicyclePlannerBase._geometry_cache_identity(model)
     model.safe_distance+=1e-10
     assert UnicyclePlannerBase._geometry_cache_identity(model)!=original

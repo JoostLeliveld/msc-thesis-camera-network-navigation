@@ -310,7 +310,6 @@ class ExperimentLogger(Node):
         self.declare_parameter('local_use_visibility_model', False)
         self.declare_parameter('local_use_belief_nogo_cost', False)
         self.declare_parameter('local_nogo_penalty_type', '')
-        self.declare_parameter('local_nogo_weight', -1.0)
         self.declare_parameter('local_nogo_safe_distance', -1.0)
         self.declare_parameter('local_goal_prior_u_std_start', -1.0)
         self.declare_parameter('local_goal_prior_v_std_start', -1.0)
@@ -333,7 +332,6 @@ class ExperimentLogger(Node):
         self.declare_parameter('require_state_correction_envelope', False)
         self.declare_parameter('use_nogo_cost', False)
         self.declare_parameter('nogo_penalty_type', 'warning_band')
-        self.declare_parameter('nogo_weight', 0.0)
         self.declare_parameter('nogo_safe_distance', 0.0)
         self.declare_parameter('nogo_logbarrier_eps', 1e-3)
         self.declare_parameter('nogo_warning_band', 0.05)
@@ -616,7 +614,6 @@ class ExperimentLogger(Node):
         self.local_nogo_penalty_type = str(
             self.get_parameter('local_nogo_penalty_type').value or ''
         )
-        self.local_nogo_weight = float(self.get_parameter('local_nogo_weight').value)
         self.local_nogo_safe_distance = float(
             self.get_parameter('local_nogo_safe_distance').value
         )
@@ -648,7 +645,6 @@ class ExperimentLogger(Node):
         self.cmd_publish_rate = float(self.get_parameter('cmd_publish_rate').value)
         self.use_nogo_cost = bool(self.get_parameter('use_nogo_cost').value)
         self.nogo_penalty_type = str(self.get_parameter('nogo_penalty_type').value)
-        self.nogo_weight = float(self.get_parameter('nogo_weight').value)
         self.nogo_safe_distance = float(self.get_parameter('nogo_safe_distance').value)
         self.nogo_logbarrier_eps = float(self.get_parameter('nogo_logbarrier_eps').value)
         self.nogo_warning_band = float(self.get_parameter('nogo_warning_band').value)
@@ -906,7 +902,6 @@ class ExperimentLogger(Node):
             'perception_use_geometry_occlusion': self.perception_use_geometry_occlusion,
             'use_nogo_cost': self.use_nogo_cost,
             'nogo_penalty_type': self.nogo_penalty_type,
-            'nogo_weight': self.nogo_weight,
             'nogo_safe_distance': self.nogo_safe_distance,
             'nogo_logbarrier_eps': self.nogo_logbarrier_eps,
             'nogo_warning_band': self.nogo_warning_band,
@@ -990,7 +985,6 @@ class ExperimentLogger(Node):
             'local_use_visibility_model': self.local_use_visibility_model,
             'local_use_belief_nogo_cost': self.local_use_belief_nogo_cost,
             'local_nogo_penalty_type': self.local_nogo_penalty_type,
-            'local_nogo_weight': self.local_nogo_weight,
             'local_nogo_safe_distance': self.local_nogo_safe_distance,
             'local_goal_prior_u_std_start': self.local_goal_prior_u_std_start,
             'local_goal_prior_v_std_start': self.local_goal_prior_v_std_start,

@@ -575,9 +575,6 @@ class EfeAgentNode(UnicyclePlannerNode):
         self.global_planner = None
         if self.use_hierarchical:
             local_nogo_penalty_type = self.local_nogo_penalty_type or self.nogo_penalty_type
-            local_nogo_weight = (
-                self.nogo_weight if self.local_nogo_weight < 0.0 else self.local_nogo_weight
-            )
             local_nogo_safe_distance = (
                 self.nogo_safe_distance
                 if self.local_nogo_safe_distance < 0.0
@@ -626,7 +623,6 @@ class EfeAgentNode(UnicyclePlannerNode):
                 use_belief_nogo_cost=self.local_use_belief_nogo_cost,
                 use_visibility_model=self.local_use_visibility_model,
                 nogo_penalty_type=local_nogo_penalty_type,
-                nogo_weight=local_nogo_weight,
                 nogo_safe_distance=local_nogo_safe_distance,
                 # Never solved, so the locked objective's constants do not apply
                 # to it. Without this the lock warns on every run about a local
@@ -663,7 +659,7 @@ class EfeAgentNode(UnicyclePlannerNode):
                 f"(rate={self.local_plan_rate} Hz, ambiguity={self.local_use_ambiguity}, "
                 f"visibility={self.local_use_visibility_model}, "
                 f"belief_nogo={self.local_use_belief_nogo_cost}, "
-                f"nogo={local_nogo_penalty_type}:{local_nogo_weight}, "
+                f"nogo={local_nogo_penalty_type}, "
                 f"safe={local_nogo_safe_distance}, "
                 f"local_goal_std={local_goal_u_start:.2f}->{local_goal_u_final:.2f}/"
                 f"{local_goal_v_start:.2f}->{local_goal_v_final:.2f}, "

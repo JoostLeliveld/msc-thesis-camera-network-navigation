@@ -26,7 +26,6 @@ def test_aligned_body_uses_lateral_extent_not_longitudinal_extent():
     model = NogoZoneCostModel(NogoCostConfig(
         geometry_json=lane_scene(),
         mode="keep_in",
-        weight=1.0,
         safe_distance=0.325,
         robot_half_length=0.4,
         robot_half_width=0.275,
@@ -42,7 +41,6 @@ def test_sideways_body_still_fails_the_same_narrow_lane():
     model = NogoZoneCostModel(NogoCostConfig(
         geometry_json=lane_scene(),
         mode="keep_in",
-        weight=1.0,
         safe_distance=0.325,
         robot_half_length=0.4,
         robot_half_width=0.275,
@@ -56,7 +54,6 @@ def test_point_surrogate_is_unchanged_when_no_body_is_configured():
     model = NogoZoneCostModel(NogoCostConfig(
         geometry_json=lane_scene(),
         mode="keep_in",
-        weight=1.0,
         safe_distance=0.325,
     ))
 
@@ -65,7 +62,7 @@ def test_point_surrogate_is_unchanged_when_no_body_is_configured():
 
 def test_shape_warning_starts_inside_five_centimetres_and_matches_casadi():
     model = NogoZoneCostModel(NogoCostConfig(
-        geometry_json=lane_scene(), mode="keep_in", weight=40.0,
+        geometry_json=lane_scene(), mode="keep_in",
         safe_distance=0.325, warning_band=0.05, near_weight=50.0,
         robot_half_length=0.4, robot_half_width=0.275,
         body_margin=0.0,

@@ -155,7 +155,6 @@ class UnicyclePlannerNode(Node):
         _declare_if_not('discount_gamma', 0.995)
         _declare_if_not('use_nogo_cost', False)
         _declare_if_not('nogo_penalty_type', 'warning_band')
-        _declare_if_not('nogo_weight', 0.0)
         # Legacy centre-point radius. Exact rectangular-footprint runs use the
         # body dimensions and explicit map inflation, so no implicit radius is
         # added here.
@@ -233,7 +232,6 @@ class UnicyclePlannerNode(Node):
         _declare_if_not('local_use_visibility_model', False)
         _declare_if_not('local_use_belief_nogo_cost', False)
         _declare_if_not('local_nogo_penalty_type', '')
-        _declare_if_not('local_nogo_weight', -1.0)
         _declare_if_not('local_nogo_safe_distance', -1.0)
         _declare_if_not('local_goal_prior_u_std_start', -1.0)
         _declare_if_not('local_goal_prior_v_std_start', -1.0)
@@ -434,7 +432,6 @@ class UnicyclePlannerNode(Node):
         self.discount_gamma = float(self.get_parameter('discount_gamma').value)
         self.use_nogo_cost = _as_bool(self.get_parameter('use_nogo_cost').value)
         self.nogo_penalty_type = str(self.get_parameter('nogo_penalty_type').value).strip().lower()
-        self.nogo_weight = float(self.get_parameter('nogo_weight').value)
         self.nogo_safe_distance = float(self.get_parameter('nogo_safe_distance').value)
         self.nogo_logbarrier_eps = float(self.get_parameter('nogo_logbarrier_eps').value)
         self.nogo_warning_band = float(self.get_parameter('nogo_warning_band').value)
@@ -518,7 +515,6 @@ class UnicyclePlannerNode(Node):
         self.local_nogo_penalty_type = str(
             self.get_parameter('local_nogo_penalty_type').value or ''
         ).strip().lower()
-        self.local_nogo_weight = float(self.get_parameter('local_nogo_weight').value)
         self.local_nogo_safe_distance = float(
             self.get_parameter('local_nogo_safe_distance').value
         )
@@ -1417,7 +1413,7 @@ class UnicyclePlannerNode(Node):
             observation_risk_scale=float(g('observation_risk_scale')),
             ambiguity_term_scale=float(g('ambiguity_term_scale')), discount_gamma=float(g('discount_gamma')),
             use_nogo_cost=_as_bool(g('use_nogo_cost')), nogo_penalty_type=str(g('nogo_penalty_type')),
-            nogo_weight=float(g('nogo_weight')), nogo_safe_distance=float(g('nogo_safe_distance')),
+            nogo_safe_distance=float(g('nogo_safe_distance')),
             nogo_logbarrier_eps=float(g('nogo_logbarrier_eps')),
             nogo_warning_band=float(g('nogo_warning_band')),
             nogo_near_weight=float(g('nogo_near_weight')),

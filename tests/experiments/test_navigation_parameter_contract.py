@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
     {'v_max': True}, {'dt': None}, {'process_noise_xy': -.01},
     {'discount_gamma': 1.1}, {'waypoint_arrival_radius_m': 0},
     {'nogo_logbarrier_eps': 0}, {'nogo_warning_band': 0},
-    {'nogo_weight': -40}, {'nogo_near_weight': float('nan')},
+    {'nogo_near_weight': float('nan')},
     {'optimizer_maxiter': 1.5}, {'optimizer_ftol': -1},
     {'nogo_mode': 'keep_ni'}, {'control_weight': -1},
 ])
@@ -31,7 +31,7 @@ def test_documented_zero_sentinels_and_defaults():
 
 
 @pytest.mark.parametrize('overrides', [
-    {'weight': -1}, {'safe_distance': float('nan')}, {'warning_band': 0},
+    {'safe_distance': float('nan')}, {'warning_band': 0},
     {'logbarrier_eps': 0}, {'near_weight': -1},
 ])
 def test_direct_nogo_model_does_not_silently_repair_invalid_tuning(overrides):

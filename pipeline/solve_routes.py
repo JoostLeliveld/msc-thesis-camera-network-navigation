@@ -81,7 +81,6 @@ def planner(
         observation_risk_scale=float(campaign["observation_risk_scale"]),
         collision_geometry_json=collision,
         driveable_geometry_json=boundary, use_nogo_cost=True, nogo_mode="keep_in",
-        nogo_weight=float(campaign["nogo_weight"]),
         nogo_safe_distance=float(campaign["nogo_safe_distance"]),
         nogo_logbarrier_eps=float(campaign["nogo_logbarrier_eps"]),
         nogo_warning_band=float(campaign["nogo_warning_band"]),

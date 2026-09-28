@@ -18,7 +18,6 @@ VALID_NOGO_PENALTIES = ('warning_band',)
 @dataclass(frozen=True)
 class NogoCostConfig:
     penalty_type: str = 'warning_band'
-    weight: float = 0.0
     safe_distance: float = 0.35
     logbarrier_eps: float = 1e-3
     # warning_band: hinged-log warning penalty parameters (penalty_type ==
@@ -54,7 +53,7 @@ class NogoZoneCostModel:
 
     def __init__(self, cfg: NogoCostConfig):
         validate_navigation_parameters({
-            'nogo_weight': cfg.weight, 'nogo_safe_distance': cfg.safe_distance,
+            'nogo_safe_distance': cfg.safe_distance,
             'nogo_logbarrier_eps': cfg.logbarrier_eps,
             'nogo_warning_band': cfg.warning_band, 'nogo_near_weight': cfg.near_weight,
         })
@@ -68,7 +67,6 @@ class NogoZoneCostModel:
         self.mode = str(getattr(cfg, 'mode', 'keep_out') or 'keep_out').strip().lower()
         if self.mode not in ('keep_out', 'keep_in'):
             raise ValueError("mode must be 'keep_out' or 'keep_in'")
-        self.weight = float(max(cfg.weight, 0.0))
         self.safe_distance = float(max(cfg.safe_distance, 0.0))
         self.logbarrier_eps = float(max(cfg.logbarrier_eps, 1e-6))
         self.warning_band = float(max(getattr(cfg, 'warning_band', 0.05), 1e-6))
@@ -99,7 +97,7 @@ class NogoZoneCostModel:
 
     @property
     def enabled(self) -> bool:
-        return self.weight > 0.0 and bool(self.prisms)
+        return bool(self.prisms)
 
     @property
     def signature(self) -> tuple:
@@ -117,7 +115,6 @@ class NogoZoneCostModel:
             'nogo_cost',
             self.mode,
             self.penalty_type,
-            round(self.weight, 6),
             round(self.safe_distance, 6),
             round(self.logbarrier_eps, 8),
             round(self.warning_band, 6),
@@ -276,7 +273,7 @@ class NogoZoneCostModel:
         except Exception as exc:  # pragma: no cover - optional dependency
             raise RuntimeError('CasADi is not available for no-go-zone cost') from exc
 
-        if (not self.prisms) or self.weight <= 0.0:
+        if not self.prisms:
             def zero_penalty(_m):
                 return 0.0
             return zero_penalty
@@ -332,7 +329,7 @@ class NogoZoneCostModel:
         except Exception as exc:  # pragma: no cover - optional dependency
             raise RuntimeError('CasADi is not available for no-go-zone cost') from exc
 
-        if (not self.prisms) or self.weight <= 0.0:
+        if not self.prisms:
             def zero_penalty(_m, _S):
                 return 0.0
             return zero_penalty

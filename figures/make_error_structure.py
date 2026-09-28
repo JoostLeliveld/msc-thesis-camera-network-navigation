@@ -67,7 +67,7 @@ def main():
     bx.set_xscale("log"); bx.set_ylim(-0.05, 1.0)
     bx.set_xlabel("time between frames (s)")
     bx.set_ylabel("correlation of whitened error")
-    bx.set_title("Between-frame correlation (labels: distance driven)", fontsize=8, loc="left")
+    bx.set_title("Between-frame correlation", fontsize=8, loc="left")
     bx.legend(fontsize=6.5, frameon=False, loc="upper right")
     P.save(fig, "temporal_correlation")
 

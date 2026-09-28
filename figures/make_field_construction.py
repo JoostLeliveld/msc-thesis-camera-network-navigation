@@ -183,7 +183,7 @@ def main() -> None:
              fontsize=7.2, weight="bold")
     bar = fig.colorbar(mesh, ax=fig.axes[-5:], location="bottom", shrink=0.6,
                        aspect=40, pad=0.02, ticks=BANDS_CM[:-1])
-    bar.set_label("worst-axis $\\sigma$ [cm]; grey: no local support (prior)")
+    bar.set_label("worst-axis $\\sigma$ [cm]\ngrey = no local support (prior)")
     bar.ax.tick_params(labelsize=5.6)
 
     PAPER_FIGURES.mkdir(parents=True, exist_ok=True)
