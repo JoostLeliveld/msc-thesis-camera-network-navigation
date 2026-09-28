@@ -1,0 +1,144 @@
+{
+  "admission": {
+    "admitted": 1304,
+    "precision_positive": 0.8619631901840491
+  },
+  "corrected_error": {
+    "equal_position_mean": 0.040900482255761775,
+    "equal_position_rmse": 0.05363073411207821,
+    "observations": 1304,
+    "pooled_median": 0.02238104404680101,
+    "pooled_p95": 0.14110475545074178,
+    "pooled_rmse": 0.062207413206049056,
+    "positions": 165
+  },
+  "covariance": {
+    "R0_global_full": {
+      "equal_position_coverage": {
+        "50": 0.7801582928855656,
+        "90": 0.8968014561196379,
+        "95": 0.9125137741046832,
+        "99": 0.9423278236914602
+      },
+      "equal_position_mean_ellipse_area_95_cm2": 400.9550986114823,
+      "equal_position_mean_nis": 1.8810439095576756,
+      "equal_position_mean_nll": -3.3731576700613473,
+      "observations": 1304,
+      "positions": 165
+    },
+    "R1_per_camera_full": {
+      "equal_position_coverage": {
+        "50": 0.8017388167388166,
+        "90": 0.9044060737242555,
+        "95": 0.9196999212908303,
+        "99": 0.9603833792470154
+      },
+      "equal_position_mean_ellipse_area_95_cm2": 505.42462111462265,
+      "equal_position_mean_nis": 1.5822571536797296,
+      "equal_position_mean_nll": -3.379266714781197,
+      "observations": 1304,
+      "positions": 165
+    },
+    "R2_spatial_full": {
+      "equal_position_coverage": {
+        "50": 0.5868975468975469,
+        "90": 0.8979841707114434,
+        "95": 0.9252051904324632,
+        "99": 0.9560048537321265
+      },
+      "equal_position_mean_ellipse_area_95_cm2": 314.2419959001851,
+      "equal_position_mean_nis": 2.2753572818009102,
+      "equal_position_mean_nll": -4.316632923905905,
+      "observations": 1304,
+      "positions": 165
+    },
+    "Rproj": {
+      "equal_position_coverage": {
+        "50": 0.821550024050024,
+        "90": 0.919096484323757,
+        "95": 0.930657549521186,
+        "99": 0.9581962481962483
+      },
+      "equal_position_mean_ellipse_area_95_cm2": 985.661948374874,
+      "equal_position_mean_nis": 1.7274545286285592,
+      "equal_position_mean_nll": -3.0101133467646233,
+      "observations": 1304,
+      "positions": 165
+    }
+  },
+  "created_utc": "2026-09-25T18:09:25.810237+00:00",
+  "detector": {
+    "false_negative": 14,
+    "false_positive": 0,
+    "precision": 1.0,
+    "recall": 0.9876977152899824,
+    "true_positive": 1124
+  },
+  "final_audit_accessed": true,
+  "implementation": "pipeline/final_audit.py",
+  "implementation_sha256": "935b1e3dadff2f5edf2e815b8f77e71e775dc34fb224ae481bb9ad8009f0a220",
+  "inference_elapsed_s": 60.22379060000003,
+  "opportunity_outcomes": {
+    "admitted": 1304,
+    "detector_miss": 2056
+  },
+  "planning_information": {
+    "R0_global_full": {
+      "equal_position_mean": 421.45262066009343,
+      "equal_position_rmse": 441.5312574979657,
+      "observations": 3360,
+      "pooled_median": 688.2848180260429,
+      "pooled_p95": 688.287077281015,
+      "pooled_rmse": 538.4066146852219,
+      "positions": 168
+    },
+    "R1_per_camera_full": {
+      "equal_position_mean": 439.397799970834,
+      "equal_position_rmse": 476.42015846997566,
+      "observations": 3360,
+      "pooled_median": 351.6780895231596,
+      "pooled_p95": 1485.3699492525095,
+      "pooled_rmse": 649.4398558212938,
+      "positions": 168
+    },
+    "R2_spatial_full": {
+      "equal_position_mean": 143.42391202700318,
+      "equal_position_rmse": 196.10035205515968,
+      "observations": 3360,
+      "pooled_median": 23.055286844430753,
+      "pooled_p95": 681.5663264537194,
+      "pooled_rmse": 316.0489076356443,
+      "positions": 168
+    }
+  },
+  "population": {
+    "opportunities": 3360,
+    "positions": 168,
+    "unique_images": 1583
+  },
+  "protocol": "logs/thesis/final_audit_protocol.json",
+  "protocol_sha256": "0534dd9f0e076dc925bf601fc334b5cb98fd6adbfe9283db5e0797954ce9648e",
+  "raw_error": {
+    "equal_position_mean": 0.3477054829361653,
+    "equal_position_rmse": 0.367170662735948,
+    "observations": 1304,
+    "pooled_median": 0.3526226375818733,
+    "pooled_p95": 0.47020633460534483,
+    "pooled_rmse": 0.37505993607362226,
+    "positions": 165
+  },
+  "records": {
+    "path": "evaluated.jsonl",
+    "sha256": "a4da1072fed90529715ae6a59f165b396ad8a9b025f48c56ce6d093e9125bc9a"
+  },
+  "reference_class_counts": {
+    "ambiguous": 468,
+    "negative": 1754,
+    "positive": 1138
+  },
+  "rproj_sigma_px": 2.930705922531681,
+  "sample_unit": "complete physical position",
+  "schema": "thesis_reference_final_audit.v1",
+  "selection_or_fitting_performed": false,
+  "status": "complete"
+}

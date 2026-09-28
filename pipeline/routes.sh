@@ -3,8 +3,9 @@
 # execution config per seed. Skips any task whose routes already exist.
 #
 #   bash pipeline/routes.sh
+set -eo pipefail
 cd "$(dirname "$0")/.."
-R=logs/thesis
+R=logs/thesis/final_campaign
 C=$R/campaign_configs
 S=logs/thesis/pipeline.log
 # The route solver imports the ROS experiments package (world profiles), so it needs ROS.
@@ -12,6 +13,8 @@ source /opt/ros/humble/setup.bash >/dev/null 2>&1
 source install/setup.bash >/dev/null 2>&1
 log() { echo "- $(date '+%F %T') step 7: $*" >> "$S"; echo "$*"; }
 mkdir -p "$R/routes"
+python3 pipeline/campaign_configs.py --output-dir "$C"
+
 for task in thesis10_camera_a_western_dock_detour thesis10_camera_b_cross_warehouse_detour \
             thesis10_camera_c_inner_warehouse_detour thesis10_camera_e_eastern_detour \
             thesis10_camera_e_long_cross_warehouse_detour; do
@@ -30,4 +33,5 @@ for seed in 91500 91501 91502; do
     --routes-root "$R/routes" --output "$cfg" \
     || { log "FAILED binding routes for seed $seed"; exit 1; }
 done
+python3 pipeline/replay_routes.py --routes "$R/routes" || exit 1
 log "ALL DONE: 30 routes solved and bound into three per-seed configs"

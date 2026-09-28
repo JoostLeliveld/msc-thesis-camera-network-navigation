@@ -1,0 +1,4 @@
+# Keep the distributed evidence byte-identical for SHA256SUMS on every platform.
+results/* -text
+# Python's CSV writer uses standard CRLF records.
+results/*.csv whitespace=cr-at-eol

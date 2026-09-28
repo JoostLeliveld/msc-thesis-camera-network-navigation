@@ -4,12 +4,13 @@
 # in a seed's campaign_log.json, so the script can be restarted safely.
 #
 #   bash pipeline/campaign.sh [SEED ...]
+set -o pipefail
 cd "$(dirname "$0")/.."
 R=logs/thesis/final_campaign
 S=$R/STATUS
 MIN_FREE_KB=6291456
-source /opt/ros/humble/setup.bash >/dev/null 2>&1
-source install/setup.bash >/dev/null 2>&1
+source /opt/ros/humble/setup.bash || exit 1
+source install/setup.bash || exit 1
 log() { echo "- $(date '+%F %T') campaign: $*" >> "$S"; echo "$*"; }
 mkdir -p "$R"
 

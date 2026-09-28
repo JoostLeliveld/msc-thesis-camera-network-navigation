@@ -1,0 +1,291 @@
+{
+  "admitted_observations": 1304,
+  "batches": 411,
+  "best_single_rule": "admitted camera with smallest spatial-model covariance determinant",
+  "by_camera_count": {
+    "best_spatial_single": {
+      "2": {
+        "batches": 227,
+        "mean_error_m": 0.024381913922688975,
+        "median_error_m": 0.016824695446380294,
+        "p95_error_m": 0.07926241936702125,
+        "rmse_m": 0.03433815687383961
+      },
+      "3": {
+        "batches": 134,
+        "mean_error_m": 0.02123506763711748,
+        "median_error_m": 0.015239403729674295,
+        "p95_error_m": 0.06621006248878754,
+        "rmse_m": 0.028381111379252772
+      },
+      "4": {
+        "batches": 50,
+        "mean_error_m": 0.014030835307475382,
+        "median_error_m": 0.012019699274799466,
+        "p95_error_m": 0.027887165326759254,
+        "rmse_m": 0.01606947723495553
+      }
+    },
+    "closest_single": {
+      "2": {
+        "batches": 227,
+        "mean_error_m": 0.034798115376249085,
+        "median_error_m": 0.018561586497290613,
+        "p95_error_m": 0.13338248272934417,
+        "rmse_m": 0.05616289283781863
+      },
+      "3": {
+        "batches": 134,
+        "mean_error_m": 0.028251243925356852,
+        "median_error_m": 0.015937410440468668,
+        "p95_error_m": 0.09122952441370034,
+        "rmse_m": 0.04382168849633639
+      },
+      "4": {
+        "batches": 50,
+        "mean_error_m": 0.019481511249522288,
+        "median_error_m": 0.015149908239216331,
+        "p95_error_m": 0.04792079017687054,
+        "rmse_m": 0.023444228659072745
+      }
+    },
+    "equal": {
+      "2": {
+        "batches": 227,
+        "mean_error_m": 0.031521752650577696,
+        "median_error_m": 0.018293043446046636,
+        "p95_error_m": 0.09208448266783387,
+        "rmse_m": 0.044228473710317094
+      },
+      "3": {
+        "batches": 134,
+        "mean_error_m": 0.031058944511166958,
+        "median_error_m": 0.02385918732537941,
+        "p95_error_m": 0.08360634089122732,
+        "rmse_m": 0.039752898006285085
+      },
+      "4": {
+        "batches": 50,
+        "mean_error_m": 0.021626911595981558,
+        "median_error_m": 0.015832048308699977,
+        "p95_error_m": 0.0657816915089509,
+        "rmse_m": 0.02821287590550787
+      }
+    },
+    "global": {
+      "2": {
+        "batches": 227,
+        "mean_error_m": 0.031821801451010365,
+        "median_error_m": 0.018913275248404905,
+        "p95_error_m": 0.09900892415576733,
+        "rmse_m": 0.044946050369921005
+      },
+      "3": {
+        "batches": 134,
+        "mean_error_m": 0.030959904948155034,
+        "median_error_m": 0.02254597953900896,
+        "p95_error_m": 0.0802827441338676,
+        "rmse_m": 0.040082491896698345
+      },
+      "4": {
+        "batches": 50,
+        "mean_error_m": 0.021922552864974465,
+        "median_error_m": 0.01635660737636344,
+        "p95_error_m": 0.07157953656927135,
+        "rmse_m": 0.029067394898114454
+      }
+    },
+    "per_camera": {
+      "2": {
+        "batches": 227,
+        "mean_error_m": 0.03253389403213558,
+        "median_error_m": 0.020476694447359035,
+        "p95_error_m": 0.09375890352104356,
+        "rmse_m": 0.04601050395511502
+      },
+      "3": {
+        "batches": 134,
+        "mean_error_m": 0.029538523845252067,
+        "median_error_m": 0.020214741597328084,
+        "p95_error_m": 0.07386772262963348,
+        "rmse_m": 0.040239925092056206
+      },
+      "4": {
+        "batches": 50,
+        "mean_error_m": 0.02465323998208546,
+        "median_error_m": 0.013464084943501101,
+        "p95_error_m": 0.09279816503407998,
+        "rmse_m": 0.03592374448759149
+      }
+    },
+    "rproj": {
+      "2": {
+        "batches": 227,
+        "mean_error_m": 0.035655006037452606,
+        "median_error_m": 0.020044134904597916,
+        "p95_error_m": 0.12303921922915714,
+        "rmse_m": 0.054724571819101175
+      },
+      "3": {
+        "batches": 134,
+        "mean_error_m": 0.027448557766548445,
+        "median_error_m": 0.01895155986889644,
+        "p95_error_m": 0.07317345155626666,
+        "rmse_m": 0.03505350386028811
+      },
+      "4": {
+        "batches": 50,
+        "mean_error_m": 0.019303578471811758,
+        "median_error_m": 0.014099337131307538,
+        "p95_error_m": 0.05235096097000562,
+        "rmse_m": 0.024524179966956952
+      }
+    },
+    "spatial": {
+      "2": {
+        "batches": 227,
+        "mean_error_m": 0.021964803442702886,
+        "median_error_m": 0.01336170616303104,
+        "p95_error_m": 0.07140492137316184,
+        "rmse_m": 0.031203223098776108
+      },
+      "3": {
+        "batches": 134,
+        "mean_error_m": 0.01705041989478501,
+        "median_error_m": 0.01279666517357253,
+        "p95_error_m": 0.04289279525939096,
+        "rmse_m": 0.021116452697719314
+      },
+      "4": {
+        "batches": 50,
+        "mean_error_m": 0.01330752968966348,
+        "median_error_m": 0.009453458383699265,
+        "p95_error_m": 0.04318233543396792,
+        "rmse_m": 0.017764857839159383
+      }
+    }
+  },
+  "closest_single_rule": "admitted camera mounted nearest (ground plane) to its own corrected estimate",
+  "created_utc": "2026-09-25T18:10:17.874558+00:00",
+  "fusion_rule": "independent information-form fusion",
+  "inclusion": "at least two admitted cameras in the sealed final audit",
+  "metrics": {
+    "best_spatial_single": {
+      "batches": 411,
+      "mean_error_m": 0.02209667953576134,
+      "median_error_m": 0.015460593383904021,
+      "p95_error_m": 0.07208773967389889,
+      "rmse_m": 0.03074518436524343
+    },
+    "closest_single": {
+      "batches": 411,
+      "mean_error_m": 0.03080027844010335,
+      "median_error_m": 0.016915987306532047,
+      "p95_error_m": 0.1082917526206671,
+      "rmse_m": 0.04934674510826987
+    },
+    "equal": {
+      "batches": 411,
+      "mean_error_m": 0.03016710947926177,
+      "median_error_m": 0.019780867761606716,
+      "p95_error_m": 0.08805004328609509,
+      "rmse_m": 0.041139647266089326
+    },
+    "global": {
+      "batches": 411,
+      "coverage_95": 0.8905109489051095,
+      "mean_error_m": 0.030336505682921774,
+      "mean_fused_ellipse_area_95_cm2": 164.89537348532704,
+      "mean_nis": 1.9983418019132257,
+      "median_error_m": 0.020209843250230317,
+      "p95_error_m": 0.09292500736202575,
+      "rmse_m": 0.041741422973583305
+    },
+    "per_camera": {
+      "batches": 411,
+      "coverage_95": 0.9221411192214112,
+      "mean_error_m": 0.030598584281418064,
+      "mean_fused_ellipse_area_95_cm2": 171.91097989008898,
+      "mean_nis": 1.93142928179334,
+      "median_error_m": 0.01912116898520803,
+      "p95_error_m": 0.09301150097110863,
+      "rmse_m": 0.04305987657995386
+    },
+    "rproj": {
+      "batches": 411,
+      "coverage_95": 0.9197080291970803,
+      "mean_error_m": 0.030990199598077427,
+      "mean_fused_ellipse_area_95_cm2": 195.10509206924317,
+      "mean_nis": 2.679792095367394,
+      "median_error_m": 0.018822043521778634,
+      "p95_error_m": 0.09162466865598883,
+      "rmse_m": 0.04612842536768871
+    },
+    "spatial": {
+      "batches": 411,
+      "coverage_95": 0.9343065693430657,
+      "mean_error_m": 0.019309350685834357,
+      "mean_fused_ellipse_area_95_cm2": 65.6266497218199,
+      "mean_nis": 1.9607348356870915,
+      "median_error_m": 0.012746024208895285,
+      "p95_error_m": 0.05864096091787786,
+      "rmse_m": 0.026861239298228073,
+      "rmse_reduction_vs_best_spatial_single": 0.12632694020875834,
+      "rmse_reduction_vs_closest_single": 0.45566340314254117,
+      "rmse_reduction_vs_equal": 0.3470717158926807,
+      "win_fraction_against_best_spatial_single": 0.6301703163017032,
+      "wins_against_best_spatial_single": 259
+    }
+  },
+  "records": {
+    "path": "evaluated_admitted.jsonl",
+    "sha256": "fcf3c8800866ca2f30febdd63c932767d1b1dcf902e1ed9f8e0c02b5362c1df4"
+  },
+  "rproj_sigma_px": 2.930705922531681,
+  "sample_unit": "position-heading camera batch",
+  "schema": "thesis_final_audit_fusion.v1",
+  "selection_or_fitting_performed": false,
+  "single_observation": {
+    "global": {
+      "equal_position_coverage_95": 0.9125137741046832,
+      "equal_position_mean_ellipse_area_95_cm2": 400.9550986114823,
+      "equal_position_mean_nis": 1.8810439095576756,
+      "equal_position_mean_nll": -3.3731576700613473,
+      "observations": 1304,
+      "positions": 165
+    },
+    "per_camera": {
+      "equal_position_coverage_95": 0.9196999212908303,
+      "equal_position_mean_ellipse_area_95_cm2": 505.42462111462265,
+      "equal_position_mean_nis": 1.5822571536797296,
+      "equal_position_mean_nll": -3.379266714781197,
+      "observations": 1304,
+      "positions": 165
+    },
+    "rproj": {
+      "equal_position_coverage_95": 0.930657549521186,
+      "equal_position_mean_ellipse_area_95_cm2": 985.661948374874,
+      "equal_position_mean_nis": 1.7274545286285592,
+      "equal_position_mean_nll": -3.0101133467646233,
+      "observations": 1304,
+      "positions": 165
+    },
+    "spatial": {
+      "equal_position_coverage_95": 0.9252051904324632,
+      "equal_position_mean_ellipse_area_95_cm2": 314.2419959001851,
+      "equal_position_mean_nis": 2.2753572818009102,
+      "equal_position_mean_nll": -4.316632923905905,
+      "observations": 1304,
+      "positions": 165
+    }
+  },
+  "source_hashes": {
+    "audit_records": "a4da1072fed90529715ae6a59f165b396ad8a9b025f48c56ce6d093e9125bc9a",
+    "audit_report": "e027922b0b372337c7e0c7da008af54d967f83d11e094b2e309b71674b3768d5",
+    "implementation": "5709be2059fbc7a81c36a2bcba4b6430c3ca9160ad18b7c037d79173e416c719",
+    "runtime_global": "06182fb1fa85ffd19b69050bafde18453fffe17261ff4c82867544a2891236e1",
+    "runtime_per_camera": "b1fd0c53ec9ae07cdfa4760dae070236771773a34117bc3f6342ecf219954a80",
+    "runtime_spatial": "a16be2b03036388911342ef2af2ea3eab959162be93b40746dcff93b02a3e0ca"
+  },
+  "status": "complete"
+}

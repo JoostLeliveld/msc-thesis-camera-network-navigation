@@ -1,0 +1,910 @@
+{
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_a_western_dock_detour/global_intact/seed91500/attempts/995499278dc7424c9d4f71bfdc2c8327/experiment_20260927_210057_926426_fd9f4449b475": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.5553149856332649,
+  "min_boundary_clearance_m": 0.3116323908661567,
+  "samples": 8307,
+  "max_sample_gap_s": 0.03900000000000148
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_a_western_dock_detour/global_removal/seed91500/attempts/6221ded6d841469295f780e159af72d0/experiment_20260927_210354_665514_a51daa870b1e": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.1794892011820366,
+  "min_boundary_clearance_m": 0.3396707036028807,
+  "samples": 8013,
+  "max_sample_gap_s": 0.142000000000003
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_a_western_dock_detour/per_camera_intact/seed91500/attempts/65dcbfdb66a84b3da4de3f214758d74b/experiment_20260927_210646_417108_3bfafed06220": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.56044634608382,
+  "min_boundary_clearance_m": 0.2821551437720408,
+  "samples": 10063,
+  "max_sample_gap_s": 0.29999999999999716
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_a_western_dock_detour/per_camera_removal/seed91500/attempts/9d753111e87f4746bb5ba960a642e518/experiment_20260927_211011_785640_cbc9fcfd52f0": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.18547291355454712,
+  "min_boundary_clearance_m": 0.3699465156472232,
+  "samples": 4573,
+  "max_sample_gap_s": 0.2150000000000034
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_a_western_dock_detour/spatial_intact/seed91500/attempts/478156d9eb634d97aeb1948184952247/experiment_20260927_211153_971448_caafac59ca3b": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.5463695485863981,
+  "min_boundary_clearance_m": 0.25189861648671824,
+  "samples": 4776,
+  "max_sample_gap_s": 0.2809999999999988
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_a_western_dock_detour/spatial_removal/seed91500/attempts/177e7732490244c985657f569012983e/experiment_20260927_211346_638710_1bfb78b37316": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.48951278320929165,
+  "min_boundary_clearance_m": 0.2177074374808363,
+  "samples": 4377,
+  "max_sample_gap_s": 0.2600000000000051
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_b_cross_warehouse_detour/global_intact/seed91500/attempts/923574a970674a5c891d0d5563f23e6b/experiment_20260927_211526_352836_38f45ad848dc": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.39151446243190247,
+  "min_boundary_clearance_m": 0.227743484429066,
+  "samples": 4264,
+  "max_sample_gap_s": 2.121
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_b_cross_warehouse_detour/global_removal/seed91500/attempts/3bfff605c3774136bb57eab9cdc38501/experiment_20260927_211703_103940_552fdb351d3e": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 2818,
+   "stamp_s": 15.600000000000001,
+   "x": -7.224771909873305,
+   "y": 8.932727419226387,
+   "yaw": 1.5045520614254484,
+   "kind": "boundary"
+  },
+  "min_obstacle_clearance_m": -0.00042904561233718397,
+  "min_boundary_clearance_m": -0.662434101116036,
+  "samples": 9477,
+  "max_sample_gap_s": 0.04200000000000159
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_b_cross_warehouse_detour/per_camera_intact/seed91500/attempts/4173472be88b481a802d212b6dab20b1/experiment_20260927_212016_432222_4d63dbd32b3f": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.31903152062315887,
+  "min_boundary_clearance_m": 0.20500493201452838,
+  "samples": 7185,
+  "max_sample_gap_s": 0.03200000000000003
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_b_cross_warehouse_detour/per_camera_removal/seed91500/attempts/7fb5a25ad5cb4ecd9e594715a1d6a0aa/experiment_20260927_212244_275073_c165e3cec8a8": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 2598,
+   "stamp_s": 15.628,
+   "x": -7.200882063659709,
+   "y": 8.939569293306981,
+   "yaw": 1.517565138470064,
+   "kind": "boundary"
+  },
+  "min_obstacle_clearance_m": -0.0001223071862028827,
+  "min_boundary_clearance_m": -0.663107256535706,
+  "samples": 10799,
+  "max_sample_gap_s": 0.0589999999999975
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_b_cross_warehouse_detour/spatial_intact/seed91500/attempts/90471a2ed6a141328f363763160af0a5/experiment_20260927_212617_040413_1d078917481f": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.38608228512217324,
+  "min_boundary_clearance_m": 0.2860695115807115,
+  "samples": 7145,
+  "max_sample_gap_s": 0.04499999999999815
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_b_cross_warehouse_detour/spatial_removal/seed91500/attempts/6a2437db20db4ff6b33d1bfafcff61a1/experiment_20260927_212844_250582_24c22403105a": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.3353935289185257,
+  "min_boundary_clearance_m": 1.7567473347987042,
+  "samples": 8138,
+  "max_sample_gap_s": 0.04399999999999871
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_c_inner_warehouse_detour/global_intact/seed91500/attempts/0ac611d081494ac28b7b68af7af95a00/experiment_20260927_213135_064113_3a3bc3c90869": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.27508192285975364,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 7480,
+  "max_sample_gap_s": 0.29199999999999804
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_c_inner_warehouse_detour/global_removal/seed91500/attempts/5f7dc8d129374f2f96d7eea6e260ca3a/experiment_20260927_213408_104547_775118e4a7e0": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 2384,
+   "stamp_s": 15.114,
+   "x": -2.3573756474448144,
+   "y": -1.639076036473219,
+   "yaw": -1.4873628225392788,
+   "kind": "obstacle"
+  },
+  "min_obstacle_clearance_m": -0.00019342862410446209,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 7960,
+  "max_sample_gap_s": 3.2640000000000002
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_c_inner_warehouse_detour/per_camera_intact/seed91500/attempts/dcdf0b02860441acaec39898190d5a33/experiment_20260927_213653_719965_09fbb38e8436": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.321852096494184,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 8153,
+  "max_sample_gap_s": 1.2770000000000001
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_c_inner_warehouse_detour/per_camera_removal/seed91500/attempts/ee335eea594841d3bc0a37a291baaf90/experiment_20260927_213944_280759_1193b8433997": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 2401,
+   "stamp_s": 12.281,
+   "x": -2.3736077586454245,
+   "y": 1.4046857612676955,
+   "yaw": -1.4432627644896396,
+   "kind": "obstacle"
+  },
+  "min_obstacle_clearance_m": -0.0016283110997609923,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 13221,
+  "max_sample_gap_s": 0.121
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_c_inner_warehouse_detour/spatial_intact/seed91500/attempts/5f0e309a76af446d84a79e1e5b411904/experiment_20260927_214359_126254_49cac2a1c614": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.5822857863111417,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 6526,
+  "max_sample_gap_s": 0.1999999999999993
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_c_inner_warehouse_detour/spatial_removal/seed91500/attempts/fdcb1d8afee349679068163fc221f2e4/experiment_20260927_214616_627985_c77f0af2d803": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.25203485116529434,
+  "min_boundary_clearance_m": 0.29668213373962615,
+  "samples": 6727,
+  "max_sample_gap_s": 0.22799999999999998
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_eastern_detour/global_intact/seed91500/attempts/f2ad0bf4afe94b0bb85401fad02ad074/experiment_20260927_214840_363132_a5033768876e": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.42355905831402296,
+  "min_boundary_clearance_m": 0.3174451246842054,
+  "samples": 4815,
+  "max_sample_gap_s": 1.087
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_eastern_detour/global_removal/seed91500/attempts/4dd76d8dc3744bc39aca1ac7c6e23d46/experiment_20260927_215034_378187_9fb966426ac7": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.45982042614330876,
+  "min_boundary_clearance_m": 0.32747872437414216,
+  "samples": 13247,
+  "max_sample_gap_s": 0.2989999999999995
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_eastern_detour/per_camera_intact/seed91500/attempts/e2096cf5d65744cfa9b2bb4197664ad5/experiment_20260927_215459_981862_27d1bc5fea50": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.4823432712523195,
+  "min_boundary_clearance_m": 0.3677364140863908,
+  "samples": 9004,
+  "max_sample_gap_s": 0.01899999999999835
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_eastern_detour/per_camera_removal/seed91500/attempts/6b8173eeadf04afbae4acc0c28997906/experiment_20260927_215800_512518_ddd6eaa3e721": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.478663459331979,
+  "min_boundary_clearance_m": 0.366782351417136,
+  "samples": 9140,
+  "max_sample_gap_s": 0.27900000000000347
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_eastern_detour/spatial_intact/seed91500/attempts/4d182ee38f1740248a0a391644508ac6/experiment_20260927_220104_755639_a520f5646719": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.43955365604553864,
+  "min_boundary_clearance_m": 0.3140188148082057,
+  "samples": 4891,
+  "max_sample_gap_s": 2.229
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_eastern_detour/spatial_removal/seed91500/attempts/4f23d5197f8741e4ac3135c98ec2a008/experiment_20260927_220254_400527_62d2d48d3a9c": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.4839309451017933,
+  "min_boundary_clearance_m": 0.3584150003912647,
+  "samples": 9798,
+  "max_sample_gap_s": 0.1810000000000045
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_long_cross_warehouse_detour/global_intact/seed91500/attempts/46cc0fc88c7e4292be4811a63d29c166/experiment_20260927_220611_280961_3c18f8fc80e5": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.27491747628559615,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 7587,
+  "max_sample_gap_s": 0.4059999999999988
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_long_cross_warehouse_detour/global_removal/seed91500/attempts/aef46d5b037e4cce9feba299bdb8d8cf/experiment_20260927_220904_647272_56eb3aa05ea4": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.29028506214710603,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 10496,
+  "max_sample_gap_s": 2.907
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_long_cross_warehouse_detour/per_camera_intact/seed91500/attempts/5b1e84eb299d40fc8ed7da3c530bd23a/experiment_20260927_221230_179083_6fea150ff097": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.2541391369463284,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 10047,
+  "max_sample_gap_s": 1.5910000000000002
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_long_cross_warehouse_detour/per_camera_removal/seed91500/attempts/850eda31b9ac42f0ae0473028898052b/experiment_20260927_221548_887116_0c3f0e24a0b8": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.27415342649191915,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 12344,
+  "max_sample_gap_s": 0.28999999999999915
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_long_cross_warehouse_detour/spatial_intact/seed91500/attempts/05d824ad11024904bc5a5ae2d4be48ea/experiment_20260927_221951_626917_2ab8a507befb": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.36010910400138507,
+  "min_boundary_clearance_m": 0.16523647745755987,
+  "samples": 8264,
+  "max_sample_gap_s": 0.5589999999999975
+ },
+ "logs/thesis/final_campaign/campaign/seed91500/thesis10_camera_e_long_cross_warehouse_detour/spatial_removal/seed91500/attempts/2deb1d3d333e4a878a74e50ea3550b00/experiment_20260927_222247_616867_7cae60298f2a": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.2608222769066075,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 14213,
+  "max_sample_gap_s": 0.1980000000000004
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_a_western_dock_detour/global_intact/seed91501/attempts/9058895740c641f6a1dbcb32502e9a42/experiment_20260927_225004_816433_8f10f1190d0e": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.5376366439899661,
+  "min_boundary_clearance_m": 0.31537939859649455,
+  "samples": 5734,
+  "max_sample_gap_s": 0.1860000000000035
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_a_western_dock_detour/global_removal/seed91501/attempts/458718357ff94d92aafecbfe5647d5cc/experiment_20260927_225220_219965_08f592375257": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.4698090586676871,
+  "min_boundary_clearance_m": 0.1913270809791072,
+  "samples": 10236,
+  "max_sample_gap_s": 0.13100000000000023
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_a_western_dock_detour/per_camera_intact/seed91501/attempts/5b4a1a70f63a4a898b3ac9f24cde775d/experiment_20260927_225547_500005_512d33b32a06": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.5516879795265002,
+  "min_boundary_clearance_m": 0.27650909051392064,
+  "samples": 7468,
+  "max_sample_gap_s": 1.342
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_a_western_dock_detour/per_camera_removal/seed91501/attempts/26a585e5ff544d42bc4b32343422b1c0/experiment_20260927_225829_472973_aaa917a979f5": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 2709,
+   "stamp_s": 16.786,
+   "x": -10.152461376411773,
+   "y": -4.423327405390505,
+   "yaw": -1.642051046552514,
+   "kind": "obstacle"
+  },
+  "min_obstacle_clearance_m": -0.0008453273166031336,
+  "min_boundary_clearance_m": 0.25198125919394876,
+  "samples": 10022,
+  "max_sample_gap_s": 0.02200000000000024
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_a_western_dock_detour/spatial_intact/seed91501/attempts/9c98e51ba2644d3aacbad7f24dfd0c46/experiment_20260927_230149_542549_74c064721c0c": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.5627445275343952,
+  "min_boundary_clearance_m": 0.24398560041673534,
+  "samples": 9139,
+  "max_sample_gap_s": 0.017000000000003013
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_a_western_dock_detour/spatial_removal/seed91501/attempts/3b4052048f864c4186d4845044df717d/experiment_20260927_230500_340484_1ce3eccf10a7": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.3653135611839549,
+  "min_boundary_clearance_m": 0.21595026494212452,
+  "samples": 8751,
+  "max_sample_gap_s": 0.29700000000000415
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_b_cross_warehouse_detour/global_intact/seed91501/attempts/c0305c6e63c64511b274645fd447555a/experiment_20260927_230758_085168_6543403eb7d5": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.25338837577976125,
+  "min_boundary_clearance_m": 0.20142236023040996,
+  "samples": 6571,
+  "max_sample_gap_s": 0.23199999999999932
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_b_cross_warehouse_detour/global_removal/seed91501/attempts/2b4010142d7f416db03611edeb840878/experiment_20260927_231022_640244_f53d94270edd": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 2461,
+   "stamp_s": 22.19,
+   "x": -2.8610776825495425,
+   "y": 9.029057425915886,
+   "yaw": 0.12148317790193983,
+   "kind": "boundary"
+  },
+  "min_obstacle_clearance_m": 0.10573579162229008,
+  "min_boundary_clearance_m": -0.20215815118272576,
+  "samples": 5892,
+  "max_sample_gap_s": 0.020000000000003126
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_b_cross_warehouse_detour/per_camera_intact/seed91501/attempts/ffcc80035f4b40f79a8957367df09dc1/experiment_20260927_231231_017385_8ce46c53146a": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.3565725607013315,
+  "min_boundary_clearance_m": 0.21020563977433682,
+  "samples": 4678,
+  "max_sample_gap_s": 0.29999999999999716
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_b_cross_warehouse_detour/per_camera_removal/seed91501/attempts/0d33559652d740f38d96390afc07e2fb/experiment_20260927_231416_284003_f7d0f75eec36": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 4907,
+   "stamp_s": 23.882,
+   "x": -2.541854494114216,
+   "y": 8.935113058335645,
+   "yaw": -0.42311632406947813,
+   "kind": "boundary"
+  },
+  "min_obstacle_clearance_m": 0.13724555668279864,
+  "min_boundary_clearance_m": -0.006207175913119759,
+  "samples": 9712,
+  "max_sample_gap_s": 0.056999999999995055
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_b_cross_warehouse_detour/spatial_intact/seed91501/attempts/d7468b1f1da84510b311b0180f9ed5e7/experiment_20260927_231733_722019_4e1ca877dd0c": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.34694045946552404,
+  "min_boundary_clearance_m": 0.23593804963225473,
+  "samples": 9128,
+  "max_sample_gap_s": 0.1999999999999993
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_b_cross_warehouse_detour/spatial_removal/seed91501/attempts/f39e3b305d6645fca8e015cc00ddb639/experiment_20260927_232039_873760_c99ce0867f77": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.33885713931308725,
+  "min_boundary_clearance_m": 1.7488915244941365,
+  "samples": 8571,
+  "max_sample_gap_s": 0.5990000000000038
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_c_inner_warehouse_detour/global_intact/seed91501/attempts/6fc4d9fbefa247a09e6b989507726e58/experiment_20260927_232348_867273_47ff6c305165": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.4482972742550775,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 8696,
+  "max_sample_gap_s": 0.2940000000000005
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_c_inner_warehouse_detour/global_removal/seed91501/attempts/ebbf02fbb81d4f77a087edf09ec353b4/experiment_20260928_003630_211429_f31014bdaa4d": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.6141501585741921,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 8290,
+  "max_sample_gap_s": 0.1039999999999992
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_c_inner_warehouse_detour/per_camera_intact/seed91501/attempts/5718691b654149f2a1f5c38cdadb8753/experiment_20260927_233013_004381_537be04b05cd": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 1563,
+   "stamp_s": 12.472000000000001,
+   "x": -2.4592866204674455,
+   "y": -0.007353014736334206,
+   "yaw": -1.9719439732787223,
+   "kind": "obstacle"
+  },
+  "min_obstacle_clearance_m": -8.507944157010604e-05,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 5022,
+  "max_sample_gap_s": 0.3470000000000013
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_c_inner_warehouse_detour/per_camera_removal/seed91501/attempts/f2d03448878c427995b60e9302397263/experiment_20260927_233212_286164_24ee06269963": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 1533,
+   "stamp_s": 13.061,
+   "x": -2.3697127131775484,
+   "y": -0.9466976680110674,
+   "yaw": -1.4538006239299957,
+   "kind": "obstacle"
+  },
+  "min_obstacle_clearance_m": -0.0005383851386011225,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 6584,
+  "max_sample_gap_s": 0.18999999999999773
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_c_inner_warehouse_detour/spatial_intact/seed91501/attempts/441a1b04f5b6438ca57dfc2977a4aa4d/experiment_20260927_233433_757210_01a61792c3f1": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.3323310534157682,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 6504,
+  "max_sample_gap_s": 0.21100000000000207
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_c_inner_warehouse_detour/spatial_removal/seed91501/attempts/184c750ef49944cebbca419e49c79ec6/experiment_20260927_233704_496668_971a4d9cbc83": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.32630049841345077,
+  "min_boundary_clearance_m": 0.29959656339930163,
+  "samples": 6646,
+  "max_sample_gap_s": 0.28200000000000003
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_eastern_detour/global_intact/seed91501/attempts/a7fb846ce29044cab99a838de5d00402/experiment_20260927_233934_001442_b2d40bf25e86": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.4778261126406829,
+  "min_boundary_clearance_m": 0.35672388289345314,
+  "samples": 8941,
+  "max_sample_gap_s": 0.18500000000000227
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_eastern_detour/global_removal/seed91501/attempts/d38711a1d460439a8b11170d0a5e328e/experiment_20260927_234234_149481_fc0f7d210f94": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.4900851573700132,
+  "min_boundary_clearance_m": 0.35535344536878277,
+  "samples": 9768,
+  "max_sample_gap_s": 0.1840000000000046
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_eastern_detour/per_camera_intact/seed91501/attempts/f3c9998dc4c0429f93fed39536572227/experiment_20260927_234555_966455_4662bdb1baf4": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.35353487294505603,
+  "min_boundary_clearance_m": 0.3230487525154136,
+  "samples": 7042,
+  "max_sample_gap_s": 0.30799999999999983
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_eastern_detour/per_camera_removal/seed91501/attempts/e0d286cb5872477886375778119dd8ec/experiment_20260927_234836_751771_5a20803c4209": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.38472293908223887,
+  "min_boundary_clearance_m": 0.3057154320247051,
+  "samples": 4962,
+  "max_sample_gap_s": 2.5
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_eastern_detour/spatial_intact/seed91501/attempts/a786d2d0de4d42cebe15dafe9c5fd5e1/experiment_20260927_235025_703562_d43eec043742": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.44941298719497436,
+  "min_boundary_clearance_m": 0.325322318883158,
+  "samples": 4495,
+  "max_sample_gap_s": 0.4140000000000015
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_eastern_detour/spatial_removal/seed91501/attempts/1e66a0150bfb4c19bfd0a510075fd487/experiment_20260927_235207_798290_387c9de43e29": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.45278121165725743,
+  "min_boundary_clearance_m": 0.31599554035537203,
+  "samples": 5468,
+  "max_sample_gap_s": 0.2909999999999968
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_long_cross_warehouse_detour/global_intact/seed91501/attempts/bbaa6d0dd1b04236bf047f7195634c81/experiment_20260927_235408_943214_ea64355a9672": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.25360915864940736,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 12049,
+  "max_sample_gap_s": 3.1220000000000003
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_long_cross_warehouse_detour/global_removal/seed91501/attempts/719c97af2d9043e0a647dc091fa283e3/experiment_20260927_235806_805095_b90741863851": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.2101186082300952,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 7021,
+  "max_sample_gap_s": 2.4970000000000003
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_long_cross_warehouse_detour/per_camera_intact/seed91501/attempts/95df4d47772541b5a842c4ae1d4af1e1/experiment_20260928_000037_606426_e1e6f2d0e0d8": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.24970945005873132,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 11866,
+  "max_sample_gap_s": 1.9420000000000002
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_long_cross_warehouse_detour/per_camera_removal/seed91501/attempts/7d6315719bb44f5aae4e9bb88f104573/experiment_20260928_000430_014923_e7719959b7db": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.2368222887685203,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 17306,
+  "max_sample_gap_s": 0.19999999999999574
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_long_cross_warehouse_detour/spatial_intact/seed91501/attempts/9fff0ca927fb4ad89e0d0902a563a4fc/experiment_20260928_001024_873396_a8699a592360": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.32497058612838,
+  "min_boundary_clearance_m": 0.15870263859007672,
+  "samples": 17228,
+  "max_sample_gap_s": 0.03600000000000003
+ },
+ "logs/thesis/final_campaign/campaign/seed91501/thesis10_camera_e_long_cross_warehouse_detour/spatial_removal/seed91501/attempts/d11e1f27c2c0405db418b50199703e0d/experiment_20260928_001603_049314_5345019df4c5": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.2634371345757014,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 6972,
+  "max_sample_gap_s": 0.20000000000000284
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_a_western_dock_detour/global_intact/seed91502/attempts/1f0e24e843094f41b387eb8278197fb8/experiment_20260928_004017_753167_397d2e589366": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.5572082980182903,
+  "min_boundary_clearance_m": 0.30047387374443163,
+  "samples": 11675,
+  "max_sample_gap_s": 0.18299999999999983
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_a_western_dock_detour/global_removal/seed91502/attempts/361c1ff6a365458e92b39d4f99c2c49f/experiment_20260928_004420_840598_8c30238d34c7": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.4940889738651127,
+  "min_boundary_clearance_m": 0.2998852683387021,
+  "samples": 9647,
+  "max_sample_gap_s": 0.1440000000000019
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_a_western_dock_detour/per_camera_intact/seed91502/attempts/377c655a24c44825974644f4ab23d7a5/experiment_20260928_004736_243511_26a426054848": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.5363987927863274,
+  "min_boundary_clearance_m": 0.27430216423415205,
+  "samples": 7784,
+  "max_sample_gap_s": 1.316
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_a_western_dock_detour/per_camera_removal/seed91502/attempts/60e2fcd76e8a41c196c71251715103a7/experiment_20260928_005015_892363_e7c711ea7776": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 1381,
+   "stamp_s": 13.542000000000002,
+   "x": -10.15312361070837,
+   "y": -1.1799298986224784,
+   "yaw": -1.4985587576278407,
+   "kind": "obstacle"
+  },
+  "min_obstacle_clearance_m": -0.0013058373640556112,
+  "min_boundary_clearance_m": 0.0013102625895911046,
+  "samples": 8774,
+  "max_sample_gap_s": 0.18199999999999505
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_a_western_dock_detour/spatial_intact/seed91502/attempts/c879c52a132c4a0cbd9d126d4514a64a/experiment_20260928_005316_460251_18f3f1f39c58": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.5453148230189839,
+  "min_boundary_clearance_m": 0.25809777475717505,
+  "samples": 4861,
+  "max_sample_gap_s": 1.5070000000000001
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_a_western_dock_detour/spatial_removal/seed91502/attempts/82a67d15471042d6b234146144a3aa61/experiment_20260928_005506_605580_b85042a22b6b": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.4010794283809149,
+  "min_boundary_clearance_m": 0.2172802514991048,
+  "samples": 13625,
+  "max_sample_gap_s": 0.1460000000000008
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_b_cross_warehouse_detour/global_intact/seed91502/attempts/83a2e2df0946466aa2b71169d739e912/experiment_20260928_005959_069886_0220b50b5d8e": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.3680838224413505,
+  "min_boundary_clearance_m": 0.19283062160663175,
+  "samples": 11733,
+  "max_sample_gap_s": 0.027000000000001023
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_b_cross_warehouse_detour/global_removal/seed91502/attempts/d01b0dfd7b7c4f3fb79dd3a65059504c/experiment_20260928_010401_137901_7ea770087540": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.316473953346585,
+  "min_boundary_clearance_m": 0.173581884453613,
+  "samples": 6537,
+  "max_sample_gap_s": 0.04899999999999949
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_b_cross_warehouse_detour/per_camera_intact/seed91502/attempts/64faec26b1f345a1b011a00f2d4b5056/experiment_20260928_010614_456646_e6582b880241": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.29170006111263347,
+  "min_boundary_clearance_m": 0.18595167993231418,
+  "samples": 6859,
+  "max_sample_gap_s": 2.144
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_b_cross_warehouse_detour/per_camera_removal/seed91502/attempts/2297830b829f4653b035478cb7f81a17/experiment_20260928_010834_324511_c511e71ccf6f": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 6069,
+   "stamp_s": 30.523000000000003,
+   "x": 1.3506463590641953,
+   "y": 8.45900551916115,
+   "yaw": -0.21374043650449961,
+   "kind": "obstacle"
+  },
+  "min_obstacle_clearance_m": -0.0005842527602731365,
+  "min_boundary_clearance_m": 0.018747896238329176,
+  "samples": 7988,
+  "max_sample_gap_s": 1.8350000000000002
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_b_cross_warehouse_detour/spatial_intact/seed91502/attempts/dbaa0129f2864a7d8f90b1d25298092f/experiment_20260928_011117_320907_eead3587fc1b": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.3424469105535879,
+  "min_boundary_clearance_m": 0.24728611292393587,
+  "samples": 4465,
+  "max_sample_gap_s": 1.3900000000000001
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_b_cross_warehouse_detour/spatial_removal/seed91502/attempts/522a8b06d1734dbfa03caf31f1af7f0f/experiment_20260928_011259_007551_f342b4083073": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.3224867629989623,
+  "min_boundary_clearance_m": 1.7556132715907398,
+  "samples": 5075,
+  "max_sample_gap_s": 1.4400000000000002
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_c_inner_warehouse_detour/global_intact/seed91502/attempts/e23fabbc7678471e93a5c332f6129c36/experiment_20260928_011451_636817_29dc5f61cce1": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 1196,
+   "stamp_s": 10.782,
+   "x": -2.38303818984049,
+   "y": 2.0032780639399945,
+   "yaw": -1.4166445949923898,
+   "kind": "obstacle"
+  },
+  "min_obstacle_clearance_m": -0.00031774697795820307,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 6940,
+  "max_sample_gap_s": 0.595000000000006
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_c_inner_warehouse_detour/global_removal/seed91502/attempts/33dda1a7d886476d97dd4a14e08bcc8a/experiment_20260928_011720_115600_0e49cb6cf659": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 1697,
+   "stamp_s": 16.708000000000002,
+   "x": -2.3596979438050645,
+   "y": -2.843338126929549,
+   "yaw": -1.4809597735878046,
+   "kind": "obstacle"
+  },
+  "min_obstacle_clearance_m": -0.00033962464464484007,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 7098,
+  "max_sample_gap_s": 0.19899999999999807
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_c_inner_warehouse_detour/per_camera_intact/seed91502/attempts/14125b2742b24d4ba26599703bf3cc31/experiment_20260928_011957_723995_7f883b2a697b": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.34561355456915793,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 5924,
+  "max_sample_gap_s": 0.3249999999999993
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_c_inner_warehouse_detour/per_camera_removal/seed91502/attempts/f40ae6615be44258829b8f932cf4ace8/experiment_20260928_012212_615680_8cc46b96a502": {
+  "scored": true,
+  "collision": true,
+  "first_exit": {
+   "sample": 2489,
+   "stamp_s": 13.469000000000001,
+   "x": -2.3612429297969535,
+   "y": -0.26247759781687646,
+   "yaw": -1.4770004459593662,
+   "kind": "obstacle"
+  },
+  "min_obstacle_clearance_m": -0.0018072224280475185,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 14875,
+  "max_sample_gap_s": 0.1290000000000049
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_c_inner_warehouse_detour/spatial_intact/seed91502/attempts/9eb1da226cfe4c8f8c8b2eabbfd121ba/experiment_20260928_012702_223148_77d0076bc7fb": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.5676308524401009,
+  "min_boundary_clearance_m": 0.32499898985847686,
+  "samples": 4145,
+  "max_sample_gap_s": 0.31299999999999883
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_c_inner_warehouse_detour/spatial_removal/seed91502/attempts/127b8091303b4a7788c13380e602f56d/experiment_20260928_012837_863693_c464c3ce1307": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.2006160478088818,
+  "min_boundary_clearance_m": 0.29830160704101694,
+  "samples": 3651,
+  "max_sample_gap_s": 0.2699999999999996
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_eastern_detour/global_intact/seed91502/attempts/1fb196c238d944609746226e68477105/experiment_20260928_013003_152033_cba377256c1a": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.43244104401017186,
+  "min_boundary_clearance_m": 0.2964906983254192,
+  "samples": 8685,
+  "max_sample_gap_s": 0.045000000000001705
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_eastern_detour/global_removal/seed91502/attempts/46a3a401f90048bfb471842aa5792e4f/experiment_20260928_013300_333315_8e333c0f73dd": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.4294552257961446,
+  "min_boundary_clearance_m": 0.310526587510644,
+  "samples": 7212,
+  "max_sample_gap_s": 1.415
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_eastern_detour/per_camera_intact/seed91502/attempts/83e6be7fc2bc415d85cbe526ffc8bf93/experiment_20260928_013527_206809_58181b42641e": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.40018536353624495,
+  "min_boundary_clearance_m": 0.2536270168450816,
+  "samples": 3103,
+  "max_sample_gap_s": 0.03999999999999915
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_eastern_detour/per_camera_removal/seed91502/attempts/05353afeabb944ac927680292446bb1c/experiment_20260928_013641_395166_5444070bfb0a": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.39644693394644565,
+  "min_boundary_clearance_m": 0.2927857584918474,
+  "samples": 5993,
+  "max_sample_gap_s": 0.23700000000000188
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_eastern_detour/spatial_intact/seed91502/attempts/67cb374e41ab4511a44ae805f8f19023/experiment_20260928_013855_384437_88749b1cb0d5": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.48942354106364777,
+  "min_boundary_clearance_m": 0.3377154736979797,
+  "samples": 11861,
+  "max_sample_gap_s": 1.1420000000000001
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_eastern_detour/spatial_removal/seed91502/attempts/6bfefaf79fd447cdb0abfcccffc83147/experiment_20260928_014251_514547_f767ee313112": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.4884082496520306,
+  "min_boundary_clearance_m": 0.35425314980541067,
+  "samples": 9231,
+  "max_sample_gap_s": 0.26200000000000045
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_long_cross_warehouse_detour/global_intact/seed91502/attempts/0342429b104b4ad6ae168f7fb27e7623/experiment_20260928_014559_886057_1205b0baa74b": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.2956059246098115,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 10569,
+  "max_sample_gap_s": 2.27
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_long_cross_warehouse_detour/global_removal/seed91502/attempts/6668fa255d344faab49e1d8915df5aeb/experiment_20260928_014930_628882_2cb661f35662": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.20354387656287187,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 6231,
+  "max_sample_gap_s": 0.4199999999999946
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_long_cross_warehouse_detour/per_camera_intact/seed91502/attempts/e58af63373a64d288f966944ac8096bb/experiment_20260928_015146_524963_acbae6578760": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.2376455251237428,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 4515,
+  "max_sample_gap_s": 0.472999999999999
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_long_cross_warehouse_detour/per_camera_removal/seed91502/attempts/49f02d0d60ac4029bcbd60ce61cbc2bb/experiment_20260928_015327_710504_229371afda53": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.25870357691180423,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 10366,
+  "max_sample_gap_s": 0.021000000000000796
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_long_cross_warehouse_detour/spatial_intact/seed91502/attempts/7fa1a5848878419d8f6417bab8122274/experiment_20260928_015650_431496_a6421a058a4e": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.34454260094494304,
+  "min_boundary_clearance_m": 0.18022512319479667,
+  "samples": 10628,
+  "max_sample_gap_s": 0.028999999999996362
+ },
+ "logs/thesis/final_campaign/campaign/seed91502/thesis10_camera_e_long_cross_warehouse_detour/spatial_removal/seed91502/attempts/624473cac832430886a6d7dc08bdd692/experiment_20260928_020021_189620_ab1bd8640dbc": {
+  "scored": true,
+  "collision": false,
+  "first_exit": null,
+  "min_obstacle_clearance_m": 0.2598686350442562,
+  "min_boundary_clearance_m": 0.24999999998718714,
+  "samples": 15216,
+  "max_sample_gap_s": 0.2839999999999989
+ }
+}

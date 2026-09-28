@@ -3,7 +3,7 @@
 
 The templates hold every navigation, planner and follower setting and repo-relative
 artifact paths. This resolves those paths (they must lie under logs/thesis/fits), records
-their hashes, and writes logs/thesis/campaign_configs/: the route-solving config and one
+their hashes, and writes logs/thesis/final_campaign/campaign_configs/: the route-solving config and one
 execution config per seed, so the campaign can run seed by seed.
 
     python3 pipeline/campaign_configs.py
@@ -49,7 +49,7 @@ def bind(cfg: dict) -> dict:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output-dir", type=Path, default=ROOT / "campaign_configs",
+    parser.add_argument("--output-dir", type=Path, default=ROOT / "final_campaign/campaign_configs",
                         help="Directory for generated planning and per-seed configs.")
     parser.add_argument("--only-task", action="append", default=[],
                         help="Include only this task; repeat to create a scoped campaign revision.")

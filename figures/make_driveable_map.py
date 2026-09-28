@@ -97,8 +97,8 @@ def main() -> None:
     for side in ('top', 'right'):
         ax.spines[side].set_visible(False)
     ax.legend(handles=[
-        Patch(facecolor=DRIVE, edgecolor=DRIVE_EDGE, hatch='..', label='driveable region'),
-        Patch(facecolor=KEEP, edgecolor=KEEP_EDGE, label='keep-out region'),
+        Patch(facecolor=DRIVE, edgecolor=DRIVE_EDGE, hatch='..', label=r'$\mathcal{X}_{\mathrm{free}}$'),
+        Patch(facecolor=KEEP, edgecolor=KEEP_EDGE, label='no-go region'),
         Patch(facecolor=SOLID, edgecolor='#50555c', label='walls and obstacles'),
         Line2D([], [], color=INK, lw=1.2, ls=(0, (6, 3)), label='site boundary'),
         Line2D([], [], color=CAM, marker='s', ms=6, lw=1.8,

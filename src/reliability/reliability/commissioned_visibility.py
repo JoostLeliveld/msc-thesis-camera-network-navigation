@@ -30,8 +30,11 @@ def _sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def _read_verified(entry: dict, *, label: str) -> tuple[Path, bytes]:
+def _read_verified(entry: dict, *, label: str, anchor: Path | None = None) -> tuple[Path, bytes]:
     path = Path(str(entry.get("path", ""))).expanduser()
+    if anchor is not None:
+        from unav_common.artifact_paths import thesis_artifact_path
+        path = thesis_artifact_path(path, anchor=anchor)
     if not path.is_file():
         raise FileNotFoundError(f"{label} not found: {path}")
     data = path.read_bytes()
@@ -97,9 +100,9 @@ class CommissionedVisibilitySensorModel:
             raise ValueError("camera registry and geometry differ")
         self.height, self.width = map(int, manifest["image_shape_hw"])
 
-        _, base_data = _read_verified(manifest["correction_base"], label="box MLP base model")
+        _, base_data = _read_verified(manifest["correction_base"], label="box MLP base model", anchor=path)
         self.base_model = joblib.load(io.BytesIO(base_data))
-        _, patch_data = _read_verified(manifest["correction_patch"], label="visibility residual model")
+        _, patch_data = _read_verified(manifest["correction_patch"], label="visibility residual model", anchor=path)
         try:
             checkpoint = torch.load(io.BytesIO(patch_data), map_location="cpu", weights_only=True)
         except TypeError:  # older torch without weights_only
@@ -126,7 +129,7 @@ class CommissionedVisibilitySensorModel:
         if (self.runtime_covariance_model == PROJECTION_R_MODEL
                 and manifest.get("schema") == "commissioned_visibility_sensor_model.v2"):
             _, model_data = _read_verified(
-                manifest["covariance_models"], label="projection-baseline parameters")
+                manifest["covariance_models"], label="projection-baseline parameters", anchor=path)
             with np.load(io.BytesIO(model_data), allow_pickle=False) as archive:
                 self.projection_sigma_px = float(np.asarray(
                     archive["homography_baseline_sigma_px"]).reshape(-1)[0])
@@ -138,7 +141,7 @@ class CommissionedVisibilitySensorModel:
             if self.runtime_covariance_model == "R3_hierarchical_predictive":
                 raise ValueError("v2 supports only the canonical R0--R2 ladder")
             _, model_data = _read_verified(
-                manifest["covariance_models"], label="ray-frame covariance models"
+                manifest["covariance_models"], label="ray-frame covariance models", anchor=path
             )
             with np.load(io.BytesIO(model_data), allow_pickle=False) as archive:
                 order = tuple(np.asarray(archive["camera_order"]).astype(str))

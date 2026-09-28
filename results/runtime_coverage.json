@@ -1,0 +1,168 @@
+{
+ "chi2_95": 5.991464547107982,
+ "rule": "fused: decisions with >= 2 admitted cameras; belief: state after first command",
+ "groups": {
+  "global": {
+   "fused": {
+    "runs": 29,
+    "samples": 2054,
+    "pooled_coverage_95": 0.8758519961051606,
+    "pooled_mean_nis": 2.761355458697211,
+    "run_balanced_coverage_95": 0.8027202712190169,
+    "run_balanced_mean_nis": 4.598863083973173
+   },
+   "belief": {
+    "runs": 30,
+    "samples": 10551,
+    "pooled_coverage_95": 0.7965121789403848,
+    "pooled_mean_nis": 7.211781319610883,
+    "run_balanced_coverage_95": 0.8041665570361244,
+    "run_balanced_mean_nis": 7.068650472896101
+   }
+  },
+  "global_intact": {
+   "fused": {
+    "runs": 15,
+    "samples": 1346,
+    "pooled_coverage_95": 0.8930163447251115,
+    "pooled_mean_nis": 2.5278027707584174,
+    "run_balanced_coverage_95": 0.8492881986509715,
+    "run_balanced_mean_nis": 3.5159007466835117
+   },
+   "belief": {
+    "runs": 15,
+    "samples": 5281,
+    "pooled_coverage_95": 0.8070441204317365,
+    "pooled_mean_nis": 5.6016077004954425,
+    "run_balanced_coverage_95": 0.8243440404319027,
+    "run_balanced_mean_nis": 5.585868792808648
+   }
+  },
+  "global_removal": {
+   "fused": {
+    "runs": 14,
+    "samples": 708,
+    "pooled_coverage_95": 0.8432203389830508,
+    "pooled_mean_nis": 3.205369467123222,
+    "run_balanced_coverage_95": 0.7528260632562084,
+    "run_balanced_mean_nis": 5.759179873926381
+   },
+   "belief": {
+    "runs": 15,
+    "samples": 5270,
+    "pooled_coverage_95": 0.7859582542694498,
+    "pooled_mean_nis": 8.82531583242846,
+    "run_balanced_coverage_95": 0.7839890736403464,
+    "run_balanced_mean_nis": 8.551432152983553
+   }
+  },
+  "per_camera": {
+   "fused": {
+    "runs": 29,
+    "samples": 1938,
+    "pooled_coverage_95": 0.8756449948400413,
+    "pooled_mean_nis": 2.770971903587227,
+    "run_balanced_coverage_95": 0.810159268120885,
+    "run_balanced_mean_nis": 4.179770272481584
+   },
+   "belief": {
+    "runs": 30,
+    "samples": 11511,
+    "pooled_coverage_95": 0.7241768742941534,
+    "pooled_mean_nis": 17.863157769975764,
+    "run_balanced_coverage_95": 0.7447062406780152,
+    "run_balanced_mean_nis": 16.229507146863863
+   }
+  },
+  "per_camera_intact": {
+   "fused": {
+    "runs": 15,
+    "samples": 1235,
+    "pooled_coverage_95": 0.8825910931174089,
+    "pooled_mean_nis": 2.706760726729495,
+    "run_balanced_coverage_95": 0.8609396672274211,
+    "run_balanced_mean_nis": 3.5155287447763497
+   },
+   "belief": {
+    "runs": 15,
+    "samples": 5112,
+    "pooled_coverage_95": 0.8120109546165885,
+    "pooled_mean_nis": 5.008373625288328,
+    "run_balanced_coverage_95": 0.8148088233145232,
+    "run_balanced_mean_nis": 5.054890611234397
+   }
+  },
+  "per_camera_removal": {
+   "fused": {
+    "runs": 14,
+    "samples": 703,
+    "pooled_coverage_95": 0.8634423897581792,
+    "pooled_mean_nis": 2.883775322391352,
+    "run_balanced_coverage_95": 0.7557516976495967,
+    "run_balanced_mean_nis": 4.891457623594337
+   },
+   "belief": {
+    "runs": 15,
+    "samples": 6399,
+    "pooled_coverage_95": 0.6540084388185654,
+    "pooled_mean_nis": 28.132521193579798,
+    "run_balanced_coverage_95": 0.6746036580415072,
+    "run_balanced_mean_nis": 27.404123682493328
+   }
+  },
+  "spatial": {
+   "fused": {
+    "runs": 30,
+    "samples": 2340,
+    "pooled_coverage_95": 0.9222222222222223,
+    "pooled_mean_nis": 2.421208027906611,
+    "run_balanced_coverage_95": 0.9106653028334081,
+    "run_balanced_mean_nis": 2.6682061214799786
+   },
+   "belief": {
+    "runs": 30,
+    "samples": 10218,
+    "pooled_coverage_95": 0.813270698766882,
+    "pooled_mean_nis": 3.6997080677194605,
+    "run_balanced_coverage_95": 0.8089554540182515,
+    "run_balanced_mean_nis": 3.794555134925426
+   }
+  },
+  "spatial_intact": {
+   "fused": {
+    "runs": 15,
+    "samples": 1223,
+    "pooled_coverage_95": 0.9182338511856092,
+    "pooled_mean_nis": 2.428181790452232,
+    "run_balanced_coverage_95": 0.8926577402311174,
+    "run_balanced_mean_nis": 2.970328730995329
+   },
+   "belief": {
+    "runs": 15,
+    "samples": 4997,
+    "pooled_coverage_95": 0.7926756053632179,
+    "pooled_mean_nis": 4.1659096302071355,
+    "run_balanced_coverage_95": 0.7840217275942878,
+    "run_balanced_mean_nis": 4.342363569730249
+   }
+  },
+  "spatial_removal": {
+   "fused": {
+    "runs": 15,
+    "samples": 1117,
+    "pooled_coverage_95": 0.9265890778871978,
+    "pooled_mean_nis": 2.41357247589829,
+    "run_balanced_coverage_95": 0.9286728654356987,
+    "run_balanced_mean_nis": 2.3660835119646273
+   },
+   "belief": {
+    "runs": 15,
+    "samples": 5221,
+    "pooled_coverage_95": 0.8329821873204367,
+    "pooled_mean_nis": 3.253508257769085,
+    "run_balanced_coverage_95": 0.8338891804422152,
+    "run_balanced_mean_nis": 3.2467467001206023
+   }
+  }
+ }
+}

@@ -5,6 +5,7 @@
 # output, so a rerun skips finished stages and resumes where it stopped.
 #
 #   bash pipeline/refit.sh
+set -eo pipefail
 cd "$(dirname "$0")/.."
 # REFIT_ROOT redirects every output, for a dry run that must not touch the campaign root.
 R="${REFIT_ROOT:-logs/thesis/fits}"
@@ -25,7 +26,7 @@ run() {  # run OUTPUT_DIR command...
   log "done $(basename "$out")"
 }
 run "$INF" python3 pipeline/detect.py \
-  --output "$INF" --batch-size 8
+  --output "$INF" --batch-size 8 --device "${DETECTOR_DEVICE:-0}"
 run "$R/gate_dataset" python3 pipeline/gate.py \
   --inference "$INF" --gate "$GATE_CONFIG" --output "$GATE"
 run "$R/correction" python3 pipeline/fit_correction.py \

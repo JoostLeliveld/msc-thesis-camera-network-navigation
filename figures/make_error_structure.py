@@ -5,9 +5,11 @@
     against the chi-square(2) quantiles a Gaussian error with the fitted covariance would give,
     per covariance model (logs/thesis/final_audit/evaluated.jsonl). On the diagonal the model is
     calibrated at every level; above it the model is overconfident there.
-(b) Correlation of one camera's whitened error between two of its frames against the time
-    between them, along the driven campaign routes, while moving and with the robot stationary
-    (logs/thesis/final_campaign/analysis/temporal_correlation.json, pipeline/analyze_temporal_correlation.py).
+(b) Correlation of one camera's whitened error between two of its frames against the
+    ground-truth distance the robot moved between them, per whitened axis, along the driven
+    campaign routes. The first bin (< 0.05 m) is the robot standing still
+    (logs/thesis/final_campaign/analysis/temporal_correlation.json, "distance_bins",
+    pipeline/analyze_temporal_correlation.py).
 
 Writes separate main-text and appendix figures.
 
@@ -53,19 +55,16 @@ def main():
     P.save(fig, "error_distribution")
 
     fig, bx = P.plt.subplots(1, 1, figsize=(P.COLUMN, 2.35))
-    bins = temporal["bins"]
-    mid = [0.5 * sum(b["gap_s"]) for b in bins]
-    moving = [np.mean(b["corr_whitened_xy"]) for b in bins]
-    bx.plot(mid, moving, "o-", color="#56B4E9", ms=3, lw=1.3, label="driving (all models)")
-    still = [(m, np.mean(b["stationary_corr_whitened_xy"])) for m, b in zip(mid, bins)
-             if b["stationary_corr_whitened_xy"] and b["stationary_pairs"] >= 50]
-    bx.plot(*zip(*still), "s-", color=P.INK, ms=3, lw=1.1, label="robot stationary")
-    for m, c, bn in list(zip(mid, moving, bins))[::2]:
-        bx.annotate(f"{bn['median_displacement_m']:.1f} m", (m, c), xytext=(2, -9), textcoords="offset points",
-                    fontsize=6, color="#2b7fb0")
+    bins = [b for b in temporal["distance_bins"] if b["corr_whitened_xy"]]
+    dist = [b["median_distance_m"] for b in bins]
+    for k, (ls, mk, lab) in enumerate((("-", "o", "first axis"), ("--", "s", "second axis"))):
+        bx.plot(dist, [b["corr_whitened_xy"][k] for b in bins], ls=ls, marker=mk, color="#56B4E9",
+                ms=3, lw=1.3, label=lab)
+    bx.annotate("robot stationary", (dist[0], max(bins[0]["corr_whitened_xy"])), xytext=(6, -2),
+                textcoords="offset points", fontsize=6, color=P.INK, va="center")
     bx.axhline(0, color=P.MUTED, lw=0.6)
-    bx.set_xscale("log"); bx.set_ylim(-0.05, 1.0)
-    bx.set_xlabel("time between frames (s)")
+    bx.set_xlim(-0.1, 4.0); bx.set_ylim(-0.05, 1.0)
+    bx.set_xlabel("ground-truth displacement between frames (m)")
     bx.set_ylabel("correlation of whitened error")
     bx.set_title("Between-frame correlation", fontsize=8, loc="left")
     bx.legend(fontsize=6.5, frameon=False, loc="upper right")

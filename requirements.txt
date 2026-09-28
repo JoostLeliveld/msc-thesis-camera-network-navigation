@@ -1,14 +1,19 @@
-# Thesis/Research Codebase Requirements
-# Core mathematical and robotics dependencies
-
-numpy>=1.21.0
-scipy>=1.7.0
-matplotlib>=3.4.0
-casadi>=3.5.5
-scikit-learn>=1.0.0
-opencv-python>=4.5.3
-pyyaml>=6.0
-packaging>=21.0
-
-# ROS 2 Humble (Standard installation required)
-# Note: rclpy. std_msgs, etc. are provided by the ROS 2 system installation.
+# Python 3.10 on Ubuntu 22.04; ROS 2 Humble comes from apt/rosdep.
+# Keep NumPy 1.x for Humble's compiled Python interfaces. OpenCV 4.12+ requires
+# NumPy 2 on Python 3.10, so its upper bound must agree with this constraint.
+numpy>=1.26,<2
+scipy>=1.11,<1.16
+matplotlib>=3.7,<3.11
+casadi>=3.7,<3.8
+scikit-learn>=1.7,<1.8
+opencv-python>=4.8,<4.12
+PyYAML>=6,<7
+packaging>=21
+joblib>=1.5,<1.6
+pandas>=2.2,<3
+Pillow>=10,<13
+shapely>=1.8,<3
+# Checkpoint and network implementation used by the thesis.
+torch>=2.5,<2.6
+torchvision>=0.20,<0.21
+ultralytics==8.4.36

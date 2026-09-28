@@ -37,6 +37,8 @@ REPO = repo_root()
 WORLD = REPO / 'src/sim/gazebo_worlds/worlds/warehouse_v2.world.sdf'
 OUT = REPO / 'logs' / 'thesis' / 'figures'
 PLAN = OUT / 'gazebo_plan_view.png'
+if not PLAN.is_file():
+    PLAN = REPO / 'figures/assets/gazebo_plan_view.png'
 
 CAM_MODELS = {
     'external_camera': 'A', 'external_camera_b': 'B', 'external_camera_c': 'C',
@@ -74,11 +76,17 @@ def main() -> None:
         raise SystemExit(f'missing {PLAN}; capture it from a running simulation first')
 
     left, top, right, bottom = CROP
-    image = mpimg.imread(PLAN)[top:bottom, left:right]
-    height, width = image.shape[:2]
+    image = mpimg.imread(PLAN)
+    if PLAN.parent.name != 'assets':
+        if image.shape[:2] != (1200, 1600):
+            raise ValueError('recaptured plan view must be 1600 x 1200 pixels')
+        image = image[top:bottom, left:right]
+    # The bundled image is the cropped, resampled raster extracted for the
+    # presentation. Keep the original crop's coordinate system for projection.
+    width, height = right - left, bottom - top
 
     fig, ax = plt.subplots(figsize=(7.2, 7.2 * height / width))
-    ax.imshow(image)
+    ax.imshow(image, extent=(0, width, height, 0))
     ax.set(xlim=(0, width), ylim=(height, 0))
     ax.axis('off')
 

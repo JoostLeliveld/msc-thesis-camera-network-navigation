@@ -15,7 +15,7 @@ setup(
     zip_safe=True,
     maintainer='joostleliveld',
     maintainer_email='j.j.p.leliveld@student.tue.nl',
-    description='Planner nodes for the thesis comparison between GP-aware EFE and retained baselines',
+    description='Belief-space navigation with global, per-camera and spatial camera covariance',
     license='MIT',
     extras_require={'test': ['pytest']},
     entry_points={

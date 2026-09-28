@@ -82,6 +82,11 @@ def route_name(task: str, condition: str, route_sha: str, routes: Path = ROUTES)
     return result["selected_source"].split(":")[-1]
 
 
+def local_run_dir(value: str) -> Path:
+    from unav_common.artifact_paths import thesis_artifact_path
+    return thesis_artifact_path(value, anchor=REPO / "pipeline/analyze_campaign.py")
+
+
 def score_run(run_dir: str) -> tuple[str, dict]:
     """Score one independent run in a worker process."""
     run = Path(run_dir)
@@ -107,7 +112,7 @@ def run_row(task: str, condition: str, seed: int, entry: dict | None,
             f"{task}/{condition}/seed{seed}: invalid campaign evidence: "
             f"flags={failed_flags}, returncode={entry.get('process_returncode')}"
         )
-    run = Path(entry["run_dir"])
+    run = local_run_dir(entry["run_dir"])
     summary = json.loads((run / "run_summary.json").read_text())
     if (summary.get("valid_run") is not True
             or summary.get("evidence_complete") is not True
@@ -259,15 +264,18 @@ def main() -> int:
                     entry = ledger.get(f"{task}__{condition}__seed{seed}")
                     selected.append((task, condition, seed, entry))
 
-    run_dirs = [str(Path(entry["run_dir"])) for _, _, _, entry in selected
+    run_dirs = [str(local_run_dir(entry["run_dir"])) for _, _, _, entry in selected
                 if entry is not None and entry.get("outcome") not in (None, "infra_invalid")]
     workers = min(8, os.cpu_count() or 1, len(run_dirs))
     with concurrent.futures.ProcessPoolExecutor(max_workers=workers) as executor:
-        scored = dict(executor.map(score_run, run_dirs))
+        scored = {}
+        for count, (run_dir, score) in enumerate(executor.map(score_run, run_dirs), 1):
+            scored[run_dir] = score
+            print(f"Scored {count}/{len(run_dirs)} campaign runs", flush=True)
 
     rows, scores = [], {}
     for task, condition, seed, entry in selected:
-        score = scored.get(str(Path(entry["run_dir"]))) if entry else None
+        score = scored.get(str(local_run_dir(entry["run_dir"]))) if entry else None
         row, score = run_row(task, condition, seed, entry, score)
         rows.append(row)
         if score:

@@ -24,7 +24,7 @@ from pipeline import dataset  # noqa: E402
 
 RADIUS_M = 0.75
 THRESHOLD = 0.90
-DEFAULT_CONFIG = REPO / "logs/thesis/campaign_configs/campaign_seed91500.yaml"
+DEFAULT_CONFIG = REPO / "logs/thesis/final_campaign/campaign_configs/campaign_seed91500.yaml"
 
 
 class Views:

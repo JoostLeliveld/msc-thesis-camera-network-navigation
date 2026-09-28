@@ -2,8 +2,8 @@
 <package format="3">
   <name>sim</name>
   <version>0.1.0</version>
-  <description>Gazebo Fortress (Sim 6) simulation package for ROS 2 Humble, providing robot_description, worlds and launch files for TurtleBot3.</description>
-  <maintainer email="you@example.com">maintainer</maintainer>
+  <description>Gazebo Fortress (Sim 6) simulation package for ROS 2 Humble, providing the thesis warehouse, fixed camera network and mobile robot.</description>
+  <maintainer email="j.j.p.leliveld@student.tue.nl">Joost Leliveld</maintainer>
   <license>Apache-2.0</license>
 
   <buildtool_depend>ament_python</buildtool_depend>

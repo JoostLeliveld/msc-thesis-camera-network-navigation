@@ -176,6 +176,7 @@ def main() -> int:
     spatial = residuals(fusion, "spatial")
     out["systematic"] = systematic(spatial)
     out["cross_camera_spatial_whitened"] = cross_camera(spatial)
+    OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(out, indent=1) + "\n")
     print(OUT)
     return 0

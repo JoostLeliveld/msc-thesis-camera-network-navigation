@@ -56,8 +56,9 @@ Ptilde_j = Pxy_j
          + max(s_goal,j^2 - 0.5 trace(Pxy_j), 0) I
 ```
 
-This treats the goal covariance as an upper uncertainty tolerance instead of
-penalizing a belief solely for being more concentrated.
+This raises the mean planar variance to the goal variance when it is smaller.
+It does not floor each eigenvalue separately; anisotropy can still contribute
+to the covariance part of the KL divergence.
 
 ### Ambiguity
 
