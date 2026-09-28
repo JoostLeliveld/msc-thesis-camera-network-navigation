@@ -1,0 +1,61 @@
+{
+  "capture_contract": {
+    "attempted_camera_views": 16000,
+    "cameras_per_robot_pose": 5,
+    "headings_per_position": 8,
+    "position_count": 400,
+    "retain_every_attempt": true,
+    "robot_pose_count": 3200,
+    "save_evaluation_only_robot_mask": true,
+    "save_rgb": true,
+    "synchronized_five_camera_batch_max_span_ms": 50.0
+  },
+  "dataset_roles": {
+    "commissioning_fit": {
+      "positions": 240,
+      "views": 9600
+    },
+    "detector_fit": {
+      "positions": 80,
+      "views": 3200
+    },
+    "detector_validation": {
+      "positions": 40,
+      "views": 1600
+    },
+    "final_audit": {
+      "positions": 40,
+      "sealed_until_full_observation_stack_is_frozen": true,
+      "views": 1600
+    }
+  },
+  "detector_label_contract": {
+    "ambiguous_visible_policy": "retain_in_master_ledger_but_exclude_from_detector_gradients_and_detector_validation_metrics",
+    "negative_policy": "zero semantic robot pixels; retain reason as outside image, fully occluded, or empty background",
+    "positive_requires_all": {
+      "forbidden_border_contact_px": 2,
+      "max_bottom_edge_gap": "max(6 px, 0.15 times projected hull height)",
+      "min_bbox_height_px": 16,
+      "min_bbox_width_px": 16,
+      "min_semantic_area_px": 256,
+      "min_visible_to_projected_height_ratio": 0.55,
+      "min_visible_to_projected_width_ratio": 0.55,
+      "nonzero_semantic_robot_mask": true
+    },
+    "target_semantics": "visibly supported robot object, not a few-pixel or severely occluded sliver",
+    "threshold_change_rule": "If the predeclared audit is infeasible, record failure and create a new protocol version before detector training; never tune thresholds on final_audit."
+  },
+  "identity": {
+    "capture_map_lock_id": "WHV2-CAMERA-CAPTURE-MAP-V3",
+    "pipeline_id": "THESIS-FINAL-PIPELINE-V1",
+    "robot_lock_id": "WAREHOUSE-AMR-BLUE-V1",
+    "world_lock_id": "WHV2-GEOMETRY-V2"
+  },
+  "runtime_boundary": {
+    "detector_return_is_not_measurement": true,
+    "semantic_masks_and_commanded_pose_are_offline_only": true,
+    "sliver_policy": "A detector return may be recorded, but the later online hull/box gate must reject severe visible-support mismatch as a localization measurement."
+  },
+  "schema": "thesis_label_dataset_protocol.v1",
+  "status": "frozen_before_capture"
+}

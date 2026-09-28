@@ -1,0 +1,29 @@
+{
+  "include": [
+    "src",
+    "scripts",
+    "experiments",
+    "tests"
+  ],
+  "exclude": [
+    "**/__pycache__",
+    "build",
+    "install",
+    "log",
+    "logs",
+    "**/*_archive*"
+  ],
+  "extraPaths": [
+    "src/reliability",
+    "src/unav_common",
+    "src/experiments",
+    "src/planning",
+    "src/perception",
+    "src/state",
+    "src/sim",
+    "experiments/mono_depth_visibility"
+  ],
+  "pythonVersion": "3.10",
+  "pythonPlatform": "Linux",
+  "typeCheckingMode": "basic"
+}

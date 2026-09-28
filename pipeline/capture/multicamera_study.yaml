@@ -1,0 +1,116 @@
+# RETIRED 2026-08-28. The warehouse_full_4cam commissioning study and its tools are
+# gone; this file survives only as the route list that the detector-capture tool
+# reserves from its train/val grid (capture_yolo_dataset.py --route-exclusion-config).
+study_id: multicamera_commissioning_fullwarehouse_v2
+world: warehouse_full_4cam.world.sdf
+world_name: warehouse_full_4cam
+
+camera_ids: [camera_A, camera_B, camera_C, camera_D]
+
+cameras:
+  camera_A:
+    mount: south wall, west dock column        # pose -6.00 -10.00 6.10 0 0.92 1.5708
+    image_topic: /external_camera/image_raw
+    pixel_topic: /perception/camera_A/pixel_pose
+    diagnostics_topic: /perception/camera_A/detection_diagnostics
+    observation_topic: /perception/camera_observation/camera_A
+    calibration_id: warehouse_full_4cam_camera_A
+  camera_B:
+    mount: north wall, west dock column        # pose -6.00 10.00 6.10 0 0.92 -1.5708
+    image_topic: /external_camera_b/image_raw
+    pixel_topic: /perception/camera_B/pixel_pose
+    diagnostics_topic: /perception/camera_B/detection_diagnostics
+    observation_topic: /perception/camera_observation/camera_B
+    calibration_id: warehouse_full_4cam_camera_B
+  camera_C:
+    mount: south wall, east dock column        # pose 6.00 -10.00 6.10 0 0.92 1.5708
+    image_topic: /external_camera_c/image_raw
+    pixel_topic: /perception/camera_C/pixel_pose
+    diagnostics_topic: /perception/camera_C/detection_diagnostics
+    observation_topic: /perception/camera_observation/camera_C
+    calibration_id: warehouse_full_4cam_camera_C
+  camera_D:
+    mount: north wall, east dock column        # pose 6.00 10.00 6.10 0 0.92 -1.5708
+    image_topic: /external_camera_d/image_raw
+    pixel_topic: /perception/camera_D/pixel_pose
+    diagnostics_topic: /perception/camera_D/detection_diagnostics
+    observation_topic: /perception/camera_observation/camera_D
+    calibration_id: warehouse_full_4cam_camera_D
+
+collection:
+  passive_only: true
+  control_odom_topic: /odom
+  operational_odom_topic: /odom_noisy
+  duration_clock: simulation
+  command_topic: /cmd_vel
+  arrival_radius_m: 0.20
+  start_hold_s: 2.0
+  # All routes remain in the 4.5 m central aisle: x=±1.5 m keeps a 0.475 m
+  # centre-to-rack clearance.  The central sweep is centred at y=0.3 so every
+  # pre-registered +/-0.5 m variant clears the pillar at (0,-0.9); the former
+  # y=-0.3 centreline made the -0.5 m variant intersect that pillar.
+  # They were designed specifically for warehouse_full_4cam and must be driven
+  # at their documented spawn pose. Offsets are only admitted after the centre
+  # line has completed safely.
+  routes:
+    - name: camera_A_south_west_pass
+      purpose: D0/D1 camera-A lower-west support
+      start: {x: -1.50, y: -7.20, yaw: 1.5708}
+      goal: {x: -1.50, y: -3.80}
+    - name: camera_B_north_west_pass
+      purpose: D0/D1 camera-B upper-west support
+      start: {x: -1.50, y: 7.20, yaw: -1.5708}
+      goal: {x: -1.50, y: 3.80}
+    - name: camera_C_south_east_pass
+      purpose: D0/D1 camera-C lower-east support
+      start: {x: 1.50, y: -7.20, yaw: 1.5708}
+      goal: {x: 1.50, y: -3.80}
+    - name: camera_D_north_east_pass
+      purpose: D0/D1 camera-D upper-east support
+      start: {x: 1.50, y: 7.20, yaw: -1.5708}
+      goal: {x: 1.50, y: 3.80}
+    - name: south_to_north_handover
+      purpose: D1 full central-aisle traverse through the A/C-to-B/D handover band
+      start: {x: -1.50, y: -7.20, yaw: 1.5708}
+      goal: {x: -1.50, y: 7.20}
+    - name: north_to_south_handover
+      purpose: D1 reverse traverse through the same handover band
+      start: {x: 1.50, y: 7.20, yaw: -1.5708}
+      goal: {x: 1.50, y: -7.20}
+    - name: south_pair_overlap
+      purpose: D2 synchronized A/C overlap pass
+      start: {x: -1.80, y: -3.30, yaw: 0.0}
+      goal: {x: 1.80, y: -3.30}
+    - name: north_pair_overlap
+      purpose: D2 synchronized B/D overlap pass
+      start: {x: -1.80, y: 3.30, yaw: 0.0}
+      goal: {x: 1.80, y: 3.30}
+    - name: central_overlap_sweep
+      purpose: D2 adjacent-camera overlap and source-switch sweep
+      start: {x: -1.80, y: 0.60, yaw: 0.0}
+      goal: {x: 1.80, y: 0.60}
+  repeats_per_route: 5
+  lateral_offsets_m: [-0.5, 0.0, 0.5]
+  speeds_mps: [0.12, 0.20]
+
+commissioning_gates:
+  max_measurement_age_s: 0.15
+  min_spatial_trust: 0.45
+  min_association_confidence: 0.70
+  max_overlap_time_delta_s: 0.05
+  max_cross_camera_disagreement_m: 0.30
+  min_overlap_pairs: 30
+  max_overlap_outlier_rate: 0.10
+
+handover_policy:
+  candidate_score_margin: 0.08
+  required_consecutive_better_frames: 3
+  require_consistency_when_source_available: true
+  fallback_on_active_camera_loss: true
+
+artifacts:
+  root: logs/multicamera_commissioning_bigwarehouse
+  operational_subdir: export/operational
+  evaluation_subdir: export/evaluation_only
+  commissioning_subdir: commissioning
+  replay_subdir: replay

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>reliability</name>
+  <version>0.0.0</version>
+  <description>ROS-independent camera reliability contracts and leakage firewall.</description>
+  <maintainer email="j.j.p.leliveld@student.tue.nl">joostleliveld</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <!-- Optional: only reliability.nodes.* needs ROS; the library soft-imports it. -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>unav_common</exec_depend>
+
+  <test_depend>pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

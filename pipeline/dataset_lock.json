@@ -1,0 +1,208 @@
+{
+ "schema": "thesis_reference_position_campaign_lock.v1",
+ "lock_id": "THESIS-REFERENCE-POSITION-DATASET-V11",
+ "status": "locked_before_refit",
+ "method_authority": "docs/METHOD.md",
+ "campaign_root": "logs/thesis",
+ "environment": {
+  "world": "src/sim/gazebo_worlds/worlds/warehouse_v2.world.sdf",
+  "world_sha256": "25fc40d3eb57a415c40320f6de42900eaf9b3d71fac175d4b9ca750f6fb58b37",
+  "camera_profile": "src/experiments/config/world_profiles.yaml",
+  "camera_profile_sha256": "be4b506b0508b180b81194d07cb3543f2127a1b5b8953c0da448e24ab9bc419d",
+  "capture_time_camera_profile_sha256": "5e4f9213018cf01c3118e233681f88e3c712885fbe3f38c7bf56be2157c6bd53",
+  "camera_profile_change_note": "The capture-time and current files differ only in comments describing legacy lane annotations; the locked intrinsics, camera identities and camera poses are unchanged and are independently hashed below.",
+  "image_width_px": 1280,
+  "image_height_px": 720,
+  "horizontal_fov_rad": 1.5708,
+  "camera_model_sha256": {
+   "camera_A": "2d472e910c9db377ff7ced12578a5d65a87c369f80bcabc3c99beee02ff21b4d",
+   "camera_B": "2e43726ed9cf9e04dd04ee7e70500f1479db025135163074a11b58202eddfbcf",
+   "camera_C": "89871b1fa200de1efdfe84565bf1df28b21b43b2571dfd25eb6cc1e17167e527",
+   "camera_D": "7c0620b1736bf6fb104d3f20cb7e084eb4648e4f8009182d197da72fbe0e9e57",
+   "camera_E": "2b804cdcf32b36aa39dbee878a329ea3b91d491c3e16196a0931899bd732c9e9"
+  },
+  "capture_overlay_rule": "The capture-only models may add semantic-label sensors, but their RGB camera definitions must remain byte-identical to the locked source models.",
+  "camera_poses_xyz_rpy_rad": {
+   "camera_A": [
+    -11.45,
+    -9.45,
+    5.0,
+    0.0,
+    0.7679,
+    0.7854
+   ],
+   "camera_B": [
+    -1.5,
+    -9.72,
+    5.0,
+    0.0,
+    0.8378,
+    2.0071
+   ],
+   "camera_C": [
+    -6.95,
+    9.45,
+    5.0,
+    0.0,
+    0.8378,
+    -1.0472
+   ],
+   "camera_D": [
+    11.45,
+    7.2,
+    5.0,
+    0.0,
+    0.6632,
+    -2.4435
+   ],
+   "camera_E": [
+    11.45,
+    -9.45,
+    5.0,
+    0.0,
+    0.733,
+    2.3038
+   ]
+  }
+ },
+ "detector": {
+  "architecture": "YOLO11n",
+  "checkpoint": "logs/thesis/detector/training/imgsz960/upper_finetune/weights/best.pt",
+  "checkpoint_sha256": "1e99afb5361a7c2599cb3f2863ebb04fd6f65bc1ee23996b989c9bba8b004f13",
+  "imgsz": 960,
+  "use_during_capture": false,
+  "rule": "Raw RGB and semantic support are captured first; every downstream detector pass uses exactly this frozen checkpoint unless a dated lock amendment is made before any final fitting."
+ },
+ "sampling": {
+  "loader": "pipeline/dataset.py",
+  "loader_sha256": "28b9a3dc5e976af7b9ef438b88030f6e53da73c728d9210a1a2f20a8ea8de5c9",
+  "positions": "logs/thesis/captures/v11/capture_positions_v11.csv",
+  "positions_sha256": "cd13dcd0f89b95eab5c6ba6c6ffa961fdb5ff977ae6917ebde4e9cb72830741f",
+  "topup_rule": "pipeline/capture/plan_topup.py",
+  "partition_rule": "pipeline/capture/partition_v11.py",
+  "partition_rule_sha256": "280e9529462818ed637539c312c17c4c2716c776a2aa46beec5efbbd9a025ad6",
+  "strata": "logs/thesis/captures/v9/strata_v9.json",
+  "strata_sha256": "0d9c2d23cd0940058b809b9dc3beb8637f7749c6ffc4261df99876c28941630d",
+  "partition": "logs/thesis/captures/v11/partition_v11.csv",
+  "partition_sha256": "b833b2cdc9d328b886d2dcd2abe8115f30652f12cfacdaf7c2646ea41b4fffac",
+  "robot_absent_list": "logs/thesis/captures/v8/v5_robot_absent_poses.json",
+  "robot_absent_list_sha256": "54f3ac92949522abe48c29819efb4e36ab271c976d1c95b8494cd7093aa68448",
+  "capture_passes": {
+   "part1": {
+    "capture_index": "logs/thesis/captures/v5/part1/capture_index.csv",
+    "capture_index_sha256": "a6dd3beafd5adc6afde9f3ea8e166905a905207a6be6d8ba428aaba44267e102",
+    "pose_file": "logs/thesis/captures/v5/capture_poses_v5.json",
+    "pose_file_sha256": "af6c86151f430e60a315d39ca826f4681243b2cd63228a9cee0618a2fe3ed9a0"
+   },
+   "part2": {
+    "capture_index": "logs/thesis/captures/v5/part2/capture_index.csv",
+    "capture_index_sha256": "e951a93f1fef031c699ccc32ecc74c82a28ebffc4a406a3e8cda0ccb645cbd89",
+    "pose_file": "logs/thesis/captures/v5/capture_poses_v5_part2.json",
+    "pose_file_sha256": "ac9fd1f9dbf40b6299b3886b2c3978157f0e48ec24147b71bee2f5b72ad6ac5e"
+   },
+   "supplement": {
+    "capture_index": "logs/thesis/captures/v8/supplement/capture_index.csv",
+    "capture_index_sha256": "6414673e53dba219735d2ab9676b75641bd1e8621208ede7cf49e9d304df64fc",
+    "pose_file": "logs/thesis/captures/v8/capture_poses_supplement.json",
+    "pose_file_sha256": "a233994ca7d23c8279181ba6d7508892300b92406721925eb462934d2fa29329"
+   },
+   "topup": {
+    "capture_index": "logs/thesis/captures/v8/topup/capture_index.csv",
+    "capture_index_sha256": "0d655ebdf06fbda354aa6876c6b0fb95ab8a2af40e4ec3be46caae75d7191120",
+    "pose_file": "logs/thesis/captures/v8/capture_poses_v8_topup.json",
+    "pose_file_sha256": "3d50d4d92246f534ad1c5ed36aba48df9c08a7f8a171bf2ce24fc47107a3e744"
+   },
+   "audit_v9": {
+    "capture_index": "logs/thesis/captures/v9/audit/capture_index.csv",
+    "capture_index_sha256": "73f09ab883053056e24b179a730e702bdd36d6f8b3f9c1abd22137a06a904655",
+    "pose_file": "logs/thesis/captures/v9/capture_poses_v9.json",
+    "pose_file_sha256": "ca855ddeb2f6397825b0fe05fd8e8665e5f8b85551d467985e6b8d3fab8c59c9"
+   },
+   "lane_v10": {
+    "capture_index": "logs/thesis/captures/v10/lane/capture/capture_index.csv",
+    "capture_index_sha256": "35fecea7a3e131cf2f2ca9a4171fad4855baa2a8dd9f7611b14596f8093c6192",
+    "pose_file": "logs/thesis/captures/v10/lane/capture_poses_v10_lane_kept.json",
+    "pose_file_sha256": "4544df039ecf0541f0f9055171a7e0635de1ce4b140b919dd49a91590f928a7d"
+   },
+   "fill_v11": {
+    "capture_index": "logs/thesis/captures/v11/fill/capture/capture_index.csv",
+    "capture_index_sha256": "37c90fd554c19bd1f16dfbebc0651b0b2e80311c17da36976fcc5107d3989eb4",
+    "pose_file": "logs/thesis/captures/v11/fill/capture_poses_v11_fill.json",
+    "pose_file_sha256": "7717556564e2d83d3dfffc6b4e4097bbefd67206e662c5bcd26413408d744b9f"
+   },
+   "repair": {
+    "capture_index": "logs/thesis/captures/v8/repair/capture_index.csv",
+    "capture_index_sha256": "a2897dc4f0090c8312c5c7c9f36bd8c002fa01fff8547cbbaf13d8ebafff199c",
+    "pose_file": "logs/thesis/captures/v8/capture_poses_repair.json",
+    "pose_file_sha256": "b3d9bcee8a07a1f24aad293b0c1aef80d8049058056cc5337ca708c849e44584"
+   },
+   "repair2": {
+    "capture_index": "logs/thesis/captures/v8/repair2/capture_index.csv",
+    "capture_index_sha256": "a8050b17a57772918ca0cf6a93600c57e6dc87fbedd534735f6b760cb762c110",
+    "pose_file": "logs/thesis/captures/v8/capture_poses_repair2.json",
+    "pose_file_sha256": "6a3123f85ec76cd60a39d8b089ec8a490ef8051644652f4fa174bade053bdfe0"
+   }
+  },
+  "position_count": 3853,
+  "expected_camera_opportunities": 75970,
+  "expected_pose_batches": 15194
+ },
+ "partition": {
+  "atomic_unit": "complete physical position",
+  "roles": {
+   "D_R": 1333,
+   "D_dev": 335,
+   "D_mu": 1326,
+   "excluded": 223,
+   "final_audit": 168,
+   "unused": 468
+  },
+  "rules": [
+   "All headings, repetitions and cameras for one position remain in exactly one role.",
+   "D_mu fits the shared correction; D_R fits R0/R1/R2 only from frozen out-of-sample corrected residuals; D_dev selects frozen hyperparameters; final_audit fits or selects nothing.",
+   "Final-audit image content may be accessed only for integrity checks until detector, gate, correction, covariance and planning-information choices are frozen."
+  ],
+  "assignment": "capture/partition_v11.py: every captured position re-split as one dataset; inside each v9 2 x 2 m stratum positions are ordered by sha256(seed, key) regardless of capture; final_audit, D_dev and D_R take area-proportional quotas, the rest D_mu; no captured position is dropped"
+ },
+ "weighting": {
+  "independent_unit": "static reference position",
+  "fit_weight_per_opportunity": "1 / number_of_retained_opportunities_at_that_position",
+  "reporting_rule": "Aggregate within position first, then summarize positions with equal weight; camera-specific summaries use equal position weight within camera.",
+  "spatial_support_rule": "Repeated headings or frames at one position count as one spatial support location."
+ },
+ "opportunity_accounting": {
+  "retain_all_expected": true,
+  "terminal_outcomes": [
+   "detector_miss",
+   "gate_refusal",
+   "admitted"
+  ],
+  "planning_target": "inverse(R_run) for an admitted opportunity, otherwise the zero 2x2 information matrix",
+  "planning_support_population": "all expected opportunities",
+  "nis_excluded": true,
+  "separate_availability_model_prohibited": true,
+  "expected_working_opportunities": 59880,
+  "expected_working_unique_images": 28781,
+  "expected_final_audit_opportunities": 3360
+ },
+ "capture_implementation": {
+  "script": "pipeline/capture/capture_positions.py",
+  "script_sha256": "65bdc72534d2c39df6f090fc2db593e6edda4fb0356dc903efb8bbe4c68ba7aa",
+  "resume_auditor": "pipeline/capture/audit_capture_resume.py",
+  "resume_auditor_sha256": "1c042493531b34f3bdbfa14be47bc703aa9752b48c6f0ed97664fb3bbcea7834",
+  "settle_s": 0.4,
+  "min_new_rgb_frames": 2,
+  "batch_sync_slop_ms": 50.0,
+  "pose_validity": "oriented 0.80 x 0.55 m footprint plus 0.05 m clearance at every sampled heading"
+ },
+ "audit_command": "python3 pipeline/audit_dataset.py",
+ "prohibitions": [
+  "Do not tune or select using final_audit.",
+  "Do not drop detector misses or deterministic gate refusals from opportunity denominators.",
+  "Do not split frames from one physical position across roles or folds.",
+  "Do not use ground truth, semantic masks, innovations or NIS in the runtime sensor gate.",
+  "Do not fit a separate q_i(p) availability model.",
+  "Do not pool this Track-B campaign with earlier drive-based or v3/v4 development evidence."
+ ],
+ "amendment": "docs/METHOD.md, Amendment 2026-09-25 (afternoon): one dataset, re-split (v11)"
+}

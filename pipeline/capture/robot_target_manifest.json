@@ -1,0 +1,140 @@
+{
+  "appearance_contract": {
+    "converted_rendered_diffuse_rgba": {
+      "bumper": [
+        1.0,
+        0.8125,
+        0.0625,
+        1.0
+      ],
+      "cabinet": [
+        0.0375,
+        0.375,
+        0.95,
+        1.0
+      ],
+      "chassis": [
+        0.05,
+        0.25,
+        0.775,
+        1.0
+      ],
+      "deck": [
+        0.1,
+        0.525,
+        1.0,
+        1.0
+      ],
+      "sensor_bar": [
+        0.075,
+        0.075,
+        0.0875,
+        1.0
+      ]
+    },
+    "dominant_target_colour": "blue",
+    "retained_orientation_cues": [
+      "hazard-yellow bumper band",
+      "black front sensor bar",
+      "two black front deck slots",
+      "raised blue rear control cabinet"
+    ],
+    "source_material_rgba": {
+      "cabinet_blue": [
+        0.03,
+        0.3,
+        0.76,
+        1.0
+      ],
+      "chassis_blue": [
+        0.04,
+        0.2,
+        0.62,
+        1.0
+      ],
+      "deck_blue": [
+        0.08,
+        0.42,
+        0.9,
+        1.0
+      ],
+      "hazard_yellow": [
+        0.85,
+        0.65,
+        0.05,
+        1.0
+      ],
+      "sensor_black": [
+        0.06,
+        0.06,
+        0.07,
+        1.0
+      ]
+    },
+    "warehouse_blue_distractors_retained": [
+      "blue steel drums",
+      "blue returnable plastic totes"
+    ]
+  },
+  "evidence_boundary": "robot_geometry_and_rendered_livery_only_no_detector_data",
+  "expansion": {
+    "converted_sdf_sha256": "0962ee0a6ad1634b8ba11311039606f8f4cbe362e7bc92fa5b8e593974f46897",
+    "expanded_urdf_sha256": "52ed202f2e6a57bcc44f1a0dd8ab287abe1f660756412cba38a33ee2011f4250",
+    "mappings": {
+      "namespace": "",
+      "show_pose_markers": "false",
+      "use_lidar": "false"
+    },
+    "xacro_version": "2.1.1"
+  },
+  "freeze_history": [
+    {
+      "date": "2026-09-09",
+      "reason": "Step 2 final thesis target: retain the validated 0.800 x 0.550 m warehouse AMR geometry and caster-friction repair; change the dominant chassis, deck and rear cabinet to three blue tones while retaining yellow/black orientation cues and warehouse blue distractors. Expanded URDF/SDF checks and five-camera rendered QA completed before detector capture."
+    },
+    {
+      "date": "2026-09-10",
+      "reason": "2026-09-10: upstream re-point only. The robot target geometry, livery and evidence boundary are unchanged; this records the new world_freeze_manifest and world hashes after bin_office was removed from the dock-office corner. See the world manifest's refreeze_history for that change and its caveat."
+    }
+  ],
+  "frozen_at": "2026-09-10",
+  "lock_id": "WAREHOUSE-AMR-BLUE-V1",
+  "physical_contract": {
+    "body_collision_height_m": 0.27,
+    "body_length_m": 0.8,
+    "body_width_m": 0.55,
+    "caster_friction": {
+      "front": {
+        "mu": 0.05,
+        "mu2": 0.05
+      },
+      "rear": {
+        "mu": 0.05,
+        "mu2": 0.05
+      }
+    },
+    "converted_body_collision_size_lwh_m": [
+      0.8,
+      0.55,
+      0.27
+    ],
+    "front_rear_keypoint_baseline_m": 0.6,
+    "keypoint_world_height_at_zero_spawn_m": 0.35000000000000003,
+    "maximum_visual_height_m": 0.4,
+    "wheel_radius_m": 0.1,
+    "wheel_separation_m": 0.44
+  },
+  "schema_version": 1,
+  "sources": {
+    "src/sim/robot_description/urdf/warehouse_amr.urdf.xacro": "10b613526d42eb9eacc2006c7a3c01efd5462aa769c025869b7bc72f74661243",
+    "src/unav_common/unav_common/robot_hull.py": "5f1349ff7019f761cf5ac2d56609c01763702734c7306562cfa0b869f177699b"
+  },
+  "status": "locked_pre_capture",
+  "upstream_world": {
+    "lock_id": "WHV2-GEOMETRY-V2",
+    "manifest": "world/world_freeze_manifest.json",
+    "manifest_sha256": "dd1c4e9d39ba432cb7150970f4357a25d4433a005be658b87c3743802cf75a7f",
+    "peak_world_sha256": "49655f698894596d4596372c7e7762da45146b75072aaadb2440790fdbc5c7b5",
+    "shipout_world_sha256": "33d4102b2dc3712a8eceddcc70ebef9ac088d1966e97c5697edae31f9d8f1f43"
+  }
+}

@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+<robot name="warehouse_amr" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Low-deck warehouse AMR: the size a 1.80 m picking aisle is actually
+       designed around (MiR250 / underride-tugger class), replacing the
+       0.14 m TurtleBot3 Burger that read as a toy in warehouse_v2.
+
+         body      0.800 x 0.550 m, deck top at 0.350 m
+         wheels    r 0.100, separation 0.440, differential, casters fore/aft
+         livery    saturated blue chassis/deck, hazard-yellow bumper band
+
+       No saturated marker disks: heading is carried by the chassis itself.
+       Seen from an oblique ceiling camera the front has a recessed sensor
+       bar and the rear a raised control cabinet, so front and rear are
+       distinguishable from above without lab colours.
+
+       The Gazebo entity is still spawned as `turtlebot3` (bringup_sim.launch.py
+       `-name`), so every /model/turtlebot3/... bridge and remap is unchanged.
+
+       Keypoints stay virtual points anchored on the chassis, at the deck
+       corners of the wheelbase. World Z with base_footprint at z=robot_z:
+         z_world = robot_z + base_joint_z(0.010) + pm_marker_z(0.340) = 0.350. -->
+
+  <!-- Arguments -->
+  <xacro:arg name="namespace" default=""/>
+  <xacro:arg name="use_lidar" default="true"/>
+  <!-- Accepted and ignored: this chassis carries no marker disks. Kept so the
+       shared launch files can pass the flag to either robot. -->
+  <xacro:arg name="show_pose_markers" default="false"/>
+  <xacro:property name="ns" value="$(arg namespace)"/>
+
+  <!-- Pose-keypoint anchors, in base_link. Front/rear at the deck edges above
+       the wheelbase: a 0.600 m baseline against the Burger's 0.140 m, so the
+       same pixel error on a keypoint buys 4.3x less yaw error. -->
+  <xacro:property name="pm_front_x" value="0.300"/>
+  <xacro:property name="pm_rear_x"  value="-0.300"/>
+  <xacro:property name="pm_marker_y" value="0.0"/>
+  <xacro:property name="pm_marker_z" value="0.340"/>
+
+  <!-- Chassis geometry -->
+  <xacro:property name="body_l" value="0.800"/>
+  <xacro:property name="body_w" value="0.550"/>
+  <xacro:property name="skirt_z0" value="0.080"/>   <!-- base_link frame -->
+  <xacro:property name="deck_z1" value="0.340"/>
+  <xacro:property name="wheel_r" value="0.100"/>
+  <xacro:property name="wheel_sep" value="0.440"/>
+
+  <!-- ===================== -->
+  <!-- Materials -->
+  <!-- ===================== -->
+  <!-- The detector target is deliberately blue, but it keeps three blue tones,
+       the yellow bumper and black sensor features so heading/shape remain
+       visible. Blue drums and totes in the warehouse are retained as hard
+       negatives; colour alone must never be sufficient for detection. -->
+  <material name="chassis_blue"><color rgba="0.04 0.20 0.62 1.0"/></material>
+  <material name="deck_blue"><color rgba="0.08 0.42 0.90 1.0"/></material>
+  <material name="hazard_yellow"><color rgba="0.85 0.65 0.05 1.0"/></material>
+  <material name="sensor_black"><color rgba="0.06 0.06 0.07 1.0"/></material>
+  <material name="cabinet_blue"><color rgba="0.03 0.30 0.76 1.0"/></material>
+  <material name="dark"><color rgba="0.3 0.3 0.3 1"/></material>
+
+  <!-- ===================== -->
+  <!-- Base -->
+  <!-- ===================== -->
+  <link name="${ns}base_footprint"/>
+
+  <joint name="${ns}base_joint" type="fixed">
+    <parent link="${ns}base_footprint"/>
+    <child link="${ns}base_link"/>
+    <origin xyz="0 0 0.010"/>
+  </joint>
+
+  <!-- ONE visual per link, deliberately. The URDF->SDF converter only resolves
+       the material of a link's FIRST visual and paints every later one pure
+       black (verified with `ign sdf -p`: visuals 1..6 came out 0 0 0 1), which
+       rendered the whole chassis as a black slab. Each painted part therefore
+       gets its own fixed-jointed link; Gazebo lumps them back into base_link. -->
+  <link name="${ns}base_link">
+    <visual>
+      <origin xyz="0 0 0.195"/>
+      <geometry><box size="${body_l} ${body_w} 0.230"/></geometry>
+      <material name="chassis_blue"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.195"/>
+      <geometry><box size="${body_l} ${body_w} 0.270"/></geometry>
+    </collision>
+
+    <inertial>
+      <mass value="60.0"/>
+      <origin xyz="0 0 0.180"/>
+      <!-- solid box 0.80 x 0.55 x 0.26 about its own centre -->
+      <inertia
+        ixx="1.85050e+00" ixy="0.0" ixz="0.0"
+        iyy="3.53800e+00" iyz="0.0"
+        izz="4.71250e+00"/>
+    </inertial>
+  </link>
+
+  <!-- Painted trim, one link each. -->
+  <xacro:macro name="trim" params="name xyz size material">
+    <joint name="${ns}${name}_joint" type="fixed">
+      <parent link="${ns}base_link"/>
+      <child link="${ns}${name}_link"/>
+      <origin xyz="${xyz}"/>
+    </joint>
+    <link name="${ns}${name}_link">
+      <visual>
+        <geometry><box size="${size}"/></geometry>
+        <material name="${material}"/>
+      </visual>
+      <inertial>
+        <mass value="0.001"/>
+        <inertia ixx="1e-7" ixy="0" ixz="0" iyy="1e-7" iyz="0" izz="1e-7"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <!-- hazard bumper band around the bottom edge, proud of the shell -->
+  <xacro:trim name="bumper" xyz="0 0 0.100"
+              size="${body_l + 0.012} ${body_w + 0.012} 0.040"
+              material="hazard_yellow"/>
+
+  <!-- load deck: the surface an overhead camera actually sees -->
+  <xacro:trim name="deck" xyz="0 0 0.325"
+              size="${body_l - 0.020} ${body_w - 0.020} 0.030"
+              material="deck_blue"/>
+
+  <!-- FRONT cue: recessed sensor bar across the leading face -->
+  <xacro:trim name="sensor_bar" xyz="0.392 0 0.250"
+              size="0.030 0.420 0.070" material="sensor_black"/>
+
+  <!-- FRONT cue seen from above: two dark slots let into the deck -->
+  <xacro:trim name="deck_slot_left"  xyz="0.300 0.150 0.341"
+              size="0.120 0.070 0.008" material="sensor_black"/>
+  <xacro:trim name="deck_slot_right" xyz="0.300 -0.150 0.341"
+              size="0.120 0.070 0.008" material="sensor_black"/>
+
+  <!-- REAR cue: raised control cabinet, the tallest thing on the deck -->
+  <xacro:trim name="cabinet" xyz="-0.280 0 0.365"
+              size="0.170 0.300 0.050" material="cabinet_blue"/>
+
+  <!-- ===================== -->
+  <!-- Drive wheels -->
+  <!-- ===================== -->
+  <xacro:macro name="drive_wheel" params="side y_sign">
+    <joint name="${ns}wheel_${side}_joint" type="continuous">
+      <parent link="${ns}base_link"/>
+      <child link="${ns}wheel_${side}_link"/>
+      <origin xyz="0 ${y_sign * wheel_sep / 2} ${wheel_r - 0.010}" rpy="-1.5708 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${ns}wheel_${side}_link">
+      <visual>
+        <geometry><cylinder length="0.050" radius="${wheel_r}"/></geometry>
+        <material name="dark"/>
+      </visual>
+      <collision>
+        <geometry><cylinder length="0.050" radius="${wheel_r}"/></geometry>
+      </collision>
+      <inertial>
+        <mass value="2.0"/>
+        <origin xyz="0 0 0"/>
+        <inertia
+          ixx="5.41667e-03" ixy="0.0" ixz="0.0"
+          iyy="5.41667e-03" iyz="0.0"
+          izz="1.00000e-02"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <xacro:drive_wheel side="left"  y_sign="1"/>
+  <xacro:drive_wheel side="right" y_sign="-1"/>
+
+  <!-- ===================== -->
+  <!-- Casters fore and aft -->
+  <!-- ===================== -->
+  <xacro:macro name="caster" params="name x">
+    <joint name="${ns}${name}_joint" type="fixed">
+      <parent link="${ns}base_link"/>
+      <child link="${ns}${name}_link"/>
+      <origin xyz="${x} 0 0.030"/>
+    </joint>
+    <link name="${ns}${name}_link">
+      <visual>
+        <geometry><sphere radius="0.040"/></geometry>
+        <material name="dark"/>
+      </visual>
+      <collision>
+        <geometry><sphere radius="0.040"/></geometry>
+      </collision>
+      <inertial>
+        <mass value="0.30"/>
+        <inertia ixx="1.92e-04" ixy="0" ixz="0" iyy="1.92e-04" iyz="0" izz="1.92e-04"/>
+      </inertial>
+    </link>
+    <!-- URDF collision <surface> is discarded by sdformat. Gazebo reference
+         extensions preserve the intended low caster friction after lumping. -->
+    <gazebo reference="${ns}${name}_link">
+      <mu1>0.05</mu1>
+      <mu2>0.05</mu2>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:caster name="caster_front" x="0.300"/>
+  <xacro:caster name="caster_rear"  x="-0.300"/>
+
+  <!-- ===================== -->
+  <!-- IMU -->
+  <!-- ===================== -->
+  <joint name="${ns}imu_joint" type="fixed">
+    <parent link="${ns}base_link"/>
+    <child link="${ns}imu_link"/>
+    <origin xyz="0 0 0.200"/>
+  </joint>
+  <link name="${ns}imu_link"/>
+
+  <!-- ===================== -->
+  <!-- LiDAR: front-mounted, same sensor contract as the Burger so every
+       downstream consumer of /scan is unchanged. -->
+  <!-- ===================== -->
+  <joint name="${ns}scan_joint" type="fixed">
+    <parent link="${ns}base_link"/>
+    <child link="${ns}base_scan"/>
+    <origin xyz="0.360 0 0.290"/>
+  </joint>
+
+  <link name="${ns}base_scan">
+    <visual>
+      <geometry><cylinder length="0.045" radius="0.045"/></geometry>
+      <material name="sensor_black"/>
+    </visual>
+    <inertial>
+      <mass value="0.114"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <!-- ============================================================= -->
+  <!-- Gazebo Sensor Plugins -->
+  <xacro:if value="$(arg use_lidar)">
+    <gazebo reference="${ns}base_scan">
+      <sensor name="lidar" type="gpu_lidar">
+        <pose>0 0 0 0 0 0</pose>
+        <topic>scan</topic>
+        <update_rate>5</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1</resolution>
+              <min_angle>0.0</min_angle>
+              <max_angle>6.28318</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.12</min>
+            <max>3.5</max>
+          </range>
+        </ray>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+      </sensor>
+    </gazebo>
+  </xacro:if>
+
+  <!-- ================= Gazebo Harmonic DiffDrive ================= -->
+  <gazebo>
+    <plugin
+        filename="gz-sim-label-system"
+        name="ignition::gazebo::systems::Label">
+      <label>23</label>
+    </plugin>
+
+    <plugin
+        filename="libsim_command_guard.so"
+        name="sim_command_guard::CommandGuardSystem">
+      <input_topic>/model/turtlebot3/cmd_vel_guard_input</input_topic>
+      <output_topic>/model/turtlebot3/cmd_vel_applied</output_topic>
+      <outcome_topic>/model/turtlebot3/actuation_outcome</outcome_topic>
+      <command_timeout>0.5</command_timeout>
+    </plugin>
+
+    <plugin
+        filename="gz-sim-joint-state-publisher-system"
+        name="gz::sim::systems::JointStatePublisher">
+      <topic>/model/turtlebot3/joint_states</topic>
+      <update_rate>50</update_rate>
+    </plugin>
+
+    <plugin
+        filename="gz-sim-diff-drive-system"
+        name="gz::sim::systems::DiffDrive">
+
+      <left_joint>${ns}wheel_left_joint</left_joint>
+      <right_joint>${ns}wheel_right_joint</right_joint>
+
+      <wheel_separation>${wheel_sep}</wheel_separation>
+      <wheel_radius>${wheel_r}</wheel_radius>
+
+      <topic>/model/turtlebot3/cmd_vel_applied</topic>
+      <odom_topic>/model/turtlebot3/odometry</odom_topic>
+      <tf_topic>/model/turtlebot3/tf</tf_topic>
+
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_footprint</child_frame_id>
+
+      <odom_publish_frequency>50</odom_publish_frequency>
+      <publish_tf>true</publish_tf>
+    </plugin>
+  </gazebo>
+
+</robot>

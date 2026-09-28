@@ -1,0 +1,70 @@
+{
+  "schema": "thesis_pipeline_stage_lock.v1",
+  "pipeline_id": "THESIS-FINAL-PIPELINE-V1",
+  "stage_id": "04_labels_and_dataset",
+  "lock_id": "THESIS-YOLO-DATASET-V1",
+  "status": "locked",
+  "locked_at": "2026-09-09",
+  "inputs": {
+    "master_capture": "logs/thesis/captures/v3_detector",
+    "label_protocol": "pipeline/detector/label_protocol.json",
+    "label_protocol_sha256": "8b9dcf3b631382583529096dcb52b899d4d8eaadb69f364967ae3963b0bca941"
+  },
+  "dataset": {
+    "root": "logs/thesis/detector/dataset/yolo_detector_v1",
+    "dataset_manifest": "logs/thesis/detector/dataset/yolo_detector_v1/dataset_manifest.json",
+    "dataset_manifest_sha256": "27c492383dede857ced77cdf1d0eb8eff308fb10961d573bd9a7d8071c458d1c",
+    "dataset_yaml": "logs/thesis/detector/dataset/yolo_detector_v1/dataset.yaml",
+    "dataset_yaml_sha256": "a0d534be49b2b6d320486ec95f06c23520eb8ba503dc38aee1d88d33b03513da",
+    "label_ledger": "logs/thesis/detector/dataset/yolo_detector_v1/label_ledger.csv",
+    "label_ledger_sha256": "8f04ff19b4cbba5aa09d8e1a545672b5b2283cfd147b99c2e6be84b61013797d",
+    "roles_used": [
+      "detector_fit",
+      "detector_validation"
+    ],
+    "final_audit_accessed_for_model_selection": false,
+    "counts": {
+      "attempted_detector_role_views": 4800,
+      "eligible_training_images": 4057,
+      "positive": 1716,
+      "negative": 2341,
+      "ambiguous_excluded": 743
+    }
+  },
+  "audits": {
+    "capture_structural": {
+      "path": "logs/thesis/detector/dataset/capture_structural_audit.json",
+      "sha256": "f8a3be6b8275270e0d4a8ae487d26437c5aadece8f5f996b6f8944d8d40ef42c",
+      "passed": true
+    },
+    "capture_pixels": {
+      "path": "logs/thesis/detector/dataset/capture_pixel_audit.json",
+      "sha256": "a204c5e06c2ec841bc2801e04dbdcc67468fa8e6eadab8df9e1e6e1b2a945156",
+      "passed": true
+    },
+    "dataset": {
+      "path": "logs/thesis/detector/dataset/yolo_detector_v1/dataset_audit.json",
+      "sha256": "02e4b29f01cf3c825fa3013a428655d6c5fee4c687a3d661bbdddf1e92e387ca",
+      "passed": true
+    },
+    "visual_review": {
+      "passed": true,
+      "class_sheet": "logs/thesis/detector/dataset/yolo_detector_v1/audit/label_contact_sheet.jpg",
+      "class_sheet_sha256": "4cf0bfce546edaeec598a83f85d83f0b1069820ab08627e5ebbbbdde704ba533",
+      "ambiguous_reason_sheet": "logs/thesis/detector/dataset/yolo_detector_v1/audit/ambiguous_reason_contact_sheet.jpg",
+      "ambiguous_reason_sheet_sha256": "80e5af81c48f1376d9c8bafd170e40ee57dc26a318ab8dfe5d64672df12b3fce",
+      "decision": "Accepted boxes show recognizable supported robot bodies. Tiny, border-truncated, bottom-unsupported and severely occluded fragments are excluded. Negative examples show no visible robot."
+    }
+  },
+  "implementation": {
+    "exporter": "pipeline/detector/export_dataset.py",
+    "exporter_sha256": "de9abdc5517e68987a17501cdd6bcd3a7d84133b8a475ad332b7f429b9eae79d",
+    "auditor": "pipeline/detector/audit_dataset.py",
+    "auditor_sha256": "995cad68964839f3284f6c2e8aee5aee8375f886d425b7204cac5699c9b682f3"
+  },
+  "failed_prelock_artifacts": [
+    "logs/thesis/detector/dataset/capture_pixel_audit.invalid_auditor_v1.json",
+    "logs/thesis/detector/dataset/yolo_detector_v1.failed_contact_sheet_nan"
+  ],
+  "failure_retention": "Pre-lock failed audit/export artifacts are explicitly named and are not evidence inputs."
+}

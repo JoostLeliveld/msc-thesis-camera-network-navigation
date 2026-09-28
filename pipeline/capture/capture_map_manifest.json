@@ -1,0 +1,394 @@
+{
+  "camera_contract": {
+    "camera_A": {
+      "horizontal_fov_rad": 1.5708,
+      "image_height_px": 720,
+      "image_topic": "/external_camera/image_raw",
+      "image_width_px": 1280,
+      "model_name": "external_camera",
+      "model_path": "src/sim/models/external_camera/model.sdf",
+      "model_sha256": "aa08c4d6862540a2d0c73a0f806c42cc5aadbec6b9211265d066df5e7b30cf2a",
+      "pose_xyz_rpy_rad": [
+        -11.45,
+        -9.45,
+        5.0,
+        0.0,
+        0.7679,
+        0.7854
+      ],
+      "rgb_noise_model": "none",
+      "update_rate_hz": 5.0
+    },
+    "camera_B": {
+      "horizontal_fov_rad": 1.5708,
+      "image_height_px": 720,
+      "image_topic": "/external_camera_b/image_raw",
+      "image_width_px": 1280,
+      "model_name": "external_camera_b",
+      "model_path": "src/sim/models/external_camera_b/model.sdf",
+      "model_sha256": "8f8ee1da38f7da25a1feb036e18617c5d3155f4e832a1970fec6f97426ab855b",
+      "pose_xyz_rpy_rad": [
+        -1.5,
+        -9.72,
+        5.0,
+        0.0,
+        0.8378,
+        2.0071
+      ],
+      "rgb_noise_model": "none",
+      "update_rate_hz": 5.0
+    },
+    "camera_C": {
+      "horizontal_fov_rad": 1.5708,
+      "image_height_px": 720,
+      "image_topic": "/external_camera_c/image_raw",
+      "image_width_px": 1280,
+      "model_name": "external_camera_c",
+      "model_path": "src/sim/models/external_camera_c/model.sdf",
+      "model_sha256": "ab4a45b1d9aaf0135b7e31148e05b598a4ab7048b8a2871edb5ebfb6c656c716",
+      "pose_xyz_rpy_rad": [
+        -6.95,
+        9.45,
+        5.0,
+        0.0,
+        0.6632,
+        -1.0472
+      ],
+      "rgb_noise_model": "none",
+      "update_rate_hz": 5.0
+    },
+    "camera_D": {
+      "horizontal_fov_rad": 1.5708,
+      "image_height_px": 720,
+      "image_topic": "/external_camera_d/image_raw",
+      "image_width_px": 1280,
+      "model_name": "external_camera_d",
+      "model_path": "src/sim/models/external_camera_d/model.sdf",
+      "model_sha256": "bf14a2ac8135acb8081bf388ea8c5ae30a6c83a4c22ae8561416252ea82248da",
+      "pose_xyz_rpy_rad": [
+        11.45,
+        7.2,
+        5.0,
+        0.0,
+        0.6632,
+        -2.4435
+      ],
+      "rgb_noise_model": "none",
+      "update_rate_hz": 5.0
+    },
+    "camera_E": {
+      "horizontal_fov_rad": 1.5708,
+      "image_height_px": 720,
+      "image_topic": "/external_camera_e/image_raw",
+      "image_width_px": 1280,
+      "model_name": "external_camera_e",
+      "model_path": "src/sim/models/external_camera_e/model.sdf",
+      "model_sha256": "1b7ad159fbaa510d5ddae0f2d7ab9a1e1d4f9999132d961cf819289b9f7ab03b",
+      "pose_xyz_rpy_rad": [
+        11.45,
+        -9.45,
+        5.0,
+        0.0,
+        0.733,
+        2.3038
+      ],
+      "rgb_noise_model": "none",
+      "update_rate_hz": 5.0
+    }
+  },
+  "evidence_boundary": "camera_sensor_and_spatial_capture_design_only_no_rgb_or_detector_output",
+  "localization_usability_contract": {
+    "camera_D_sliver_challenge": {
+      "camera_id": "camera_D",
+      "historical_detected_box_height_px": 26.12,
+      "historical_detected_box_width_px": 19.872,
+      "historical_projected_hull_width_px": 48.622,
+      "historical_visible_rgb_difference_pixels": 102,
+      "id": "D_SLIVER_001",
+      "note": "Historical measurements locate the challenge only; they do not set a fitted threshold.",
+      "required_final_outcome": "not_admitted_as_localization_measurement",
+      "x_m": -3.34375,
+      "y_m": 7.41111,
+      "yaw_rad": 3.141592653589793
+    },
+    "detector_return_is_not_measurement": true,
+    "runtime_policy": "Stage 06 must freeze a gate using detector confidence plus observable box size, border state and agreement with the projected robot hull. Semantic masks and ground truth are evaluation-only.",
+    "training_label_policy": "Stage 04 must retain every attempted view in the audit table, but only a semantic robot silhouette with sufficient projected-hull width/height support, ground-contact support and no forbidden border truncation may become a detector-fit positive."
+  },
+  "lock_id": "WHV2-CAMERA-CAPTURE-MAP-V3",
+  "navigation_location_regime": {
+    "route_files": {
+      "fusion_long_traverse": {
+        "path": "world/routes/fusion_long_traverse.json",
+        "sha256": "41900137efc8e0a1fe53a0438999af89e7bfd098777a4ac78d81394cc0023b61"
+      },
+      "fusion_network_traverse": {
+        "path": "world/routes/fusion_network_traverse.json",
+        "sha256": "c7c0322b930e2c22ac0b7d09b6ea8df0725f545da467519dd1ffecbab21cf3ed"
+      },
+      "fusion_overlap_rich": {
+        "path": "world/routes/fusion_overlap_rich.json",
+        "sha256": "f88f1a83b2ba5c1c16ded226887007d418e39db5263569e3bcaa0a0dd01572ef"
+      },
+      "fusion_overlap_sparse": {
+        "path": "world/routes/fusion_overlap_sparse.json",
+        "sha256": "afeb6af3e5d12b989e594544b4de47c51738b488a4d863297ddf9cfef7a6c142"
+      }
+    },
+    "route_geometry_sha256": "86ca3ff1804d7cf41732316d18914e3e7a09f1d51bbd97642b34b2ae93a38b21",
+    "route_names": [
+      "fusion_network_traverse",
+      "fusion_overlap_rich",
+      "fusion_overlap_sparse",
+      "fusion_long_traverse"
+    ],
+    "selection_rule": "geometry-predeclared routes only; no new detector or commissioning result may choose the final route suite",
+    "status": "candidate_routes_frozen_locations_only; arms/seeds remain stage_09"
+  },
+  "regime_contract": {
+    "capture_content": "Retain synchronized RGB and evaluation-only robot semantic mask for all 16,000 attempted views, including absent, fully occluded, sliver and border-truncated cases.",
+    "commissioning": "After detector weights are immutable, run them on the untouched commissioning_fit images. Use those outputs for confidence/admission selection and downstream correction, R_hit and q fitting; final_audit stays sealed until the entire observation stack is frozen.",
+    "fixed_camera_detector_fit": "Use detector_fit only for gradients; detector_validation only for early stopping and checkpoint choice.",
+    "generic_pretraining": "Only generic base weights or a separately frozen randomized-warehouse corpus; no frame from warehouse_v2 or its shipout pair.",
+    "ideal_sensor_caveat": "The frozen RGB sensors declare no stochastic pixel-noise model. Exact stationary repeats therefore do not count as independent noise samples; later R_hit work must use declared local pose/yaw perturbations or continuous drives and name that conditioning neighborhood.",
+    "navigation": "Navigation may operate in the same commissioned warehouse because the claim is in-situ commissioning, not unseen-building transfer. It must use new continuous drives, frozen tasks/arms/seeds, and no navigation outcome may alter any detector, gate or downstream model.",
+    "same_data_rule": "One immutable master dataset supplies every fitted artifact, but an RGB frame, semantic label, pose repetition or derived crop may never cross a role boundary."
+  },
+  "schema_version": 1,
+  "sources": {
+    "pipeline/capture/location_regime.py": "31035405a396de404cc290a2eb05b6ba01c19847fe7dc5a14785f077e924fbeb",
+    "world/coverage.py": "838285e1431bb02cd0513b2644b1b592edd4f86c86ce40ebce2d6bb981922604",
+    "world/route_tasks.py": "3b1a1f879bc5c2dfa2a087535bebf62b0c7d562c3ecc3e2649e7502657f5b929",
+    "src/experiments/config/tasks.yaml": "df478acd6353bfbd09efa15b4318c6d4c38d8553a756e8dae6b885a1f4257eff",
+    "src/experiments/config/world_profiles.yaml": "742cb32c69ea9f48ecdf1ce899e9bf8cd45949be863312369b85cb67a79405cd"
+  },
+  "spatial_design": {
+    "camera_ids": [
+      "camera_A",
+      "camera_B",
+      "camera_C",
+      "camera_D",
+      "camera_E"
+    ],
+    "candidate_lattice_spacing_m": 0.4,
+    "capture_pose_file": "pipeline/capture/camera_capture_poses_v3.json",
+    "capture_pose_file_sha256": "f1fcd862fe433dcf66f0cb389faec45cc958d10cef4a1658199e78cd2c41639b",
+    "heading_design": {
+      "count_per_position": 8,
+      "phase_rule": "one seeded U[0,45 degree) phase per 3.2 m spatial block",
+      "phase_seed": 20260909,
+      "step_degrees": 45.0
+    },
+    "master_split": {
+      "role_blocks": {
+        "commissioning_fit": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            3
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            1
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            6,
+            3
+          ],
+          [
+            6,
+            5
+          ],
+          [
+            7,
+            1
+          ],
+          [
+            7,
+            5
+          ]
+        ],
+        "detector_validation": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            7,
+            4
+          ]
+        ],
+        "final_audit": [
+          [
+            0,
+            1
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            7,
+            2
+          ]
+        ]
+      },
+      "roles": [
+        "detector_fit",
+        "detector_validation",
+        "commissioning_fit",
+        "final_audit"
+      ],
+      "rule": "one master capture; whole 3.2 m blocks; all cameras/headings/derived data from a position remain in one role; exact role sizes 80/40/240/40",
+      "selection_inputs": "driveable geometry and geometric camera line-of-sight only"
+    },
+    "position_index": "pipeline/capture/camera_capture_positions_v3.csv",
+    "position_index_sha256": "861ba8a548cd2c973d1b74599f3f87171b59ef0dd7a326213ab6cbde6393eb72",
+    "position_selection": "deterministic maximin thinning to 400 legal positions",
+    "spatial_block_size_m": 3.2,
+    "summary": {
+      "attempted_views_per_full_capture": 16000,
+      "camera_count_per_pose": 5,
+      "geometry_visible_position_counts_by_camera_and_role": {
+        "camera_A": {
+          "commissioning_fit": 111,
+          "detector_fit": 38,
+          "detector_validation": 21,
+          "final_audit": 17
+        },
+        "camera_B": {
+          "commissioning_fit": 75,
+          "detector_fit": 34,
+          "detector_validation": 23,
+          "final_audit": 13
+        },
+        "camera_C": {
+          "commissioning_fit": 56,
+          "detector_fit": 12,
+          "detector_validation": 7,
+          "final_audit": 5
+        },
+        "camera_D": {
+          "commissioning_fit": 53,
+          "detector_fit": 16,
+          "detector_validation": 8,
+          "final_audit": 8
+        },
+        "camera_E": {
+          "commissioning_fit": 141,
+          "detector_fit": 38,
+          "detector_validation": 21,
+          "final_audit": 25
+        }
+      },
+      "heading_count_per_position": 8,
+      "master_role_position_counts": {
+        "commissioning_fit": 240,
+        "detector_fit": 80,
+        "detector_validation": 40,
+        "final_audit": 40
+      },
+      "position_count": 400,
+      "robot_pose_count": 3200,
+      "spatial_block_count": 43
+    },
+    "world": "src/sim/gazebo_worlds/worlds/warehouse_v2.world.sdf",
+    "world_sha256": "49655f698894596d4596372c7e7762da45146b75072aaadb2440790fdbc5c7b5"
+  },
+  "status": "locked_pre_capture",
+  "upstream": {
+    "robot_lock_id": "WAREHOUSE-AMR-BLUE-V1",
+    "robot_manifest": "pipeline/capture/robot_target_manifest.json",
+    "robot_manifest_sha256": "9449008f00361c5f132e4d7d83887f2145012d82d063bda54832f3ead9fff2c2",
+    "world_lock_id": "WHV2-GEOMETRY-V2",
+    "world_manifest": "world/world_freeze_manifest.json",
+    "world_manifest_sha256": "dd1c4e9d39ba432cb7150970f4357a25d4433a005be658b87c3743802cf75a7f"
+  }
+}

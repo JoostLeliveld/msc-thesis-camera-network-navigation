@@ -1,0 +1,526 @@
+{
+ "schema": "warehouse_v2_keepout_map.v1",
+ "model_name": "keepout_region",
+ "world": "src/sim/gazebo_worlds/worlds/warehouse_v2.world.sdf",
+ "mode": "keep_out",
+ "note": "Obstacle footprints for nogo_mode: keep_out. The drivable region is the complement of these within the site boundary; there is no separate lane layer to contradict them.",
+ "site_boundary": {
+  "xmin": -11.35,
+  "xmax": 11.35,
+  "ymin": -9.35,
+  "ymax": 9.35
+ },
+ "collision_includes": [
+  "forklift_parked",
+  "pallet_jack",
+  "bin_office",
+  "pallet_loose_1",
+  "pallet_loose_2"
+ ],
+ "prisms": [
+  {
+   "name": "warehouse_shell/wall_east:collision",
+   "xmin": 11.9,
+   "xmax": 12.1,
+   "ymin": -10.0,
+   "ymax": 10.0,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_shell/wall_west:collision",
+   "xmin": -12.1,
+   "xmax": -11.9,
+   "ymin": -10.0,
+   "ymax": 10.0,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_shell/wall_north:collision",
+   "xmin": -12.0,
+   "xmax": 12.0,
+   "ymin": 9.9,
+   "ymax": 10.1,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_shell/wall_south_0:collision",
+   "xmin": -12.0,
+   "xmax": -10.100000000000001,
+   "ymin": -10.1,
+   "ymax": -9.9,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_shell/wall_south_1:collision",
+   "xmin": -6.9,
+   "xmax": -3.1,
+   "ymin": -10.1,
+   "ymax": -9.9,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_shell/wall_south_2:collision",
+   "xmin": 0.10000000000000009,
+   "xmax": 3.9,
+   "ymin": -10.1,
+   "ymax": -9.9,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_shell/wall_south_3:collision",
+   "xmin": 7.1000000000000005,
+   "xmax": 12.0,
+   "ymin": -10.1,
+   "ymax": -9.9,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A1b1w:collision",
+   "xmin": -9.85,
+   "xmax": -8.97,
+   "ymin": -4.4005,
+   "ymax": -0.48350000000000026,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A1b1e:collision",
+   "xmin": -8.83,
+   "xmax": -7.95,
+   "ymin": -4.4005,
+   "ymax": -0.48350000000000026,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A1b2w:collision",
+   "xmin": -9.85,
+   "xmax": -8.97,
+   "ymin": -0.4834999999999998,
+   "ymax": 3.4335,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A1b2e:collision",
+   "xmin": -8.83,
+   "xmax": -7.95,
+   "ymin": -0.4834999999999998,
+   "ymax": 3.4335,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A1b3w:collision",
+   "xmin": -9.85,
+   "xmax": -8.97,
+   "ymin": 3.4345,
+   "ymax": 7.3515,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A1b3e:collision",
+   "xmin": -8.83,
+   "xmax": -7.95,
+   "ymin": 3.4345,
+   "ymax": 7.3515,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A2b1w:collision",
+   "xmin": -5.95,
+   "xmax": -5.069999999999999,
+   "ymin": -4.4005,
+   "ymax": -0.48350000000000026,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A2b1e:collision",
+   "xmin": -4.930000000000001,
+   "xmax": -4.05,
+   "ymin": -4.4005,
+   "ymax": -0.48350000000000026,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A2b2w:collision",
+   "xmin": -5.95,
+   "xmax": -5.069999999999999,
+   "ymin": -0.4834999999999998,
+   "ymax": 3.4335,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A2b2e:collision",
+   "xmin": -4.930000000000001,
+   "xmax": -4.05,
+   "ymin": -0.4834999999999998,
+   "ymax": 3.4335,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A2b3w:collision",
+   "xmin": -5.95,
+   "xmax": -5.069999999999999,
+   "ymin": 3.4345,
+   "ymax": 7.3515,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A2b3e:collision",
+   "xmin": -4.930000000000001,
+   "xmax": -4.05,
+   "ymin": 3.4345,
+   "ymax": 7.3515,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A3b1w:collision",
+   "xmin": -2.0500000000000003,
+   "xmax": -1.1700000000000002,
+   "ymin": -4.4005,
+   "ymax": -0.48350000000000026,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A3b1e:collision",
+   "xmin": -1.03,
+   "xmax": -0.14999999999999997,
+   "ymin": -4.4005,
+   "ymax": -0.48350000000000026,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A3b2w:collision",
+   "xmin": -2.0500000000000003,
+   "xmax": -1.1700000000000002,
+   "ymin": -0.4834999999999998,
+   "ymax": 3.4335,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A3b2e:collision",
+   "xmin": -1.03,
+   "xmax": -0.14999999999999997,
+   "ymin": -0.4834999999999998,
+   "ymax": 3.4335,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A3b3w:collision",
+   "xmin": -2.0500000000000003,
+   "xmax": -1.1700000000000002,
+   "ymin": 3.4345,
+   "ymax": 7.3515,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_A3b3e:collision",
+   "xmin": -1.03,
+   "xmax": -0.14999999999999997,
+   "ymin": 3.4345,
+   "ymax": 7.3515,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_B1b1s:collision",
+   "xmin": 1.7995,
+   "xmax": 5.7165,
+   "ymin": 7.3999999999999995,
+   "ymax": 8.28,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_B1b1n:collision",
+   "xmin": 1.7995,
+   "xmax": 5.7165,
+   "ymin": 8.42,
+   "ymax": 9.299999999999999,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_B1b2s:collision",
+   "xmin": 5.7165,
+   "xmax": 9.6335,
+   "ymin": 7.3999999999999995,
+   "ymax": 8.28,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_B1b2n:collision",
+   "xmin": 5.7165,
+   "xmax": 9.6335,
+   "ymin": 8.42,
+   "ymax": 9.299999999999999,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_Cs_p0:collision",
+   "xmin": 2.109,
+   "xmax": 4.255,
+   "ymin": -4.3315,
+   "ymax": -2.3484999999999996,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_Cs_p1:collision",
+   "xmin": 4.752000000000001,
+   "xmax": 6.898,
+   "ymin": -4.3315,
+   "ymax": -2.3484999999999996,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_Cs_p2:collision",
+   "xmin": 7.395,
+   "xmax": 9.541,
+   "ymin": -4.3315,
+   "ymax": -2.3484999999999996,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_Cm_p0:collision",
+   "xmin": 2.251,
+   "xmax": 3.451,
+   "ymin": -0.020000000000000018,
+   "ymax": 1.18,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_Cm_p1:collision",
+   "xmin": 4.234,
+   "xmax": 5.433999999999999,
+   "ymin": -0.020000000000000018,
+   "ymax": 1.18,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_Cm_p2:collision",
+   "xmin": 6.216,
+   "xmax": 7.4159999999999995,
+   "ymin": -0.020000000000000018,
+   "ymax": 1.18,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_Cm_p3:collision",
+   "xmin": 8.199,
+   "xmax": 9.399,
+   "ymin": -0.020000000000000018,
+   "ymax": 1.18,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_Cn_p0:collision",
+   "xmin": 2.102,
+   "xmax": 4.2620000000000005,
+   "ymin": 3.675,
+   "ymax": 5.325,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_Cn_p1:collision",
+   "xmin": 4.745,
+   "xmax": 6.905,
+   "ymin": 3.675,
+   "ymax": 5.325,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_Cn_p2:collision",
+   "xmin": 7.388,
+   "xmax": 9.548,
+   "ymin": 3.675,
+   "ymax": 5.325,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/dock_office:collision",
+   "xmin": -11.32,
+   "xmax": -8.879999999999999,
+   "ymin": -9.319999999999999,
+   "ymax": -7.579999999999999,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_STAGE_MID0:collision",
+   "xmin": -4.375,
+   "xmax": -3.425,
+   "ymin": -9.25,
+   "ymax": -8.25,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_STAGE_MID1:collision",
+   "xmin": -3.325,
+   "xmax": -2.375,
+   "ymin": -9.25,
+   "ymax": -8.25,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_STAGE_E0:collision",
+   "xmin": 2.8249999999999997,
+   "xmax": 3.775,
+   "ymin": -9.25,
+   "ymax": -8.25,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "warehouse_v2_occluders/obs_STAGE_E1:collision",
+   "xmin": 3.8749999999999996,
+   "xmax": 4.824999999999999,
+   "ymin": -9.25,
+   "ymax": -8.25,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "forklift_parked/body:body_collision",
+   "xmin": 3.099996400272491,
+   "xmax": 4.700003599711318,
+   "ymin": -9.24000367319188,
+   "ymax": -8.259991918961996,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "forklift_parked/body:cab_mast_collision",
+   "xmin": 3.0099966941313285,
+   "xmax": 3.1500033058967363,
+   "ymin": -9.200004334369877,
+   "ymax": -8.300003305896736,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "forklift_parked/body:fork_left_collision",
+   "xmin": 1.9299975757296963,
+   "xmax": 3.0299986041974423,
+   "ymin": -8.560012268510173,
+   "ymax": -8.420004187462725,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "forklift_parked/body:fork_right_collision",
+   "xmin": 1.9300013958630038,
+   "xmax": 3.0300024243307497,
+   "ymin": -9.080012268496139,
+   "ymax": -8.940004187448691,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "forklift_parked/body:wheel_front_collision",
+   "xmin": 3.1399962533432078,
+   "xmax": 3.4600037466729834,
+   "ymin": -9.260003379334933,
+   "ymax": -8.240001028511191,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "forklift_parked/body:wheel_rear_collision",
+   "xmin": 4.339997061415948,
+   "xmax": 4.660002938535479,
+   "ymin": -9.149994563645654,
+   "ymax": -8.349992212815975,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "pallet_jack/link:collision",
+   "xmin": -8.944754518293847,
+   "xmax": -8.404919754722146,
+   "ymin": -9.510104160298452,
+   "ymax": -8.349222957018286,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "bin_office/link:collision",
+   "xmin": -9.347341420000001,
+   "xmax": -8.07265858,
+   "ymin": -7.80842449,
+   "ymax": -7.09157547,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "pallet_loose_1/body:base_collision",
+   "xmin": -4.623570064427888,
+   "xmax": -3.3364299355721125,
+   "ymin": -9.118950778714899,
+   "ymax": -8.181049221285102,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "pallet_loose_1/body:load_collision",
+   "xmin": -4.54928497162656,
+   "xmax": -3.4107150283734398,
+   "ymin": -9.070858578770519,
+   "ymax": -8.229141421229482,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "pallet_loose_2/body:base_collision",
+   "xmin": 3.782492320977231,
+   "xmax": 5.117507679022769,
+   "ymin": -9.141228229613533,
+   "ymax": -8.118771770386468,
+   "zmin": 0.0,
+   "zmax": 0.1
+  },
+  {
+   "name": "pallet_loose_2/body:load_collision",
+   "xmin": 3.85904375465792,
+   "xmax": 5.04095624534208,
+   "ymin": -9.08811871334423,
+   "ymax": -8.171881286655772,
+   "zmin": 0.0,
+   "zmax": 0.1
+  }
+ ]
+}

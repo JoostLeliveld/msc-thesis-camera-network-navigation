@@ -1,0 +1,98 @@
+version: 1
+status: phase0_contract
+
+evaluation_only_columns:
+  - gt_available
+  - gt_x
+  - gt_y
+  - gt_yaw
+  - gazebo_ground_truth_pose
+  - ground_truth_projected_pixel
+  - ground_truth_localization_error_m
+  - belief_error_gt_m
+  - state_error_gt_m
+  - odom_map_gt_drift_m
+  - belief_yaw_error_gt_rad
+  - true_available
+  - true_x
+  - true_y
+  - true_yaw
+  - localization_error_m
+  - localization_error_calibrated_m
+  - localization_error_captime_m
+  - state_error_captime_m
+  - clearance_m
+  - min_clearance_m
+  - min_wall_distance_m
+  - min_obstacle_distance_m
+  - collision_any
+  - collision_contact
+  - collision_geom
+  - collision_reason
+  - geometry_breach
+  - wall_penetration_m
+  - obstacle_penetration_m
+  - final_task_outcome
+  - final_goal_distance
+  - minimum_goal_distance
+  - goal_region_success
+  - oracle_visible
+  - oracle_bottom_u
+  - oracle_bottom_v
+  - oracle_occlusion_reason
+
+evaluation_only_patterns:
+  # `eval_` marks an evaluation-only column by convention (build_belief_gp_events.py,
+  # build_actual_commissioning_inputs.py). The GT-derived signed-residual columns
+  # eval_res_x / eval_res_y / eval_pred_world_x / eval_pred_world_y contain none of the
+  # gt_/true_/localization_error tokens below, so the prefix is matched explicitly.
+  # Mirrors EVALUATION_ONLY_PREFIXES in reliability/contracts.py.
+  - "^eval_"
+  - "^gt_"
+  - ".*_gt_.*"
+  - ".*_gt$"
+  - "^ground_truth_"
+  - "^gazebo_ground_truth_"
+  - "^oracle_"
+  - ".*localization_error.*"
+  - ".*clearance.*"
+  - ".*collision.*"
+  - ".*geometry_breach.*"
+  - ".*penetration.*"
+  - ".*final_task_outcome.*"
+
+forbidden_training_sources:
+  topics:
+    - "^/ground_truth_tf$"
+    - "^/world/.*/dynamic_pose/info$"
+  path_tokens:
+    - ground_truth
+    - dynamic_pose
+    - gazebo_truth
+    - oracle
+    - /gt_
+    - _gt.
+
+allowed_evaluation_contexts:
+  - evaluation
+  - diagnostics
+  - calibration_check
+  - controlled_oracle_ablation
+  - detector_data_generation
+
+planner_facing_forbidden_imports:
+  - reliability.oracle
+  - reliability.evaluation
+  - reliability.evaluation_only
+  - evaluation_only
+  - ground_truth_loader
+  - gazebo_truth
+
+normal_runtime_forbidden_config_values:
+  state_or_reliability_source_tokens:
+    - gt
+    - ground_truth
+    - gazebo
+    - oracle
+  forbidden_true_flags:
+    - use_diagnostic_odom_localization

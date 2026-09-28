@@ -1,0 +1,17 @@
+# Repo-root pytest configuration.
+#
+# Intentionally pytest-only: NO [project] or [build-system] table, so colcon's
+# package discovery does not mistake the repo root for an installable package
+# (verified with `colcon list`). ROS 2 packages remain defined solely by their
+# own setup.py/package.xml under src/*.
+#
+# Path bootstrapping for the analysis library and src/* packages lives in the
+# repo-root conftest.py (pytest 6.x here predates the ini `pythonpath` option).
+
+[tool.pytest.ini_options]
+# The installed anyio pytest plugin is incompatible with this pytest (imports
+# the removed `_pytest.scope`); disable it so `python3 -m pytest tests/` works
+# without the per-invocation `-p no:anyio` flag every caller currently passes.
+addopts = "-p no:anyio"
+testpaths = ["tests"]
+norecursedirs = ["build", "install", "log", "logs", ".git", "*_archive*", "__pycache__"]

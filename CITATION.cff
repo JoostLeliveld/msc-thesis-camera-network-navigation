@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: If you use this software, please cite the associated thesis.
+title: Camera-Network Modelling for Belief-Space Robot Navigation
+type: software
+authors:
+  - family-names: Leliveld
+    given-names: Joost
+repository-code: https://github.com/JoostLeliveld/msc-thesis-camera-network-navigation
+date-released: 2026-09-28

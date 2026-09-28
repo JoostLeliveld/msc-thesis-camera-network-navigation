@@ -1,0 +1,197 @@
+{
+  "generated_by": "scripts/geometry_visibility/make_warehouse_full.py --variant dynamic",
+  "world_file": "warehouse_full_4cam_dynamic.world.sdf",
+  "world_name": "warehouse_full_4cam_dynamic",
+  "base_world_file": "warehouse_full_4cam.world.sdf",
+  "site_bounds": {
+    "xmin": -11.2,
+    "xmax": 11.5,
+    "ymin": -8.6,
+    "ymax": 8.6
+  },
+  "scenario_stage_aisle": {
+    "name": "rack_aisle_W2",
+    "xmin": -6.13,
+    "xmax": -5.22,
+    "ymin": -8.35,
+    "ymax": 8.35,
+    "note": "north-south aisle between rack columns W1 and W2, aligned with camera A"
+  },
+  "cameras": [
+    {
+      "camera_id": "external_camera",
+      "label": "Camera A",
+      "mount": "south wall, west dock column",
+      "rgb_topic": "/external_camera/image_raw",
+      "oracle_depth_topic": "/external_camera/depth",
+      "intrinsics": {
+        "img_width": 1280,
+        "img_height": 720,
+        "fov_h_rad": 1.5708,
+        "fx": 639.9976491530514,
+        "fy": 639.9976491530514,
+        "cx": 640.0,
+        "cy": 360.0
+      },
+      "extrinsics": {
+        "sdf_pose_xyz_rpy": [
+          -6.0,
+          -10.0,
+          6.1,
+          0.0,
+          0.92,
+          1.5708
+        ],
+        "cam_pos": [
+          -6.0,
+          -10.0,
+          6.1
+        ],
+        "look_at": [
+          -6.000017061730361,
+          -5.355083671987402,
+          0.0
+        ]
+      }
+    },
+    {
+      "camera_id": "external_camera_b",
+      "label": "Camera B",
+      "mount": "north wall, west dock column",
+      "rgb_topic": "/external_camera_b/image_raw",
+      "oracle_depth_topic": "/external_camera_b/depth",
+      "intrinsics": {
+        "img_width": 1280,
+        "img_height": 720,
+        "fov_h_rad": 1.5708,
+        "fx": 639.9976491530514,
+        "fy": 639.9976491530514,
+        "cx": 640.0,
+        "cy": 360.0
+      },
+      "extrinsics": {
+        "sdf_pose_xyz_rpy": [
+          -6.0,
+          10.0,
+          6.1,
+          0.0,
+          0.92,
+          -1.5708
+        ],
+        "cam_pos": [
+          -6.0,
+          10.0,
+          6.1
+        ],
+        "look_at": [
+          -6.000017061730361,
+          5.355083671987402,
+          0.0
+        ]
+      }
+    },
+    {
+      "camera_id": "external_camera_c",
+      "label": "Camera C",
+      "mount": "south wall, east dock column",
+      "rgb_topic": "/external_camera_c/image_raw",
+      "oracle_depth_topic": "/external_camera_c/depth",
+      "intrinsics": {
+        "img_width": 1280,
+        "img_height": 720,
+        "fov_h_rad": 1.5708,
+        "fx": 639.9976491530514,
+        "fy": 639.9976491530514,
+        "cx": 640.0,
+        "cy": 360.0
+      },
+      "extrinsics": {
+        "sdf_pose_xyz_rpy": [
+          6.0,
+          -10.0,
+          6.1,
+          0.0,
+          0.92,
+          1.5708
+        ],
+        "cam_pos": [
+          6.0,
+          -10.0,
+          6.1
+        ],
+        "look_at": [
+          5.999982938269639,
+          -5.355083671987402,
+          0.0
+        ]
+      }
+    },
+    {
+      "camera_id": "external_camera_d",
+      "label": "Camera D",
+      "mount": "north wall, east dock column",
+      "rgb_topic": "/external_camera_d/image_raw",
+      "oracle_depth_topic": "/external_camera_d/depth",
+      "intrinsics": {
+        "img_width": 1280,
+        "img_height": 720,
+        "fov_h_rad": 1.5708,
+        "fx": 639.9976491530514,
+        "fy": 639.9976491530514,
+        "cx": 640.0,
+        "cy": 360.0
+      },
+      "extrinsics": {
+        "sdf_pose_xyz_rpy": [
+          6.0,
+          10.0,
+          6.1,
+          0.0,
+          0.92,
+          -1.5708
+        ],
+        "cam_pos": [
+          6.0,
+          10.0,
+          6.1
+        ],
+        "look_at": [
+          5.999982938269639,
+          5.355083671987402,
+          0.0
+        ]
+      }
+    }
+  ],
+  "obstacle_catalogue": [
+    {
+      "model_name": "dyn_pallet_box",
+      "model_uri": "model://dyn_pallet_box",
+      "model_sdf": "src/sim/models/dyn_pallet_box/model.sdf",
+      "description": "loaded euro-pallet, 1.20 x 0.80 x 1.49 m",
+      "extent_xyz": [
+        1.2,
+        0.8,
+        1.49
+      ],
+      "origin_is_floor_contact": true
+    },
+    {
+      "model_name": "dyn_forklift",
+      "model_uri": "model://dyn_forklift",
+      "model_sdf": "src/sim/models/dyn_forklift/model.sdf",
+      "description": "forklift silhouette, 2.72 x 1.02 x 2.09 m including forks",
+      "extent_xyz": [
+        2.72,
+        1.02,
+        2.09
+      ],
+      "origin_is_floor_contact": true
+    }
+  ],
+  "static_occluder_models": [
+    "warehouse_walls",
+    "warehouse_rack_occluders"
+  ],
+  "evaluation_only_note": "Obstacle poses, oracle depth and ray-cast visibility derived from this world are EVALUATION-ONLY. No module under src/ may read them."
+}

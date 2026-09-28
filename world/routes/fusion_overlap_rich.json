@@ -1,0 +1,84 @@
+{
+  "task": "fusion_overlap_rich",
+  "note": "same endpoints, the best-covered corridor",
+  "waypoint_chain": [
+    "dock_w",
+    "xaisle_e"
+  ],
+  "candidate": 1,
+  "selection_rule": "the lane geometry's own candidate for this corridor, simplified to the corners it turns at, at the smallest grid erosion whose polyline measures at least the planner's own 0.35 m clearance along its whole length and whose endpoints stay on the registered task. Route choice is not the treatment in the fusion comparison, so the rule is stated rather than optimised.",
+  "generator": "world/route_tasks.py",
+  "generator_sha256": "3b1a1f879bc5c2dfa2a087535bebf62b0c7d562c3ecc3e2649e7502657f5b929",
+  "grid_erosion_m": 0.5,
+  "required_clearance_m": 0.35,
+  "measured_min_clearance_m": 0.3539,
+  "tightest_point_xy": [
+    10.461,
+    -4.939
+  ],
+  "grid_resolution_m": 0.1,
+  "simplify_tolerance_m": 0.2,
+  "n_points_before_simplify": 299,
+  "length_m": 31.379,
+  "n_points": 6,
+  "start_xy": [
+    -7.900000000000015,
+    -8.700000000000005
+  ],
+  "goal_xy": [
+    10.59999999999992,
+    6.499999999999943
+  ],
+  "erosion_ladder": [
+    {
+      "erosion_m": 0.35,
+      "length_m": 31.54,
+      "min_clearance_m": 0.212,
+      "tightest_point": [
+        -5.05,
+        -7.65
+      ],
+      "start_offset_m": 0.224,
+      "goal_offset_m": 0.0,
+      "verdict": "too tight"
+    },
+    {
+      "erosion_m": 0.4,
+      "length_m": 31.54,
+      "min_clearance_m": 0.283,
+      "tightest_point": [
+        10.39,
+        -4.91
+      ],
+      "start_offset_m": 0.141,
+      "goal_offset_m": 0.0,
+      "verdict": "too tight"
+    },
+    {
+      "erosion_m": 0.45,
+      "length_m": 31.54,
+      "min_clearance_m": 0.283,
+      "tightest_point": [
+        10.39,
+        -4.91
+      ],
+      "start_offset_m": 0.141,
+      "goal_offset_m": 0.0,
+      "verdict": "too tight"
+    },
+    {
+      "erosion_m": 0.5,
+      "length_m": 31.379,
+      "min_clearance_m": 0.354,
+      "tightest_point": [
+        10.46,
+        -4.94
+      ],
+      "start_offset_m": 0.0,
+      "goal_offset_m": 0.0,
+      "verdict": "clears"
+    }
+  ],
+  "polyline_canonical_json": "[[-7.900000000000015,-8.700000000000005],[-6.8000000000000185,-8.700000000000005],[-4.800000000000026,-7.20000000000001],[8.199999999999928,-7.20000000000001],[10.799999999999919,-4.600000000000019],[10.59999999999992,6.499999999999943]]",
+  "polyline_sha256": "07a785688734c5207497d206e584383b529924b989806d5febee7f935957336c"
+}

@@ -1,0 +1,34 @@
+# Deterministic, belief-independent sensor gate for commissioned camera readings.
+#
+# A return is usable only when the fixed detector reports a sufficiently confident,
+# finite box, whatever its distance to the image edge or its size, and
+# the detected bottom-centre has a valid calibrated ground-plane projection. The gate
+# has no expected-size, learned-quality, belief, innovation, NIS, association, tracking,
+# or localizer-acceptance input.
+
+gate_id: sensor_gate
+
+image_width_px: 1280
+image_height_px: 720
+
+check_frame_freshness: false
+max_frame_age_ms: 500.0
+
+check_confidence: true
+confidence_threshold: 0.25
+check_class: false
+expected_class: null
+
+check_box_size: false
+min_bbox_width_px: 16.0
+min_bbox_height_px: 16.0
+
+check_projection: true
+
+check_edge_clip: false
+edge_check_mode: full_bbox
+min_edge_distance_px: 5.0
+
+check_association: false
+require_track: false
+check_localizer_accept: false

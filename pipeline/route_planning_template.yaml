@@ -1,0 +1,247 @@
+study_title: Final three-seed multi-camera dropout-detour campaign
+study_comparison: Global, per-camera and spatial camera-network models, each used
+  consistently by runtime fusion and planning, across five matched dropout-detour tasks.
+planning_information_method: inverse_of_matched_runtime_covariance
+planning_artifact_schema: camera_network.matched_covariance_precision.v1
+world: warehouse_v2.world.sdf
+world_profiles: src/experiments/config/world_profiles.yaml
+tasks_yaml: pipeline/tasks.yaml
+launch_file: warehouse_primary_comparison.launch.py
+tasks:
+  thesis10_camera_a_western_dock_detour:
+    conditions: &conditions
+    - global_intact
+    - global_removal
+    - per_camera_intact
+    - per_camera_removal
+    - spatial_intact
+    - spatial_removal
+    seeds: &seeds
+    - 91500
+    - 91501
+    - 91502
+    condition_overrides:
+      global_removal: &remove_a {manager_camera_ids: 'camera_B,camera_C,camera_D,camera_E', camera_network_active_camera_ids: 'camera_B,camera_C,camera_D,camera_E', removed_camera_id: camera_A}
+      per_camera_removal: *remove_a
+      spatial_removal: *remove_a
+  thesis10_camera_b_cross_warehouse_detour:
+    conditions: *conditions
+    seeds: *seeds
+    condition_overrides:
+      global_removal: &remove_c_for_b {manager_camera_ids: 'camera_A,camera_B,camera_D,camera_E', camera_network_active_camera_ids: 'camera_A,camera_B,camera_D,camera_E', removed_camera_id: camera_C}
+      per_camera_removal: *remove_c_for_b
+      spatial_removal: *remove_c_for_b
+  thesis10_camera_c_inner_warehouse_detour:
+    conditions: *conditions
+    seeds: *seeds
+    condition_overrides:
+      global_removal: &remove_b_for_c {manager_camera_ids: 'camera_A,camera_C,camera_D,camera_E', camera_network_active_camera_ids: 'camera_A,camera_C,camera_D,camera_E', removed_camera_id: camera_B}
+      per_camera_removal: *remove_b_for_c
+      spatial_removal: *remove_b_for_c
+  thesis10_camera_e_eastern_detour:
+    conditions: *conditions
+    seeds: *seeds
+    condition_overrides:
+      global_removal: &remove_d {manager_camera_ids: 'camera_A,camera_B,camera_C,camera_E', camera_network_active_camera_ids: 'camera_A,camera_B,camera_C,camera_E', removed_camera_id: camera_D}
+      per_camera_removal: *remove_d
+      spatial_removal: *remove_d
+  thesis10_camera_e_long_cross_warehouse_detour:
+    conditions: *conditions
+    seeds: *seeds
+    condition_overrides:
+      global_removal: &remove_e {manager_camera_ids: 'camera_A,camera_B,camera_C,camera_D', camera_network_active_camera_ids: 'camera_A,camera_B,camera_C,camera_D', removed_camera_id: camera_E}
+      per_camera_removal: *remove_e
+      spatial_removal: *remove_e
+perception_backend: yolo
+yolo_model: logs/thesis/detector/training/imgsz960/upper_finetune/weights/best.pt
+yolo_device: '0'
+yolo_imgsz: 960
+yolo_conf_threshold: 0.25
+yolo_predict_conf_floor: 0.001
+yolo_iou_threshold: 0.45
+yolo_target_class: robot
+yolo_class_id: 0
+yolo_use_masks: false
+yolo_min_bbox_area_px: 0.0
+yolo_max_batch_stamp_skew_s: 0.05
+yolo_warmup_iters: 3
+scheduled_rate_hz: 5.0
+multicam_belief: true
+manager_fusion_mode: true
+manager_fusion_rule: independent
+manager_camera_ids: camera_A,camera_B,camera_C,camera_D,camera_E
+manager_covariance_profile: commissioned_visibility_r
+manager_observation_model: visibility_patch
+manager_sensor_gate_config_path: config/sensor_gate.yaml
+manager_require_gp_artifacts: false
+manager_min_spatial_trust: 0.001
+manager_min_association_confidence: 0.25
+manager_decision_rate_hz: 5.0
+manager_require_source_batch_id: true
+manager_bootstrap_min_cameras: 2
+manager_bootstrap_max_disagreement_m: 0.3
+manager_use_task_start_as_bootstrap_prior: false
+manager_bootstrap_prior_counts_as_support: false
+manager_fusion_disagreement_gate_m: 0.0   # no median gate (METHOD amendment 2026-09-24 night)
+manager_fusion_max_timestamp_spread_s: 0.05
+manager_correction_timestamp_compensation: false
+manager_correction_propagation_drift_std: 0.05
+manager_correction_residual_interval_s: 0.05
+manager_max_measurement_age_s: 1.25
+manager_age_decay_s: 1.25
+pixel_timeout_s: 1.25
+manager_required_consecutive_better_frames: 1
+manager_max_cross_camera_disagreement_m: 1.0
+manager_require_consistency_when_source_available: false
+state_correction_mode: fused
+state_correction_ekf: true
+heading_update_mode: coupled
+pixel_correction_nis_threshold: 9.21
+state_reanchor_m: 0.0
+state_max_predict_dt_s: 1.5
+state_reject_inflate_m2: 0.0
+stale_belief_inflate_m2_per_s: 0.0
+stale_belief_inflate_cap_m2: 0.0
+require_state_correction_envelope: true
+wait_for_belief_before_first_goal: true
+initial_belief_max_sigma_m: 0.3
+operational_belief_timeout_s: 1.5
+simple_tracker_yaw_gate_rad: 0.65
+ff_fb_turn_rate_limit_rad_s: 0.80
+ff_fb_corner_crawl_speed_mps: 0.18
+ff_fb_pivot_heading_error_rad: 2.60
+use_hierarchical: true
+global_planner_mode: efe
+camera_network_objective: metric_expected_belief
+network_goal_std_m: 0.1
+network_goal_std_start_m: 5.0
+goal_tightening_power: 0.9
+global_horizon: 75
+global_dt: 1.0
+optimizer_route_seed_mode: explicit
+global_optimizer_multistart: true
+optimizer_multistart: true
+optimizer_multistart_include_direct: false
+optimizer_maxiter: 200
+optimizer_maxfun: 500
+optimizer_ftol: 1.0e-06
+optimizer_gtol: 1.0e-05
+optimizer_terminal_goal_tolerance_m: 0.10
+optimizer_control_block_steps: 1
+camera_network_updates_per_step: 1
+discount_gamma: 0.995
+risk_weight_obs: 1.0
+observation_risk_scale: 1.0
+ambiguity_weight: 1.0
+ambiguity_term_scale: 1.0
+kouw_et1_ambiguity: true
+control_weight: 0.0
+local_use_visibility_model: false
+local_use_ambiguity: false
+local_use_obs_risk: false
+use_pixel_correction: false
+use_hit_miss_mixture: false
+v_max: 1.0
+horizon: 20
+dt: 0.25
+goal_success_radius: 0.30
+goal_success_hold_s: 2.0
+run_timeout_after_first_cmd_s: 300
+local_controller_type: ff_fb
+waypoint_spacing_m: 0.1
+waypoint_arrival_radius_m: 0.1
+cmd_publish_rate: 10.0
+robot_collision_radius_m: 0.48541219597369
+robot_length_m: 0.8
+robot_width_m: 0.55
+use_nogo_cost: true
+nogo_mode: keep_out
+nogo_penalty_type: warning_band
+nogo_safe_distance: 0.0
+local_nogo_safe_distance: 0.0
+nogo_warning_band: 0.05
+nogo_logbarrier_eps: 0.05
+nogo_weight: 40.0
+use_belief_nogo_cost: true
+use_diagnostic_odom_localization: false
+use_odom_for_predict: true
+odom_topic: /odom_noisy
+use_command_noise: true
+use_encoder_noise: true
+# Calibrated odometry: zero mean encoder scale error (METHOD amendment 2026-09-24 evening).
+encoder_noise_linear_slip_mean: 0.0
+encoder_noise_linear_slip_std: 0.125
+encoder_noise_angular_slip_mean: 0.0
+encoder_noise_angular_slip_std: 0.075
+encoder_noise_linear_additive_std: 0.004
+encoder_noise_angular_additive_std: 0.05
+encoder_noise_correlation_alpha: 0.8
+encoder_wheel_diameter_ratio_error: 0.00121
+encoder_wheelbase_ratio: 0.991765
+process_noise_xy: 0.02
+process_noise_theta: 0.08
+process_noise_model: encoder
+r_visible_uv: 1.0
+r_miss_uv: 40.0
+headless: true
+nvidia_offload: true
+use_rviz: false
+reset_world: false
+debug_runtime: false
+cleanup_mode: isolated
+cleanup_sim_stragglers: false
+ros_domain_id_base: 100
+conditions:
+  global_intact:
+    label: global_intact
+    manager_visibility_sensor_model_path: logs/thesis/fits/runtime_r012/R0_global_full.json
+    manager_visibility_sensor_model_expected_sha256: 636d39f9e56a835eed515593f20705a52752549669ecbbc9af30419c3852a54f
+    camera_network_artifact_path: logs/thesis/fits/planning_precision/m0_planning_precision.npz
+    camera_network_expected_sha256: e17d9e96d75d1161232f24131265902bed64df1aad864d02c2898aa3ba166d86
+    manager_camera_ids: camera_A,camera_B,camera_C,camera_D,camera_E
+    camera_network_active_camera_ids: camera_A,camera_B,camera_C,camera_D,camera_E
+  global_removal:
+    label: global_removal
+    manager_visibility_sensor_model_path: logs/thesis/fits/runtime_r012/R0_global_full.json
+    manager_visibility_sensor_model_expected_sha256: 636d39f9e56a835eed515593f20705a52752549669ecbbc9af30419c3852a54f
+    camera_network_artifact_path: logs/thesis/fits/planning_precision/m0_planning_precision.npz
+    camera_network_expected_sha256: e17d9e96d75d1161232f24131265902bed64df1aad864d02c2898aa3ba166d86
+    manager_camera_ids: camera_A,camera_C,camera_D,camera_E
+    camera_network_active_camera_ids: camera_A,camera_C,camera_D,camera_E
+  per_camera_intact:
+    label: per_camera_intact
+    manager_visibility_sensor_model_path: logs/thesis/fits/runtime_r012/R1_per_camera_full.json
+    manager_visibility_sensor_model_expected_sha256: d470b6096d78c62fb94343a4b7207dbc3a08c8766418defb1a272f9256384be1
+    camera_network_artifact_path: logs/thesis/fits/planning_precision/m1_planning_precision.npz
+    camera_network_expected_sha256: 86a8a30f66f7902151319f962ca81388a21d3be0e4fca4de69e6aed3da3d44f0
+    manager_camera_ids: camera_A,camera_B,camera_C,camera_D,camera_E
+    camera_network_active_camera_ids: camera_A,camera_B,camera_C,camera_D,camera_E
+  per_camera_removal:
+    label: per_camera_removal
+    manager_visibility_sensor_model_path: logs/thesis/fits/runtime_r012/R1_per_camera_full.json
+    manager_visibility_sensor_model_expected_sha256: d470b6096d78c62fb94343a4b7207dbc3a08c8766418defb1a272f9256384be1
+    camera_network_artifact_path: logs/thesis/fits/planning_precision/m1_planning_precision.npz
+    camera_network_expected_sha256: 86a8a30f66f7902151319f962ca81388a21d3be0e4fca4de69e6aed3da3d44f0
+    manager_camera_ids: camera_A,camera_C,camera_D,camera_E
+    camera_network_active_camera_ids: camera_A,camera_C,camera_D,camera_E
+  spatial_intact:
+    label: spatial_intact
+    manager_visibility_sensor_model_path: logs/thesis/fits/runtime_r012/R2_spatial_residual.json
+    manager_visibility_sensor_model_expected_sha256: 1b8f67e633e7046a3d3d9ae148c79b9bc52b307f7fc16097c367487b575c53ca
+    camera_network_artifact_path: logs/thesis/fits/planning_precision/m2_planning_precision.npz
+    camera_network_expected_sha256: 9f897f298f8b6dc4465c775dcf4549375d7b0c216d9cece7f4e68a9417d9655e
+    manager_camera_ids: camera_A,camera_B,camera_C,camera_D,camera_E
+    camera_network_active_camera_ids: camera_A,camera_B,camera_C,camera_D,camera_E
+  spatial_removal:
+    label: spatial_removal
+    manager_visibility_sensor_model_path: logs/thesis/fits/runtime_r012/R2_spatial_residual.json
+    manager_visibility_sensor_model_expected_sha256: 1b8f67e633e7046a3d3d9ae148c79b9bc52b307f7fc16097c367487b575c53ca
+    camera_network_artifact_path: logs/thesis/fits/planning_precision/m2_planning_precision.npz
+    camera_network_expected_sha256: 9f897f298f8b6dc4465c775dcf4549375d7b0c216d9cece7f4e68a9417d9655e
+    manager_camera_ids: camera_A,camera_C,camera_D,camera_E
+    camera_network_active_camera_ids: camera_A,camera_C,camera_D,camera_E
+removed_camera_id: camera_B
+# Declared initial prior at the task start (METHOD amendment 2026-09-24 night): no camera bootstrap.
+initial_belief_from_task_start: true
+initial_belief_sigma_xy_m: 0.10
+initial_belief_sigma_theta_rad: 0.2617993877991494

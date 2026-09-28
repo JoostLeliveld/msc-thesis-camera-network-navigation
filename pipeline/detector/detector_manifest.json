@@ -1,0 +1,78 @@
+{
+  "schema": "thesis_pipeline_stage_lock.v1",
+  "pipeline_id": "THESIS-FINAL-PIPELINE-V1",
+  "stage_id": "05_detector_training",
+  "lock_id": "THESIS-YOLO11N-960-V1",
+  "status": "locked",
+  "locked_at": "2026-09-10",
+  "training": {
+    "protocol": "pipeline/detector/training_protocol.json",
+    "protocol_sha256": "a60b3b5c6b11a04b313ab347a935eaa82e515026a8ea8b60e90af90fd7c77a1e",
+    "base_model": "local_artifacts/base_models/yolo11n.pt",
+    "base_model_sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1",
+    "initialization": "COCO-pretrained YOLO11n",
+    "gradient_population": "detector_fit only",
+    "selection_population": "detector_validation only",
+    "commissioning_fit_accessed": false,
+    "final_audit_accessed": false
+  },
+  "completed_candidates": {
+    "640": {
+      "trial_manifest": "logs/thesis/detector/training/imgsz640/trial_manifest.json",
+      "trial_manifest_sha256": "a55754d96b2062ed292a9b2c0d714b721e423d7e11625adbc6998bffe52cf5c0",
+      "validation_report": "logs/thesis/detector/training/imgsz640/validation_report.json",
+      "validation_report_sha256": "5036f88a73dbd1fbe11d27c2531518dc1da551b070bfcfe73d0eebae1ab62772",
+      "fine_tune_epochs_completed": 11,
+      "ap50": 0.999524,
+      "ap50_95": 0.795918,
+      "precision_at_0_25": 0.984544,
+      "recall_at_0_25": 0.998433,
+      "false_detections_per_negative_image_at_0_25": 0.0
+    },
+    "960": {
+      "trial_manifest": "logs/thesis/detector/training/imgsz960/trial_manifest.json",
+      "trial_manifest_sha256": "67981be6143e87f2ff79beacaa78d007e7d1535b7f41740833b89c3da9dddf54",
+      "validation_report": "logs/thesis/detector/training/imgsz960/validation_report.json",
+      "validation_report_sha256": "9643a3b5dc181d731cdf6e9396d0241c77b773551f4060608ce57eadd353c459",
+      "fine_tune_epochs_completed": 14,
+      "ap50": 0.999321,
+      "ap50_95": 0.809795,
+      "precision_at_0_25": 0.971037,
+      "recall_at_0_25": 0.998433,
+      "false_detections_per_negative_image_at_0_25": 0.0
+    }
+  },
+  "selection_amendment": {
+    "path": "pipeline/detector/selection_amendment.json",
+    "sha256": "71fa3def71974168040e9318306c1a65578fd46de4726f8ba14519acb56ab624",
+    "status": "post_validation_pre_commissioning_not_preregistered"
+  },
+  "cancelled_candidate": {
+    "imgsz": 1280,
+    "record": "logs/thesis/detector/training/scope_change_1280_cancelled.json",
+    "record_sha256": "38280051436d93a8aa07a6906850ae202eeb5da047b39f31d2b73017be419850",
+    "eligible": false
+  },
+  "selected_detector": {
+    "architecture": "YOLO11n",
+    "imgsz": 960,
+    "checkpoint": "logs/thesis/detector/training/imgsz960/upper_finetune/weights/best.pt",
+    "checkpoint_sha256": "1e99afb5361a7c2599cb3f2863ebb04fd6f65bc1ee23996b989c9bba8b004f13",
+    "minimum_evaluated_accepted_visible_width_px": 32,
+    "few_pixel_detection_claim_permitted": false
+  },
+  "runtime_probe": {
+    "report": "logs/thesis/detector/training/runtime_probe_960/runtime_report.json",
+    "report_sha256": "5bba9ea860e2388dd4298e5841a5309a4f83c2695c85c54a3c8541dcf655dd5c",
+    "evidence_role": "integration and timing only",
+    "five_camera_runtime_feasible": true,
+    "five_hz_budget_met": true,
+    "localization_validity_established": false
+  },
+  "prohibitions": [
+    "Do not use commissioning_fit or final_audit to change the detector checkpoint.",
+    "Do not use the incomplete 1280 trial for model selection.",
+    "Do not infer localization validity from detector AP, recall or the runtime probe.",
+    "Do not claim the detector recognizes a useful robot observation from only a few pixels."
+  ]
+}

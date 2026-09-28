@@ -1,0 +1,195 @@
+{
+  "allowed_inputs": [
+    "warehouse_v2 declared zones and stock-state collision geometry",
+    "fixed oblique pinhole camera model",
+    "0.35 m marker-height ray casting",
+    "arm-neutral route geometry from fusion_overlap_primary"
+  ],
+  "candidates": {
+    "aisle_axial_previous": {
+      "metrics": {
+        "all_driveable_peak_seen_by_1_pct": 86.645217,
+        "all_driveable_peak_seen_by_2_pct": 46.898083,
+        "all_driveable_shipout_seen_by_1_pct": 94.784067,
+        "all_driveable_shipout_seen_by_2_pct": 67.698373,
+        "peak_overlap_graph_max_st_bottleneck_m2": 11.9,
+        "peak_pair_overlap_area_m2": {
+          "AB": 34.57,
+          "AC": 6.45,
+          "AD": 11.22,
+          "AE": 60.79,
+          "BC": 11.9,
+          "BD": 9.11,
+          "BE": 39.84,
+          "CD": 0.08,
+          "CE": 8.09,
+          "DE": 30.64
+        },
+        "peak_single_camera_coverage_pct": {
+          "A": 38.097612,
+          "B": 29.95423,
+          "C": 12.480174,
+          "D": 27.59777,
+          "E": 48.017402
+        },
+        "primary_route": {
+          "max_route_separation_m": 7.9,
+          "mean_route_two_camera_fraction": 0.723215,
+          "n_geometry_routes": 3,
+          "task": "aisleA2_s__aisleC_n_e",
+          "two_camera_fraction_per_route": [
+            0.573684,
+            1.0,
+            0.59596
+          ],
+          "worst_route_two_camera_fraction": 0.573684
+        },
+        "section_a_aisles_peak_seen_by_1_pct": 91.08871,
+        "section_a_aisles_peak_seen_by_2_pct": 12.903226
+      },
+      "pose_xyz_yaw_pitch_deg": [
+        -6.95,
+        9.45,
+        5.0,
+        -90.0,
+        38.0
+      ],
+      "purpose": "look straight down A1|A2 -- the WHV2-CAMLAYOUT-V1 choice, kept as the documented alternative it was replaced by"
+    },
+    "coverage_oriented_current": {
+      "metrics": {
+        "all_driveable_peak_seen_by_1_pct": 91.444238,
+        "all_driveable_peak_seen_by_2_pct": 48.805909,
+        "all_driveable_shipout_seen_by_1_pct": 97.285539,
+        "all_driveable_shipout_seen_by_2_pct": 74.373499,
+        "peak_overlap_graph_max_st_bottleneck_m2": 13.16,
+        "peak_pair_overlap_area_m2": {
+          "AB": 34.57,
+          "AC": 6.11,
+          "AD": 11.22,
+          "AE": 60.79,
+          "BC": 13.16,
+          "BD": 9.11,
+          "BE": 39.84,
+          "CD": 7.1,
+          "CE": 10.84,
+          "DE": 30.64
+        },
+        "peak_single_camera_coverage_pct": {
+          "A": 38.097612,
+          "B": 29.95423,
+          "C": 20.655277,
+          "D": 27.59777,
+          "E": 48.017402
+        },
+        "primary_route": {
+          "max_route_separation_m": 7.9,
+          "mean_route_two_camera_fraction": 0.723215,
+          "n_geometry_routes": 3,
+          "task": "aisleA2_s__aisleC_n_e",
+          "two_camera_fraction_per_route": [
+            0.573684,
+            1.0,
+            0.59596
+          ],
+          "worst_route_two_camera_fraction": 0.573684
+        },
+        "section_a_aisles_peak_seen_by_1_pct": 90.282258,
+        "section_a_aisles_peak_seen_by_2_pct": 12.903226
+      },
+      "pose_xyz_yaw_pitch_deg": [
+        -6.95,
+        9.45,
+        5.0,
+        -60.0,
+        38.0
+      ],
+      "purpose": "cover the previously blind A1|A2 aisle without spending the whole camera on it"
+    },
+    "fusion_oriented_alternative": {
+      "metrics": {
+        "all_driveable_peak_seen_by_1_pct": 83.83106,
+        "all_driveable_peak_seen_by_2_pct": 51.089863,
+        "all_driveable_shipout_seen_by_1_pct": 96.048398,
+        "all_driveable_shipout_seen_by_2_pct": 68.18326,
+        "peak_overlap_graph_max_st_bottleneck_m2": 18.59,
+        "peak_pair_overlap_area_m2": {
+          "AB": 34.57,
+          "AC": 11.11,
+          "AD": 11.22,
+          "AE": 60.79,
+          "BC": 18.59,
+          "BD": 9.11,
+          "BE": 39.84,
+          "CD": 3.94,
+          "CE": 11.01,
+          "DE": 30.64
+        },
+        "peak_single_camera_coverage_pct": {
+          "A": 38.097612,
+          "B": 29.95423,
+          "C": 14.968052,
+          "D": 27.59777,
+          "E": 48.017402
+        },
+        "primary_route": {
+          "max_route_separation_m": 7.9,
+          "mean_route_two_camera_fraction": 0.75451,
+          "n_geometry_routes": 3,
+          "task": "aisleA2_s__aisleC_n_e",
+          "two_camera_fraction_per_route": [
+            0.647368,
+            1.0,
+            0.616162
+          ],
+          "worst_route_two_camera_fraction": 0.616162
+        },
+        "section_a_aisles_peak_seen_by_1_pct": 58.145161,
+        "section_a_aisles_peak_seen_by_2_pct": 39.919355
+      },
+      "pose_xyz_yaw_pitch_deg": [
+        -3.0500000000000003,
+        9.45,
+        5.0,
+        -90.0,
+        38.0
+      ],
+      "purpose": "increase overlap in A2|A3 and Camera C overlap-graph edge strength"
+    }
+  },
+  "decision_id": "WHV2-CAMLAYOUT-V2",
+  "decision_rationale": [
+    "Supersedes WHV2-CAMLAYOUT-V1, which froze camera C looking straight DOWN aisle A1|A2 at -90 deg. That aim was re-measured against a 918-mount wall sweep (camera_sweep.py) and is dominated: angling C to -60 deg costs 0.4 points of section-A aisle single-camera cover (77.05 -> 76.69 %) and returns 4.5 points of whole-floor single-camera cover (83.03 -> 87.55 %) and 2.7 points of two-camera cover, because a camera looking along a 1.80 m aisle sees rack faces either side of it and little floor. Under the axial aim camera C saw 10.9 % of the driveable floor on its own; angled it sees 18.6 %, so it is a general-purpose camera again rather than an aisle periscope.",
+    "Camera B is re-aimed in place from +96 to +115 deg. Position is unchanged, so every route metric is unchanged, and whole-floor two-camera cover rises from 44.4 to 49.2 %.",
+    "Camera B was NOT moved west to the mouth of aisle A2|A3, although that takes the aisle from 54 % to 100 % single-camera cover. Moving it drops the worst of the three diverse primary routes to 0.465 two-camera fraction, under the 0.50 gate below. Every aim, and every x from -3.35 to -2.50, was measured; none recovers it, because the loss comes from B's position rather than its aim.",
+    "Aisle A2|A3 therefore stays near 54 % and the two section-C block aisles near 30 %. Five wall mounts on this geometry cannot hold the primary-route fusion gate and cover every aisle at once; a sixth mount is what that would need.",
+    "This decision supports network-level and primary-route fusion claims. It does not support a claim that fusion is strong inside both narrow section-A aisles, nor any claim about the section-C block aisles.",
+    "Re-measured 2026-08-20 after the picking aisles were widened 1.80 -> 2.00 m and the block aisles 1.50 -> 1.80 m to fit the 0.80 x 0.55 m AMR. Widening helps coverage as well as clearance: aisle A2|A3 goes from 54.1 % to 76.3 % and both section-C block aisles improve, with whole-floor cover unchanged. Camera C moved with its aisle centreline, -7.05 -> -6.95 m.",
+    "Re-measured again after section C moved to three different cluttering meshes (ClutteringA/C/D on rows Cs/Cm/Cn) with per-row stack counts capped at 3.44 m. The occluders changed, so every coverage number here is from that geometry.",
+    "Re-measured after the appearance pass that put the floor, wall lining, racking steel and dock office on PBR material sets. That pass is visual-only -- no collision box moved and no occluder changed -- so every coverage number is expected to be identical to the previous entry, and is re-run here to prove it.",
+    "Re-measured after section C moved to three real goods types: cartons (1.06 m units), 200 L steel drums (0.88 m) and returnable plastic totes (0.49 m). This is NOT a cosmetic change -- the unit heights are real, so the occluders are shorter than the ClutteringC/D stacks they replaced (2.64 m and 1.96 m against 4.41 m). Coverage improves accordingly: whole-floor single cover 87.1 -> 91.4 %, two-camera 46.4 -> 48.8 %, section-A aisles 76.7 -> 90.3 %, and the worst primary route goes from 0.502 -- effectively sitting on the 0.50 gate -- to 0.637. The gate margin was the standing risk in this file and it is no longer thin.",
+    "Re-measured 2026-08-23 after the route library was standardised on the planner's real 0.35 m clearance and the primary task moved from aisleA1_s__aisleC_n_e to aisleA2_s__aisleC_n_e. Three margins had been in use for one physical quantity: the route library eroded 0.25 m, the world documentation described 0.32 m, and the planner used 0.35 m, so the library offered corridors the planner would refuse. At 0.35 m the previous primary task gains a fourth route through the poorly covered block aisles with only 24.7 percent of its points visible to two cameras, so its menu fails the 0.50 gate and takes this firewall with it. Of the 91 tasks offering a real route choice, five have every route above the gate; aisleA2_s__aisleC_n_e is the strongest at 0.574 worst-route and keeps the same destination, so the traverse still crosses the network. Selected from declared geometry, the camera model and the arm-neutral route solver alone; no image, detector output or navigation outcome entered the choice, and it was made before any route-level result was read."
+  ],
+  "forbidden_inputs": [
+    "RGB images",
+    "detector outputs or confidence scores",
+    "ground-truth localisation residuals",
+    "commissioned R",
+    "bias estimates",
+    "availability GP outputs",
+    "navigation outcomes"
+  ],
+  "frozen_at": "2026-08-23",
+  "gates": {
+    "min_geometry_routes": 2,
+    "min_overlap_graph_max_st_bottleneck_m2": 5.0,
+    "min_route_separation_m": 3.0,
+    "min_worst_route_two_camera_fraction_peak": 0.5
+  },
+  "geometry_gate_passed": true,
+  "schema_version": 1,
+  "selected_candidate": "coverage_oriented_current",
+  "selection_policy": "preserve_current_if_all_primary_gates_pass_else_select_only_passing_candidate",
+  "status": "frozen_geometry_only",
+  "supersedes": "WHV2-CAMLAYOUT-V1"
+}

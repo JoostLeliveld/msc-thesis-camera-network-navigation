@@ -1,0 +1,319 @@
+{
+  "camera_layout_decision_id": "WHV2-CAMLAYOUT-V2",
+  "evidence_boundary": "geometry_and_runtime_contract_only_no_detector_data",
+  "freeze_id": "WHV2-GEOMETRY-V2",
+  "paired_invariants": {
+    "warehouse_shell": {
+      "identical": true,
+      "state_hashes": {
+        "A": "6739c9fc1fc5a9b7156d8d004e0a94e94d3730a784d06b2ff73334c3c79bf7fc",
+        "B": "6739c9fc1fc5a9b7156d8d004e0a94e94d3730a784d06b2ff73334c3c79bf7fc"
+      }
+    },
+    "warehouse_v2_floor_markings": {
+      "identical": true,
+      "state_hashes": {
+        "A": "279b14ea503224a0bbdbdc1ae0429be2ddffed1d4342b5cd528573a36d337009",
+        "B": "279b14ea503224a0bbdbdc1ae0429be2ddffed1d4342b5cd528573a36d337009"
+      }
+    },
+    "warehouse_v2_rack_frames": {
+      "identical": true,
+      "state_hashes": {
+        "A": "7cdc4a956445ce2ec4adc883d443c7c1f406d6244d11218ad8562e377957a1f2",
+        "B": "7cdc4a956445ce2ec4adc883d443c7c1f406d6244d11218ad8562e377957a1f2"
+      }
+    }
+  },
+  "profiles": {
+    "warehouse_v2.world.sdf": {
+      "camera_ids": [
+        "camera_A",
+        "camera_B",
+        "camera_C",
+        "camera_D",
+        "camera_E"
+      ],
+      "camera_image_topics": [
+        "/external_camera/image_raw",
+        "/external_camera_b/image_raw",
+        "/external_camera_c/image_raw",
+        "/external_camera_d/image_raw",
+        "/external_camera_e/image_raw"
+      ],
+      "camera_model_includes": [
+        "external_camera",
+        "external_camera_b",
+        "external_camera_c",
+        "external_camera_d",
+        "external_camera_e"
+      ],
+      "canonical_sha256": "0a3f97746e95f8b29257884fe9daa23ccd3d86306c6d690a583e1b6d7ccf2915",
+      "evidence_role": "primary_commissioning_and_evaluation",
+      "recommended_task": "fusion_overlap_primary",
+      "stock_state": "peak",
+      "world_name": "warehouse_v2"
+    },
+    "warehouse_v2_shipout.world.sdf": {
+      "camera_ids": [
+        "camera_A",
+        "camera_B",
+        "camera_C",
+        "camera_D",
+        "camera_E"
+      ],
+      "camera_image_topics": [
+        "/external_camera/image_raw",
+        "/external_camera_b/image_raw",
+        "/external_camera_c/image_raw",
+        "/external_camera_d/image_raw",
+        "/external_camera_e/image_raw"
+      ],
+      "camera_model_includes": [
+        "external_camera",
+        "external_camera_b",
+        "external_camera_c",
+        "external_camera_d",
+        "external_camera_e"
+      ],
+      "canonical_sha256": "1bac9d0c4318ecd6b0b2c74efc2bb7c92909d452eb770450349ff0356f1b784e",
+      "evidence_role": "paired_stock_state_transfer_only",
+      "recommended_task": "fusion_overlap_primary",
+      "stock_state": "shipout",
+      "world_name": "warehouse_v2_shipout"
+    }
+  },
+  "refreeze_history": [
+    {
+      "date": "2026-08-21",
+      "reason": "2026-08-21 lighting fix: the sixteen fixtures were contributing nothing (floor under a fixture measured no brighter than between them). Fixture output, attenuation, lamp height, scene ambient and sun changed; emissive faces added; verify_world.py gained 34 lighting checks per state. No collision box, camera pose, zone or declared map changed. Made before any image of warehouse_v2 was captured.",
+      "replaced_world_sha256": {
+        "A": "ac5c9b39fd9abe1d8a52cfa76b708e4c56f37db8ecb51e13edbd0281d1ae4f4f",
+        "B": "e6c065b58694dc7671a308ff7f0817ceeeaa9436c7f491974d7538edbd3470b8"
+      }
+    },
+    {
+      "date": "2026-08-21",
+      "reason": "2026-08-21 lighting fix (see previous entry); this re-freeze only picks up world_freeze.py's own hash after the --refreeze path and history-exclusion were added to it.",
+      "replaced_world_sha256": {
+        "A": "cb872fd438bd3275ac75da44c12013c01c91c95287ce29edaf6bd0f09073f3e3",
+        "B": "bf84cf05b351f23c38c1fc177a4424e108cb614c2f65dbfa45fbd04b2b0f5f89"
+      }
+    },
+    {
+      "date": "2026-08-23",
+      "reason": "planner clearance corrected 0.25 -> 0.35 m; primary fusion task moved to the A2|A3 south mouth so every route in its menu clears the 50% two-camera gate; camera_layout_gate task label derived from the coordinate constant",
+      "replaced_world_sha256": {
+        "A": "cb872fd438bd3275ac75da44c12013c01c91c95287ce29edaf6bd0f09073f3e3",
+        "B": "bf84cf05b351f23c38c1fc177a4424e108cb614c2f65dbfa45fbd04b2b0f5f89"
+      }
+    },
+    {
+      "date": "2026-08-26",
+      "reason": "2026-08-26 task added, world untouched: fusion_network_traverse (west dock door -> east cross aisle) joins the task list for the six-arm fusion comparison, so all five cameras contribute to one traverse. Every world record is byte-identical before and after (verified): no geometry, camera pose, zone, lighting or declared map changed, and no captured image is affected. Only the tasks section of the manifest moves.",
+      "replaced_world_sha256": {
+        "A": "cb872fd438bd3275ac75da44c12013c01c91c95287ce29edaf6bd0f09073f3e3",
+        "B": "bf84cf05b351f23c38c1fc177a4424e108cb614c2f65dbfa45fbd04b2b0f5f89"
+      }
+    },
+    {
+      "date": "2026-08-26",
+      "reason": "2026-08-26 task start moved, world untouched: fusion_network_traverse spawns at (-7.90,-8.70) instead of (-8.10,-8.80). At the old start the 0.80 m AMR's rear was inside office_step (a 0.12 m step), so the robot was held by the physics solver while its wheels turned -- measured: odometry +1.15 m, ground truth +0.009 m in 10 s. The new start is the frozen route's own first point. No geometry, camera pose, zone, lighting or declared map changed.",
+      "replaced_world_sha256": {
+        "A": "cb872fd438bd3275ac75da44c12013c01c91c95287ce29edaf6bd0f09073f3e3",
+        "B": "bf84cf05b351f23c38c1fc177a4424e108cb614c2f65dbfa45fbd04b2b0f5f89"
+      }
+    },
+    {
+      "date": "2026-08-26",
+      "reason": "2026-08-26 three routes added, world untouched: fusion_overlap_rich and fusion_overlap_sparse share fusion_network_traverse's endpoints through the best- and worst-covered corridors (92% vs 45% two-camera), and fusion_long_traverse is a 63 m out-and-back. They exist so the fusion comparison can separate the rule from the corridor and can be confirmed over twice the distance. No geometry, camera pose, zone, lighting or declared map changed.",
+      "replaced_world_sha256": {
+        "A": "cb872fd438bd3275ac75da44c12013c01c91c95287ce29edaf6bd0f09073f3e3",
+        "B": "bf84cf05b351f23c38c1fc177a4424e108cb614c2f65dbfa45fbd04b2b0f5f89"
+      }
+    },
+    {
+      "date": "2026-09-08",
+      "reason": "paint-only decor change, no geometry: removed the lane_artery pair (both lines duplicated the bay outlines of the zones the artery runs between, 0.22 m away, reading as a stray line in the plan view); pushed each dock door's keep-clear hatching east of any structure standing in its mouth, so the west door's stripes stop being painted under the dock office; added the dock office's keep-out outline so the plan view shows why that hatching stops short. warehouse_shell, occluders, rack_frames, floor_markings, goods and mesh_visuals are all byte-identical; collision elements 47, sensors 46 and obs links 35 unchanged, so no capture or calibration is affected.",
+      "replaced_world_sha256": {
+        "A": "cb872fd438bd3275ac75da44c12013c01c91c95287ce29edaf6bd0f09073f3e3",
+        "B": "bf84cf05b351f23c38c1fc177a4424e108cb614c2f65dbfa45fbd04b2b0f5f89"
+      }
+    }
+  ],
+  "schema_version": 1,
+  "selected_camera_layout": "coverage_oriented_current",
+  "sources": {
+    "world/camera_layout_decision.json": "5501d526c6ffe21e08202d9b869dc355a7dfad7f3a27d7765b8ee47ac166e72e",
+    "world/camera_layout_gate.py": "b3e28398574c92d86c8f7b01255c1ee9283e781517920af0736febe2e26e6ca7",
+    "world/coverage.py": "838285e1431bb02cd0513b2644b1b592edd4f86c86ce40ebce2d6bb981922604",
+    "world/make_world.py": "5c9b99044ea2b2f4c0065bf3ba15a09f9b917a7db6cfae91a65f189935b34e09",
+    "world/route_tasks.py": "3b1a1f879bc5c2dfa2a087535bebf62b0c7d562c3ecc3e2649e7502657f5b929",
+    "world/sim_up.sh": "248d5ec69e954ed7ecd5b44bc3701a4e1b215242c93db697f64acde4f0cc20ab",
+    "world/verify_world.py": "774048ee6bd2c9101494c493a68a288b26ccab580813b192980b7c71c29583fa",
+    "world/warehouse_v2.py": "3040ad48290d8994841991f98aa9c4b7be7b75c2da1af429e6c29d6b3acb8aa7",
+    "world/world_freeze.py": "c29cc0c21ee1a14ba78d553cd164d00cd46c8096a684ff50362e7130450b5221"
+  },
+  "tasks": {
+    "warehouse_v2.world.sdf": {
+      "canonical_sha256": "030f97c32989b7340c92bc1f1d3e068c8ed848eab94a36cb26ae878ce0e5eaa7",
+      "task_names": [
+        "fusion_network_traverse",
+        "fusion_overlap_rich",
+        "fusion_overlap_sparse",
+        "fusion_long_traverse",
+        "fusion_overlap_primary",
+        "apron_to_north_cross_aisle"
+      ]
+    },
+    "warehouse_v2_shipout.world.sdf": {
+      "canonical_sha256": "030f97c32989b7340c92bc1f1d3e068c8ed848eab94a36cb26ae878ce0e5eaa7",
+      "task_names": [
+        "fusion_network_traverse",
+        "fusion_overlap_rich",
+        "fusion_overlap_sparse",
+        "fusion_long_traverse",
+        "fusion_overlap_primary",
+        "apron_to_north_cross_aisle"
+      ]
+    }
+  },
+  "worlds": {
+    "A": {
+      "camera_includes": {
+        "external_camera": {
+          "pose_xyz_rpy_rad": [
+            -11.45,
+            -9.45,
+            5.0,
+            0.0,
+            0.7679,
+            0.7854
+          ],
+          "uri": "model://external_camera"
+        },
+        "external_camera_b": {
+          "pose_xyz_rpy_rad": [
+            -1.5,
+            -9.72,
+            5.0,
+            0.0,
+            0.8378,
+            2.0071
+          ],
+          "uri": "model://external_camera_b"
+        },
+        "external_camera_c": {
+          "pose_xyz_rpy_rad": [
+            -6.95,
+            9.45,
+            5.0,
+            0.0,
+            0.6632,
+            -1.0472
+          ],
+          "uri": "model://external_camera_c"
+        },
+        "external_camera_d": {
+          "pose_xyz_rpy_rad": [
+            11.45,
+            7.2,
+            5.0,
+            0.0,
+            0.6632,
+            -2.4435
+          ],
+          "uri": "model://external_camera_d"
+        },
+        "external_camera_e": {
+          "pose_xyz_rpy_rad": [
+            11.45,
+            -9.45,
+            5.0,
+            0.0,
+            0.733,
+            2.3038
+          ],
+          "uri": "model://external_camera_e"
+        }
+      },
+      "contact_sensors": 46,
+      "expected_internal_world_name": "warehouse_v2",
+      "file": "src/sim/gazebo_worlds/worlds/warehouse_v2.world.sdf",
+      "generator_matches_file": true,
+      "internal_world_name": "warehouse_v2",
+      "occluder_links": 36,
+      "sha256": "4b773b98d70c12ba3291603f83f783dee84e07a56578594d3bc62ebf6a84486b",
+      "size_bytes": 191976,
+      "stock_state": "peak"
+    },
+    "B": {
+      "camera_includes": {
+        "external_camera": {
+          "pose_xyz_rpy_rad": [
+            -11.45,
+            -9.45,
+            5.0,
+            0.0,
+            0.7679,
+            0.7854
+          ],
+          "uri": "model://external_camera"
+        },
+        "external_camera_b": {
+          "pose_xyz_rpy_rad": [
+            -1.5,
+            -9.72,
+            5.0,
+            0.0,
+            0.8378,
+            2.0071
+          ],
+          "uri": "model://external_camera_b"
+        },
+        "external_camera_c": {
+          "pose_xyz_rpy_rad": [
+            -6.95,
+            9.45,
+            5.0,
+            0.0,
+            0.6632,
+            -1.0472
+          ],
+          "uri": "model://external_camera_c"
+        },
+        "external_camera_d": {
+          "pose_xyz_rpy_rad": [
+            11.45,
+            7.2,
+            5.0,
+            0.0,
+            0.6632,
+            -2.4435
+          ],
+          "uri": "model://external_camera_d"
+        },
+        "external_camera_e": {
+          "pose_xyz_rpy_rad": [
+            11.45,
+            -9.45,
+            5.0,
+            0.0,
+            0.733,
+            2.3038
+          ],
+          "uri": "model://external_camera_e"
+        }
+      },
+      "contact_sensors": 41,
+      "expected_internal_world_name": "warehouse_v2_shipout",
+      "file": "src/sim/gazebo_worlds/worlds/warehouse_v2_shipout.world.sdf",
+      "generator_matches_file": true,
+      "internal_world_name": "warehouse_v2_shipout",
+      "occluder_links": 31,
+      "sha256": "f0f8400d52b39dde729acedbdea4e596d99a1f5172647d80cd1f8e7d5230bc09",
+      "size_bytes": 160013,
+      "stock_state": "shipout"
+    }
+  }
+}

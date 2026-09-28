@@ -1,0 +1,48 @@
+# ROS 2 / colcon
+build/
+install/
+log/
+logs/
+artifacts/visibility_prior/
+runs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Editor / OS junk
+.vscode/
+.idea/
+.DS_Store
+.agents/
+.claude/
+.codex/
+_private_ai_notes/
+local_artifacts/
+
+# Debug output
+*.gv
+*.log
+*.pt
+/empirical_visibility_gp.npz
+/aws_gp_plot.png
+/gp_verification.png
+
+# Local notes and generated artifacts
+src/docs/
+scripts/artifacts/
+paper_artifacts/perception/**/model.pt
+paper_artifacts/perception/**/weights/
+
+# Raw render dumps and depth predictions
+figures/_unmapped/filter_notebook/
+figures/_unmapped/all_aisle_coverage/
+figures/EXP-DYN-ORACLE/
+world/frames/
+world/figures/
+experiments/usable_observation/supervisor_comparison/10_monocular_depth_results/*/predictions/
+
+# Third-party Fuel assets: large, redistributable under their own licences,
+# fetched by scripts/sim/fetch_external_models.sh rather than tracked here.
+src/sim/models_external/

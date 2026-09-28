@@ -1,0 +1,14 @@
+# Thesis/Research Codebase Requirements
+# Core mathematical and robotics dependencies
+
+numpy>=1.21.0
+scipy>=1.7.0
+matplotlib>=3.4.0
+casadi>=3.5.5
+scikit-learn>=1.0.0
+opencv-python>=4.5.3
+pyyaml>=6.0
+packaging>=21.0
+
+# ROS 2 Humble (Standard installation required)
+# Note: rclpy. std_msgs, etc. are provided by the ROS 2 system installation.

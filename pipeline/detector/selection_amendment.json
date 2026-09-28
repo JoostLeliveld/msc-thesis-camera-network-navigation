@@ -1,0 +1,58 @@
+{
+  "schema": "thesis_detector_selection_amendment.v1",
+  "pipeline_id": "THESIS-FINAL-PIPELINE-V1",
+  "stage_id": "05_detector_training",
+  "date": "2026-09-10",
+  "status": "frozen_before_commissioning_and_final_audit",
+  "reason": "After the 640 and 960 detector-validation reports were complete, the detector objective was clarified to include localization-suitable bottom-centre accuracy and verified five-camera runtime feasibility. The original rule would prefer 640 after a recall tie. This amendment selects 960 because its matched-box bottom-centre error is lower and the exact checkpoint meets the 5 Hz runtime budget.",
+  "timing": {
+    "detector_fit_accessed": true,
+    "detector_validation_accessed": true,
+    "commissioning_fit_accessed": false,
+    "final_audit_accessed": false,
+    "preregistered": false,
+    "reporting_requirement": "Describe this as a post-validation, pre-commissioning amendment. Do not describe the localization criterion as preregistered."
+  },
+  "eligible_candidates": [
+    640,
+    960
+  ],
+  "ineligible_candidate": {
+    "imgsz": 1280,
+    "reason": "Intentional termination after one head-warmup epoch; no completed candidate checkpoint or eligible validation report."
+  },
+  "localization_diagnostic": {
+    "population": "The 637 detector-validation positive images matched at confidence >= 0.25 and IoU >= 0.5 for both completed candidates.",
+    "point": "Euclidean distance in source-image pixels between the ground-truth mask-box bottom centre and the highest-confidence matched prediction bottom centre.",
+    "ground_truth_source": "Frozen Stage-04 semantic-mask bounding boxes.",
+    "percentile_method": "Linear interpolation on sorted observations at index (n-1)p.",
+    "imgsz640": {
+      "matches": 637,
+      "mean_px": 2.295657,
+      "median_px": 1.87372,
+      "p90_px": 3.738206,
+      "mean_abs_x_px": 0.941809,
+      "mean_abs_y_px": 1.850809
+    },
+    "imgsz960": {
+      "matches": 637,
+      "mean_px": 1.98181,
+      "median_px": 1.719763,
+      "p90_px": 3.204539,
+      "mean_abs_x_px": 0.735463,
+      "mean_abs_y_px": 1.681242
+    },
+    "mean_error_reduction_fraction": 0.136715
+  },
+  "constraints": [
+    "The diagnostic changes only selection between already-completed 640 and 960 trials.",
+    "The selected detector is not claimed to provide valid localization without the Stage-06 admission gate.",
+    "No accepted validation positive is in the 16-31 pixel visible-width bin; no few-pixel capability claim is permitted.",
+    "The final audit remains sealed until all downstream models and thresholds are frozen."
+  ],
+  "selection": {
+    "imgsz": 960,
+    "checkpoint": "logs/thesis/detector/training/imgsz960/upper_finetune/weights/best.pt",
+    "checkpoint_sha256": "1e99afb5361a7c2599cb3f2863ebb04fd6f65bc1ee23996b989c9bba8b004f13"
+  }
+}

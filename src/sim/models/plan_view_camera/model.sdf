@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <!-- Checking aid only. A narrow-FOV camera high above the hall gives a nearly
+       orthographic plan view, so a rendered rack can be compared with the planned
+       rectangle without perspective spilling the top of a 4.2 m rack two metres
+       sideways. Never part of the detector / GP / fusion / planner interfaces. -->
+  <model name="plan_view_camera">
+    <static>true</static>
+    <link name="link">
+      <sensor name="camera" type="camera">
+        <camera>
+          <horizontal_fov>0.90</horizontal_fov>
+          <image><width>1600</width><height>1200</height></image>
+          <clip><near>0.5</near><far>120</far></clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>1</update_rate>
+        <visualize>false</visualize>
+        <topic>plan_view_camera/image_raw</topic>
+      </sensor>
+    </link>
+  </model>
+</sdf>

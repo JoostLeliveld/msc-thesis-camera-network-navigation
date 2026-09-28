@@ -1,0 +1,555 @@
+tasks:
+  warehouse_aws.world.sdf:
+  - name: route_apron_to_a3_mid
+    description: 'Route-choice benchmark from the visible A4 apron to the A3 mid cross-aisle.
+      The short northern route passes through weaker camera reliability near the rack
+      tops; the southern sweep stays in the open apron.
+
+      '
+    tier: paper
+    claim: visibility_route_choice
+    focus: apron_to_a3_visibility_tradeoff
+    start:
+      x: 3.3
+      y: -1.0
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: 1.0
+      y: 1.75
+  - name: route_apron_to_a2_mid
+    description: 'Stronger route-choice benchmark from the visible A4 apron to the
+      A2 mid cross-aisle. The short route traverses the camera-poor A4/A3 northern
+      gap, while the visible detour runs south through the apron and up A2.
+
+      '
+    tier: paper
+    claim: visibility_route_choice
+    focus: severe_occlusion_long_shortcut
+    start:
+      x: 3.3
+      y: -1.0
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: -1.0
+      y: 1.75
+  - name: route_west_to_a1_upper
+    description: 'West-side route-choice benchmark from the visible west service lane
+      to the upper A1 aisle. The short route crosses camera-poor west/upper space;
+      the southern detour stays in better observed lanes.
+
+      '
+    tier: paper
+    claim: visibility_route_choice
+    focus: west_side_route_choice
+    start:
+      x: -5.25
+      y: -0.75
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: -3.0
+      y: 3.5
+  - name: control_west_to_a1_low
+    description: 'Visible-control benchmark from the west service lane to the lower
+      A1 aisle. Both conditions should prefer the same visible lower route and reach
+      the goal.
+
+      '
+    tier: paper
+    claim: no_spurious_detour
+    focus: visible_control
+    start:
+      x: -5.25
+      y: -0.75
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: -3.0
+      y: -0.75
+  - name: sanity_visible_apron_crossing
+    description: 'Simple visible-lane sanity check across the lower apron. Use this
+      to verify simulator, detector, and state-estimation wiring before running a
+      route-choice campaign.
+
+      '
+    tier: sanity
+    claim: null
+    focus: visible_sanity
+    start:
+      x: -4.25
+      y: -3.15
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: 3.45
+      y: -3.15
+  - name: occlusion_transit_a4
+    description: 'Diagnostic occlusion-transit: drive straight up the A4 rack aisle,
+      whose interior is genuinely occluded by the tall R4 stack (GP rho~0 -> camera
+      cannot detect the robot there). Visible lower apron -> BLIND A4 interior ->
+      upper cross-aisle. Used to demonstrate belief dead-reckoning drift while blind
+      and re-acquisition when the camera regains the robot.
+
+      '
+    tier: diagnostic
+    claim: blind_dead_reckoning
+    focus: genuine_occlusion_transit
+    start:
+      x: 3.3
+      y: -2.4
+      z: 0.05
+      yaw: 1.5708
+    goal:
+      x: 3.1
+      y: 4.6
+  warehouse_full_4cam.world.sdf:
+  - name: full_traverse_handover
+    description: 'Flagship four-camera traverse: from the south dock apron through
+      the 4.5 m central aisle past the 5.2 m support pillar to the north dock apron.
+      The route crosses regions where wall-mounted north/south cameras hand over through
+      rack occlusion and central overlap.
+
+      '
+    tier: exploratory
+    claim: multicamera_handover_traverse
+    focus: four_camera_wall_handover
+    start:
+      x: -1.0
+      y: -7.8
+      z: 0.05
+      yaw: 1.5708
+    goal:
+      x: 1.0
+      y: 7.8
+  - name: route_tall_shadow_west
+    description: 'Route-choice task in the asymmetric tall block: goal deep in west_aisle_2_north
+      behind the 2.61 m W2/W3 north segments. The four inward-looking wall cameras
+      create partial overlap but still disagree around tall shelf occlusions.
+
+      '
+    tier: exploratory
+    claim: multicamera_fusion_value
+    focus: four_camera_asymmetric_tall_shadows
+    start:
+      x: -7.78
+      y: -7.8
+      z: 0.05
+      yaw: 1.5708
+    goal:
+      x: -5.68
+      y: 5.5
+  - name: route_tall_shadow_west_safe_start
+    description: 'Closed-loop version of route_tall_shadow_west with the start moved
+      0.30 m inside the south driveable boundary. This prevents the local controller
+      from rejecting step zero before the planned route can be tested.'
+    tier: exploratory
+    claim: static_observation_probability_planning
+    focus: four_camera_asymmetric_tall_shadows
+    start:
+      x: -7.78
+      y: -7.5
+      z: 0.05
+      yaw: 1.5708
+    goal:
+      x: -5.68
+      y: 5.5
+  - name: mc_m1_s2n_central
+    start:
+      x: 0.0
+      y: -7.6
+      z: 0.05
+      yaw: 1.5708
+    goal:
+      x: 0.0
+      y: 7.6
+  - name: mc_m2_w2e_traverse
+    start:
+      x: -10.0
+      y: -1.0
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: 10.0
+      y: 1.0
+  - name: mc_m3_sw2ne_diag
+    start:
+      x: -10.0
+      y: -6.0
+      z: 0.05
+      yaw: 0.54
+    goal:
+      x: 10.0
+      y: 6.0
+  - name: mc_central_ns
+    start:
+      x: 0.0
+      y: -7.6
+      z: 0.05
+      yaw: 1.5708
+    goal:
+      x: 0.0
+      y: 7.6
+  - name: mc_south_we
+    start:
+      x: -7.77
+      y: -7.5
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: 7.77
+      y: -7.5
+  - name: mc_north_we
+    start:
+      x: -7.77
+      y: 7.5
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: 7.77
+      y: 7.5
+  - name: mc_tour_L
+    start:
+      x: -7.77
+      y: -7.5
+      z: 0.05
+      yaw: 0.0
+    waypoints:
+    - x: 7.77
+      y: -7.5
+    - x: 7.77
+      y: 7.5
+    goal:
+      x: 7.77
+      y: 7.5
+  - name: mc_tour_C
+    start:
+      x: 7.77
+      y: -7.5
+      z: 0.05
+      yaw: 3.14159
+    waypoints:
+    - x: -7.77
+      y: -7.5
+    - x: -7.77
+      y: 7.5
+    - x: 7.77
+      y: 7.5
+    goal:
+      x: 7.77
+      y: 7.5
+  - name: mc_tour_S
+    start:
+      x: -5.67
+      y: -7.5
+      z: 0.05
+      yaw: 1.5708
+    waypoints:
+    - x: -5.67
+      y: 7.5
+    - x: 5.67
+      y: 7.5
+    - x: 5.67
+      y: -7.5
+    goal:
+      x: 5.67
+      y: -7.5
+  # Discriminating single-goal missions: the direct route runs straight up a BLIND
+  # aisle (fused reliability ~0 over ~9 m); an observed detour via the adjacent aisle
+  # (reliability 1.0) is only ~27% longer. C1 constant-R should take the blind aisle
+  # and drift; C2 visibility-aware should prefer the observed detour. Starts observed.
+  - name: mc_blind_L
+    start:
+      x: -3.57
+      y: -7.5
+      z: 0.05
+      yaw: 1.5708
+    goal:
+      x: -3.57
+      y: 7.5
+  - name: mc_blind_R
+    start:
+      x: 3.57
+      y: -7.5
+      z: 0.05
+      yaw: 1.5708
+    goal:
+      x: 3.57
+      y: 7.5
+  # Reversed south traverse (E->W): starts in the east (camera C's field), ends west
+  # (camera A's field). Mirror of mc_south_we for the fused-vs-single localization
+  # campaign: single camera C localizes the east start then drifts once past x~0 into
+  # the west (symmetric to single A on mc_south_we).
+  - name: mc_south_ew
+    start:
+      x: 7.77
+      y: -7.5
+      z: 0.05
+      yaw: 3.14159
+    goal:
+      x: -7.77
+      y: -7.5
+  # Complex multi-goal tour for the Paper-1 (single-camera) vs Paper-2 (4-camera
+  # fused) comparison. Weaves through all four quadrants + the central interior
+  # corridor, so it leaves every single camera's field: SW(A) -> NW(B) -> N-centre
+  # -> down central corridor -> S-centre -> SE(C) -> NE(D). Real per-leg planning,
+  # not straight lines. Starts in camera A's field so the single-A baseline can
+  # initialise; A then loses the robot as the tour heads north/east.
+  - name: mc_grand_tour
+    start:
+      x: -5.67
+      y: -7.8
+      z: 0.05
+      yaw: 1.5708
+    waypoints:
+    - x: -5.67
+      y: 8.2
+    - x: 5.67
+      y: 8.2
+    - x: 5.67
+      y: -7.8
+    - x: -5.67
+      y: -7.8
+    goal:
+      x: -5.67
+      y: -7.8
+  # Realistic aisle-to-aisle routing task (aisle 3 -> aisle 6) for the 2x2
+  # fusion-vs-selection x GP-vs-nonGP localization comparison. NOT straight
+  # waypoints: the robot is in aisle 3 (x=-3.57), must exit south, cross to
+  # aisle 6 (x=+3.57), and go up it -- a U-route through two tight interior
+  # aisles + the south cross-aisle, with a turn at each mouth. WP2 is the
+  # aisle-6 mouth transition.
+  - name: mc_aisle_3_to_6
+    start:
+      x: -3.57
+      y: -7.5
+      z: 0.05
+      yaw: 0.0
+    waypoints:
+    - x: 3.57
+      y: -7.5
+    - x: 3.57
+      y: 7.5
+    goal:
+      x: 3.57
+      y: 7.5
+  # Diagonal corner-to-corner routing test: grand-tour wp1 (NW) -> wp3 (SE).
+  # The straight line crosses every rack column, so the planner MUST route a
+  # non-straight L/Z through the aisle structure (via a cross-aisle). Actual
+  # planning, not a straight traverse.
+  - name: mc_wp1_to_wp3
+    start:
+      x: -5.67
+      y: 8.2
+      z: 0.05
+      yaw: 0.0
+    waypoints:
+    - x: 5.67
+      y: 8.2
+    - x: 5.67
+      y: -7.8
+    goal:
+      x: 5.67
+      y: -7.8
+  # --- Robustness campaign (paper-1 style): 1 easy + 2 difficult, 3 seeds each ---
+  # Easy: wide central corridor S->N (2 m lane, all-camera coverage).
+  - name: rob_easy
+    start:
+      x: 0.0
+      y: -7.6
+      z: 0.05
+      yaw: 1.5708
+    goal:
+      x: 0.0
+      y: 7.6
+  # Difficult A: far-west open (-10,-6) -> deep in aisle 3 north (-3.5,6). Routes
+  # down to the south cross-aisle, east to the aisle-3 mouth, then up the tight aisle.
+  - name: rob_hardA
+    start:
+      x: -10.0
+      y: -6.0
+      z: 0.05
+      yaw: -1.5708
+    waypoints:
+    - x: -10.0
+      y: -7.5
+    - x: -3.57
+      y: -7.5
+    - x: -3.57
+      y: 6.0
+    goal:
+      x: -3.57
+      y: 6.0
+  # Difficult B: aisle-2 mid (-5.5,-2.5) -> aisle-7 north (5.5,8). Down aisle 2 to the
+  # south cross-aisle, east across, up aisle 7 to the north mouth. Long diagonal.
+  - name: rob_hardB
+    start:
+      x: -5.5
+      y: -2.5
+      z: 0.05
+      yaw: -1.5708
+    waypoints:
+    - x: -5.67
+      y: -7.5
+    - x: 5.5
+      y: -7.5
+    - x: 5.5
+      y: 8.0
+    goal:
+      x: 5.5
+      y: 8.0
+  # Waypoint-free counterparts used to evaluate the one-shot global route
+  # choice itself. These deliberately preserve the hard-task endpoints and
+  # initial headings while removing the mission route prescription.
+  - name: rob_hardA_free
+    start:
+      x: -10.0
+      y: -6.0
+      z: 0.05
+      yaw: -1.5708
+    goal:
+      x: -3.57
+      y: 6.0
+  - name: rob_hardB_free
+    start:
+      x: -5.5
+      y: -2.5
+      z: 0.05
+      yaw: -1.5708
+    goal:
+      x: 5.5
+      y: 8.0
+  warehouse_v2.world.sdf: &warehouse_v2_tasks
+  - name: fusion_network_traverse
+    description: >-
+      Primary fusion traverse for the six-arm fusion comparison: the west dock door,
+      3.4 m from camera A, to the east cross aisle under camera D. Every arm drives
+      this one route, so the only thing that differs between arms is how the cameras'
+      readings are combined. The start moved here from aisle A2|A3's south mouth on
+      2026-08-26 because that start left camera A with 4.8 m and camera C with 1.4 m
+      of the traverse: on this route all five cameras contribute (A 7.2, B 14.0,
+      C 3.4, D 17.2, E 18.6 m at a 25% commissioned usable-sighting rate or better)
+      and the number of simultaneously watching cameras spans 0 to 4, which is the
+      axis the fusion arms are compared along. Of the 30.4 m, 2.6 m expects no camera,
+      9.4 m one, 9.2 m two, 5.0 m three and 4.4 m four. The lane geometry offers six
+      corridor-distinct candidates (30.4-35.0 m); the shortest is driven, and the
+      choice is stated rather than optimised because route choice is not the treatment
+      in this experiment. Camera C is a corner camera looking south-east across the
+      west aisles: the candidates that give it 9-21 m spend their length in the
+      single-camera west aisles and collapse the two-plus-camera share from 61% to
+      21-26%, so C's share is 3.4 m by deliberate trade.
+    tier: preregistered_geometry_only
+    claim: calibrated_bias_aware_multicamera_fusion
+    focus: five_camera_network_handover_and_overlap
+    route_library_task: dock_w__xaisle_e
+    start:
+      # (-8.10, -8.80) was the dock-door mouth cell, and the robot could not drive from it:
+      # the 0.80 m long AMR has its rear at x = -8.50, which is inside office_step (a 0.12 m
+      # step spanning x -8.88..-8.44). Spawned interpenetrating, the solver held it while the
+      # wheels turned -- odometry advanced 1.15 m in 10 s while ground truth moved 9 mm, and
+      # the run was flagged stuck. This start is the frozen route's own first point, 0.60 m
+      # from the nearest declared boundary, so spawn and route agree exactly.
+      x: -7.90
+      y: -8.70
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: 10.60
+      y: 6.50
+  - name: fusion_overlap_rich
+    description: >-
+      The SAME endpoints as fusion_network_traverse through the best-covered corridor the
+      lane geometry offers (candidate 1 of dock_w__xaisle_e): 31.4 m with two or more cameras
+      for 92% of the way and only 0.4 m of driving with none. Paired with
+      fusion_overlap_sparse, which shares these endpoints and this length through the
+      worst-covered corridor, so the pair separates how a fusion rule behaves from how a
+      particular corridor behaves.
+    tier: preregistered_geometry_only
+    claim: calibrated_bias_aware_multicamera_fusion
+    focus: five_camera_network_sustained_overlap
+    route_library_task: dock_w__xaisle_e
+    start:
+      x: -7.90
+      y: -8.70
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: 10.60
+      y: 6.50
+  - name: fusion_overlap_sparse
+    description: >-
+      The SAME endpoints and length as fusion_overlap_rich through the worst-covered corridor
+      that still clears the planner's own 0.35 m margin (candidate 3 of dock_w__xaisle_e):
+      30.8 m with two or more cameras for 45% of the way, 18% with no camera at all, and a
+      3.2 m stretch driven blind. The contrast with fusion_overlap_rich is the control.
+    tier: preregistered_geometry_only
+    claim: calibrated_bias_aware_multicamera_fusion
+    focus: five_camera_network_sparse_coverage
+    route_library_task: dock_w__xaisle_e
+    start:
+      x: -7.90
+      y: -8.70
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: 10.60
+      y: 6.50
+  - name: fusion_long_traverse
+    description: >-
+      Twice the distance, to see whether an over-claim compounds: the west dock door out to
+      the east cross aisle and back west to the dock apron, 63 m in one polyline. The robot
+      revisits the middle of the warehouse with a belief that has already been corrected and
+      has already drifted once, which a 30 m one-way traverse cannot show.
+    tier: preregistered_geometry_only
+    claim: calibrated_bias_aware_multicamera_fusion
+    focus: five_camera_network_long_run
+    route_library_task: dock_w__xaisle_e__aisleC_s_w__apron_w
+    start:
+      x: -7.90
+      y: -8.70
+      z: 0.05
+      yaw: 0.0
+    goal:
+      x: -10.70
+      y: -6.60
+  - name: fusion_overlap_primary
+    description: >-
+      Geometry-frozen primary fusion traverse from the south mouth of section-A
+      aisle A2|A3 to the east end of the north block-storage aisle. The arm-neutral
+      route generator produces three corridor-distinct choices (geometry only);
+      the camera-layout gate requires every choice to retain substantial peak-state
+      two-camera opportunity before detector capture is allowed. The start moved one
+      aisle east (A1|A2 -> A2|A3) on 2026-08-23: at the planner's real 0.35 m
+      clearance the A1 mouth opens a fourth route through the poorly covered block
+      aisles with only 24.7% two-camera visibility, which fails that gate. The goal is
+      the north block-aisle centreline, so these endpoints are exactly the ones the
+      gate measures.
+    tier: preregistered_geometry_only
+    claim: calibrated_bias_aware_multicamera_fusion
+    focus: overlap_connected_five_camera_network
+    route_library_task: aisleA2_s__aisleC_n_e
+    start:
+      x: -3.05
+      y: -5.20
+      z: 0.05
+      yaw: 1.5708
+    goal:
+      x: 10.60
+      y: 2.54
+  - name: apron_to_north_cross_aisle
+    description: >-
+      Straight commissioning traverse from the dock apron through the central
+      artery to the north cross aisle. This is a sensor/clock/coverage smoke task,
+      not the primary route-choice or fusion-effectiveness task.
+    tier: commissioning_smoke
+    claim: none
+    focus: five_camera_runtime_readiness
+    start:
+      x: 0.55
+      y: -7.50
+      z: 0.05
+      yaw: 1.5708
+    goal:
+      x: 0.55
+      y: 8.20

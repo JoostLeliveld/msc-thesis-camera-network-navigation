@@ -1,0 +1,90 @@
+{
+  "schema": "thesis_detector_training_protocol.v1",
+  "pipeline_id": "THESIS-FINAL-PIPELINE-V1",
+  "stage04_lock_id": "THESIS-YOLO-DATASET-V1",
+  "status": "frozen_before_training",
+  "base_model": {
+    "path": "local_artifacts/base_models/yolo11n.pt",
+    "source": "COCO-pretrained Ultralytics YOLO11n",
+    "sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1",
+    "random_initialization_forbidden": true
+  },
+  "data": {
+    "yaml": "logs/thesis/detector/dataset/yolo_detector_v1/dataset.yaml",
+    "yaml_sha256": "a0d534be49b2b6d320486ec95f06c23520eb8ba503dc38aee1d88d33b03513da",
+    "gradients": "detector_fit only",
+    "early_stopping_and_checkpoint_selection": "detector_validation only",
+    "validation_augmentation": false,
+    "commissioning_fit_accessed": false,
+    "final_audit_accessed": false
+  },
+  "common": {
+    "seed": 20260909,
+    "deterministic": true,
+    "device": 0,
+    "optimizer": "AdamW",
+    "amp": true,
+    "workers": 4,
+    "single_cls": true,
+    "cos_lr": true,
+    "weight_decay": 0.0005,
+    "warmup_epochs": 1.0,
+    "hsv_h": 0.015,
+    "hsv_s": 0.35,
+    "hsv_v": 0.3,
+    "degrees": 4.0,
+    "translate": 0.12,
+    "scale": 0.15,
+    "shear": 1.0,
+    "perspective": 0.0002,
+    "flipud": 0.0,
+    "fliplr": 0.5,
+    "mosaic": 0.2,
+    "mixup": 0.0,
+    "copy_paste": 0.0
+  },
+  "phases": [
+    {
+      "name": "head_warmup",
+      "epochs": 8,
+      "freeze": 10,
+      "learning_rate": 0.001,
+      "final_learning_rate_fraction": 0.2,
+      "close_mosaic": 0,
+      "early_stopping_patience": 8
+    },
+    {
+      "name": "upper_finetune",
+      "epochs": 40,
+      "freeze": 0,
+      "learning_rate": 0.0002,
+      "final_learning_rate_fraction": 0.1,
+      "close_mosaic": 8,
+      "early_stopping_patience": 8,
+      "initial_weights": "best head_warmup checkpoint"
+    }
+  ],
+  "resolution_trials": [
+    {"imgsz": 640, "batch": 4},
+    {"imgsz": 960, "batch": 2},
+    {"imgsz": 1280, "batch": 1}
+  ],
+  "selection": {
+    "population": "100% real detector_validation images; ambiguous views remain excluded",
+    "report": [
+      "AP50 and AP50-95",
+      "precision and recall",
+      "false detections per negative image",
+      "recall by camera",
+      "recall by visible robot width: 16-31, 32-63, and >=64 pixels"
+    ],
+    "priority": "maximize the minimum sufficiently populated visible-width-bin recall; within two percentage points prefer fewer false detections per negative; remaining ties prefer lower resolution",
+    "checkpoint_rule": "best validation checkpoint from upper_finetune; training loss never selects a checkpoint"
+  },
+  "prohibitions": [
+    "No threshold, augmentation or checkpoint tuning on commissioning_fit or final_audit",
+    "No full-network 100+ epoch adaptation",
+    "No synthetic image in detector_validation",
+    "No claim based only on aggregate mAP"
+  ]
+}

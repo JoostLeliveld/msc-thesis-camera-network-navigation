@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="external_camera_b_laptop_3hz">
+    <static>true</static>
+    <pose>0 0 0 0 0 0</pose>
+    <link name="link">
+      <sensor name="camera" type="camera">
+        <camera>
+          <horizontal_fov>1.5708</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>360</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>3</update_rate>
+        <visualize>false</visualize>
+        <topic>external_camera_b/image_raw</topic>
+      </sensor>
+      <sensor name="depth_camera" type="depth_camera">
+        <camera>
+          <horizontal_fov>1.5708</horizontal_fov>
+          <image><width>640</width><height>360</height><format>R_FLOAT32</format></image>
+          <clip><near>0.1</near><far>100</far></clip>
+        </camera>
+        <always_on>0</always_on>
+        <update_rate>5</update_rate>
+        <visualize>false</visualize>
+        <topic>external_camera_b/depth</topic>
+      </sensor>
+      <sensor name="segmentation_camera" type="segmentation">
+        <camera>
+          <segmentation_type>semantic</segmentation_type>
+          <horizontal_fov>1.5708</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>360</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <always_on>0</always_on>
+        <update_rate>1</update_rate>
+        <visualize>false</visualize>
+        <topic>external_camera_b/segmentation</topic>
+      </sensor>
+    </link>
+  </model>
+</sdf>

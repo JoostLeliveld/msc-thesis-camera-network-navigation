@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot name="turtlebot3" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Declare argument -->
+  <xacro:arg name="model" default="burger"/>
+
+  <!-- Promote arg to property (THIS WAS MISSING) -->
+  <xacro:property name="model" value="$(arg model)"/>
+
+  <!-- Materials defined ONCE -->
+  <xacro:include filename="$(find sim)/robot_description/urdf/common_properties.urdf.xacro"/>
+
+  <!-- Select model -->
+  <xacro:if value="${model == 'burger'}">
+    <xacro:include filename="$(find sim)/robot_description/urdf/turtlebot3_burger.urdf.xacro"/>
+  </xacro:if>
+
+  <xacro:if value="${model == 'waffle_pi'}">
+    <xacro:include filename="$(find sim)/robot_description/urdf/turtlebot3_waffle_pi.urdf.xacro"/>
+  </xacro:if>
+
+</robot>
