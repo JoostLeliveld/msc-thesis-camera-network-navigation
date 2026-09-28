@@ -30,7 +30,7 @@ sys.path[:0] = [str(ROOT / "figures"), str(ROOT / "pipeline"),
 from style import CAM_COLOUR, draw_warehouse, layout  # noqa: E402
 from planning_precision import ray_basis, spatial_ray_covariance  # noqa: E402
 
-PAPER_FIGURES = ROOT.parent / "papers" / "Thesis" / "figures"
+PAPER_FIGURES = ROOT / "logs" / "thesis" / "figures"
 FITS = ROOT / "logs/thesis/fits"
 INK = "#222831"
 NO_SUPPORT_CM = 999.0  # the (10 m)^2 prior: absence of evidence, not accuracy

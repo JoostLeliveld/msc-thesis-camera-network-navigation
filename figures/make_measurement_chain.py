@@ -50,7 +50,7 @@ REPO = repo_root()
 # recapture_v5 is the current-world capture the thesis is fitted on.
 CAPTURE = REPO / 'logs/thesis/captures/v5/part1'
 ADMITTED = REPO / 'logs/thesis/fits/gate_dataset/admitted.npz'
-OUT = REPO.parent / 'papers' / 'Thesis' / 'figures'
+OUT = REPO / 'logs' / 'thesis' / 'figures'
 POSE = 0              # an admitted current-capture pose for the drawn detection
 CAMERA = 'camera_B'   # the capture's id; the paper calls it camera i
 FOV_H_RAD = 1.5708    # external_camera/model.sdf

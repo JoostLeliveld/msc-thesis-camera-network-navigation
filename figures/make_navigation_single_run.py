@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "figures"))
 from style import CAM_COLOUR, draw_warehouse, layout  # noqa: E402
 
-PAPER_FIGURES = ROOT.parent / "papers" / "Thesis" / "figures"
+PAPER_FIGURES = ROOT / "logs" / "thesis" / "figures"
 CAMPAIGN = Path(__import__("os").environ.get(
     "THESIS_CAMPAIGN_ROOT", ROOT / "logs/thesis/final_campaign/campaign"))
 INK = "#222831"
