@@ -19,7 +19,7 @@ from reliability.projection import (  # noqa: E402
     project_observation_to_world_with_covariance,
 )
 
-WORLD_SDF = ROOT / "src/sim/gazebo_worlds/worlds/warehouse_full_4cam.world.sdf"
+WORLD_SDF = ROOT / "src/sim/gazebo_worlds/worlds/warehouse_v2.world.sdf"
 CAMERA_INCLUDES = {
     "camera_A": "external_camera",
     "camera_B": "external_camera_b",
@@ -42,7 +42,7 @@ def _observation(
         detection_valid=True,
         detector_score=0.9,
         measurement_age_s=0.02,
-        calibration_id=f"warehouse_full_4cam_{camera_id}",
+        calibration_id=f"warehouse_v2_{camera_id}",
         image_frame_id=camera_id,
         conditional_cov_uv=conditional_cov_uv,
     )

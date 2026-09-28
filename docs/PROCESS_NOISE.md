@@ -67,10 +67,9 @@ contains the odometry error in 0.965-0.995 of cases at 1, 3 and 10 s (position a
 heading). NumPy and CasADi Q agree to machine precision; the model constants are
 tested against the simulator's.
 
-## The lock
+## Defaults
 
-- Defaults set in `src/experiments/experiments/core/visibility_launch_common.py`
-  and `src/planning/planning/nodes/unicycle_planner_node.py`.
-
-Changing the encoder constants or the 12 s bias horizon is a method change and
-requires a new campaign.
+The encoder constants are set in `src/planning/planning/core/encoder_noise_model.py`.
+The launch defaults are in `src/experiments/experiments/core/visibility_launch_common.py`
+and `src/planning/planning/nodes/unicycle_planner_node.py`. Changing the encoder
+constants or the 12 s bias horizon changes Q, so the campaign has to be rerun.

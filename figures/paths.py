@@ -14,7 +14,7 @@ from __future__ import annotations
 from pathlib import Path
 
 # A directory is the repo root when it contains any of these sentinels.
-_SENTINELS = ("pyproject.toml", "CLAUDE.md", ".git")
+_SENTINELS = ("pyproject.toml", ".git")
 
 
 def repo_root(start: Path | str | None = None) -> Path:

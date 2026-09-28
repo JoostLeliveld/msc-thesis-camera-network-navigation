@@ -15,10 +15,6 @@ __pycache__/
 .vscode/
 .idea/
 .DS_Store
-.agents/
-.claude/
-.codex/
-_private_ai_notes/
 local_artifacts/
 
 # Debug output
@@ -31,7 +27,6 @@ local_artifacts/
 
 # Local notes and generated artifacts
 src/docs/
-scripts/artifacts/
 paper_artifacts/perception/**/model.pt
 paper_artifacts/perception/**/weights/
 
@@ -43,6 +38,5 @@ world/frames/
 world/figures/
 experiments/usable_observation/supervisor_comparison/10_monocular_depth_results/*/predictions/
 
-# Third-party Fuel assets: large, redistributable under their own licences,
-# fetched by scripts/sim/fetch_external_models.sh rather than tracked here.
+# Third-party assets, downloaded by src/sim/fetch_external_models.sh.
 src/sim/models_external/

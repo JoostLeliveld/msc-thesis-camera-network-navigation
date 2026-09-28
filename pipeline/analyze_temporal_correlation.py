@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Between-frame correlation of the corrected measurement error along the driven campaign routes.
 
-For every valid run in logs/thesis/analysis/runs.csv and every camera, the unique frames of
+For every valid run in logs/thesis/final_campaign/analysis/runs.csv and every camera, the unique frames of
 fusion_observations.csv (obs_repeat == 0, one row per obs_seq) give the residual
 r = obs - gt_at_obs and its whitened form z = L^-1 r with the runtime covariance obs_cov = L L^T.
 Every pair of frames of one camera in one run is binned by its time gap; per bin the Pearson
 correlation of z (and of r) between the two frames is reported per world axis, with the median
 ground-truth displacement between the two frames. Pairs whose ground-truth positions are within
 STATIONARY_M are reported separately: there the correlation is temporal only, not spatial.
-Writes logs/thesis/analysis/temporal_correlation.json.
+Writes logs/thesis/final_campaign/analysis/temporal_correlation.json.
 
     python3 pipeline/analyze_temporal_correlation.py
 """

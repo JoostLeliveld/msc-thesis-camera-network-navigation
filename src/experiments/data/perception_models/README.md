@@ -1,12 +1,5 @@
-# Perception Models
+# Perception models
 
-Curated trained external-camera detector models belong here.
-
-Expected layout:
-
-- `<model_name>/model.pt`
-- `<model_name>/manifest.json`
-- `<model_name>/metrics.json`
-- `<model_name>/previews/`
-
-Training is managed through `scripts/perception/train_yolo_seg.py`.
+Location for trained detector checkpoints (`<model_name>/model.pt` with its
+`manifest.json`). Checkpoints are not stored in Git. The thesis detector is trained by
+`pipeline/detector/` and read from `logs/perception_models/`.

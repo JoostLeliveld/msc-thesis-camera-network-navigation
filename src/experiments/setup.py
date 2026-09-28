@@ -24,8 +24,6 @@ setup(
          package_glob('launch', '*.launch.py')),
         (os.path.join('share', package_name, 'config'),
          package_glob('config', '*')),
-        (os.path.join('share', package_name, 'data', 'visibility_gp'),
-         package_glob('data', 'visibility_gp', '*')),
     ],
     install_requires=['setuptools', 'PyYAML'],
     zip_safe=True,

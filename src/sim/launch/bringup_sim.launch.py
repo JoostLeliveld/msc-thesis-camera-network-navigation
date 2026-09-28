@@ -86,8 +86,7 @@ def generate_launch_description():
         "robot_model",
         default_value="warehouse_amr",
         description=(
-            "Robot URDF stem. 'warehouse_amr' is the 0.80 x 0.55 m low-deck AMR "
-            "used from 2026-08-20; 'turtlebot3_burger' reproduces earlier runs."
+            "Robot URDF stem. 'warehouse_amr' is the 0.80 x 0.55 m low-deck AMR."
         ),
     )
     robot_model = LaunchConfiguration("robot_model")
@@ -145,15 +144,9 @@ def generate_launch_description():
         description="Bridge extension-only /external_camera_d RGB and camera_info topics",
     )
     bridge_camera_d = LaunchConfiguration("bridge_camera_d")
-    bridge_overview_camera_arg = DeclareLaunchArgument(
-        "bridge_overview_camera",
-        default_value="false",
-        description="Bridge the presentation-only full-facility overview camera",
-    )
-    bridge_overview_camera = LaunchConfiguration("bridge_overview_camera")
     world_arg = DeclareLaunchArgument(
         "world",
-        default_value="warehouse_aws.world.sdf",
+        default_value="warehouse_v2.world.sdf",
         description="World file under sim/gazebo_worlds/worlds",
     )
     world = LaunchConfiguration("world")
@@ -471,16 +464,6 @@ def generate_launch_description():
         )
         for suffix in extra_camera_suffixes
     ]
-    ros_gz_overview_camera_bridge = Node(
-        package="ros_gz_bridge",
-        executable="parameter_bridge",
-        arguments=[
-            "/presentation_overview_camera/image_raw@sensor_msgs/msg/Image[gz.msgs.Image",
-            "/presentation_overview_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo",
-        ],
-        output="screen",
-        condition=IfCondition(bridge_overview_camera),
-    )
     ros_gz_scan_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
@@ -511,7 +494,6 @@ def generate_launch_description():
         bridge_camera_c_arg,
         bridge_camera_d_arg,
         *extra_camera_args,
-        bridge_overview_camera_arg,
         reset_world_arg,
         OpaqueFunction(function=_reject_unsafe_in_place_reset),
         spawn_x_arg,
@@ -534,7 +516,6 @@ def generate_launch_description():
         ros_gz_camera_c_bridge,
         ros_gz_camera_d_bridge,
         *extra_camera_bridges,
-        ros_gz_overview_camera_bridge,
         ros_gz_groundtruth_bridge,
         ros_gz_scan_bridge,
     ])

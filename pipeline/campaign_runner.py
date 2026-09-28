@@ -2,7 +2,7 @@
 """Run a visibility-comparison campaign from a locked config file.
 
 Usage:
-    python campaign_runner.py --config scripts/visibility_comparison/warehouse_visibility_campaign.yaml [--dry-run] [--resume]
+    python3 pipeline/campaign_runner.py --config <campaign.yaml> [--dry-run] [--resume]
 
 Each run result is written immediately to campaign_log.json so the campaign
 can be interrupted and resumed with --resume (already-completed runs are skipped).
@@ -2160,7 +2160,7 @@ def _command_activity(run_dir: Path | None) -> tuple[int, bool]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description='Run a locked visibility-comparison campaign.')
-    parser.add_argument('--config', default='scripts/visibility_comparison/warehouse_visibility_campaign.yaml',
+    parser.add_argument('--config', required=True,
                         help='Path to the locked campaign config YAML.')
     parser.add_argument('--log-root', default=str(LOGS_ROOT / 'warehouse_visibility_campaign_v1'),
                         help='Root directory for all run logs.')

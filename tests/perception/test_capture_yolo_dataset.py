@@ -317,7 +317,7 @@ def test_capture_transport_contract_requires_local_isolation_and_marks_override_
 
 def test_capture_inventory_fingerprints_world_models_launch_and_robot_assets() -> None:
     inventory = _build_simulation_asset_inventory(
-        world_path=REPO_ROOT / 'src/sim/gazebo_worlds/worlds/warehouse_full_4cam.world.sdf',
+        world_path=REPO_ROOT / 'src/sim/gazebo_worlds/worlds/warehouse_v2.world.sdf',
         world_profiles_path=REPO_ROOT / 'src/experiments/config/world_profiles.yaml',
         route_exclusion_config_path=(
             REPO_ROOT

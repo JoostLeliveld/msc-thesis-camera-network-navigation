@@ -95,7 +95,7 @@ Exact swept-footprint checks remain the hard route-validity criterion.
 - `pipeline/replay_routes.py` verifies every bound route through the same
   `ff_fb` follower used during the campaign.
 
-## Locked parameters
+## Parameters
 
 | Parameter | Value |
 | --- | ---: |

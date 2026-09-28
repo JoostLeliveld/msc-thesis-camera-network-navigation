@@ -1,9 +1,11 @@
-# Perception
+# perception
 
-This package runs the frozen external-camera YOLO detector. Its paper-facing output is a
-bounding box and detector metadata for each identified camera frame. The runtime selects
-the box bottom centre; geometric projection and commissioned correction happen downstream.
+Runs the frozen YOLO11n robot detector on the camera images.
 
-The detector does not estimate heading and does not construct a robot hull. Detector
-training and dataset provenance live under `scripts/perception/` and the locked Stage-04/05
-manifests under `pipeline/`.
+- `perception/nodes/batched_four_camera_yolo_node.py`: the detector node used in the
+  campaign. It processes the frames of all cameras in one batch and publishes the
+  bounding box and confidence of each detection.
+- `perception/core/`: frame batching, detector outcomes and diagnostics.
+
+The detector is trained by `pipeline/detector/`. The trained checkpoint is not in Git
+(see the data section of the root README).

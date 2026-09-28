@@ -32,7 +32,7 @@ import route_tasks as rt  # noqa: E402
 from experiments.core.world_profiles import load_world_profiles  # noqa: E402
 
 REPO = repo_root()
-OUT = REPO / 'logs/studies/thesis_setup_figure_20260908'
+OUT = REPO / 'logs' / 'thesis' / 'figures'
 
 DRIVE = '#cfe3f5'      # the region the planner may occupy
 DRIVE_EDGE = '#3f7fb5'

@@ -1,7 +1,7 @@
-# Final thesis method
+# Method
 
-This document defines the scientific method implemented by this repository.
-Only the active method used for the final campaign is included.
+This document describes the method implemented in this repository and used for
+the thesis experiments.
 
 ## 1. Scope
 
@@ -22,7 +22,7 @@ fusion rule, EKF, planner, route initializations, controller, tasks and seeds.
 
 ## 2. Data and partitions
 
-Camera observations are paired with recorded reference poses in the canonical
+Camera observations are paired with recorded reference poses in the simulated
 warehouse. A complete physical position is the independent partition unit: all
 headings, repetitions and cameras at that position stay in one role.
 
@@ -32,7 +32,7 @@ The final split contains:
 | --- | --- | ---: |
 | D_mu | fit the systematic-displacement correction | 1,326 |
 | D_R | fit R0, R1 and R2 | 1,333 |
-| D_dev | fixed development checks | 335 |
+| D_val (`D_dev` in the code) | sensitivity checks of the fixed R2 constants | 335 |
 | D_test | one held-out evaluation | 168 |
 
 Exact source paths, hashes, exclusions and opportunity counts are frozen in
@@ -173,7 +173,7 @@ A run is successful only when:
 Collision scoring uses ground-truth poses only after execution. The simulator
 does not provide a collision signal to the controller.
 
-Report:
+The reported navigation metrics are:
 
 - success by matched task and seed;
 - fused camera error at fusion timestamps;
@@ -183,18 +183,18 @@ Report:
 - route changes between matched intact and dropout conditions; and
 - fused and belief NIS/containment.
 
-The final analysis reads only the canonical campaign root and refuses incomplete
-or inconsistent evidence.
+The analysis reads only the final campaign folder and stops on incomplete or
+inconsistent run evidence.
 
-## 12. Ground-truth firewall
+## 12. Use of ground truth
 
-Ground truth may:
+Ground truth is used to:
 
 - provide offline correction targets;
 - score localization and navigation after execution; and
 - support offline collision auditing.
 
-Ground truth may not enter:
+Ground truth is not used in:
 
 - detector admission;
 - runtime correction or covariance query;
@@ -213,15 +213,3 @@ Ground truth may not enter:
   position-heading cross-covariance. Near image, visibility or map edges, a
   biased anisotropic position update may therefore affect tracking.
 - Routes are selected from finite initializations and are not replanned online.
-
-## 14. Authority
-
-For a reproduced result, authority is:
-
-1. `pipeline/dataset_lock.json`;
-2. the final campaign manifest;
-3. the committed implementation named by the manifest;
-4. this method document; and
-5. the thesis manuscript.
-
-Development reports and old run folders are not part of this snapshot.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Calibration of the runtime covariances along the driven campaign routes, per condition.
 
-For every valid run in logs/thesis/analysis/runs.csv:
+For every valid run in logs/thesis/final_campaign/analysis/runs.csv:
   fused   one row per fusion decision with at least two admitted cameras (as in the static
           fusion audit): fused estimate vs ground truth at the fused stamp, fused covariance
           (fusion_observations.csv);
@@ -10,7 +10,7 @@ For every valid run in logs/thesis/analysis/runs.csv:
           the estimator covariance (it saturates), so it is not used.
 Containment is the fraction with squared Mahalanobis distance below the 2-D chi-square 95 %
 quantile; NIS is its mean. Pooled over runs, and run-balanced (mean of per-run values).
-Writes logs/thesis/analysis/runtime_coverage.json.
+Writes logs/thesis/final_campaign/analysis/runtime_coverage.json.
 
     python3 figures/make_runtime_coverage.py
 """

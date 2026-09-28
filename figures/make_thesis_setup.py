@@ -16,10 +16,7 @@ down, fx = fy = 1656.126 px, principal point (800, 600) in a 1600x1200 image.
 
 Recapture the frame, if the world changes:
 
-    ros2 launch sim bringup_sim.launch.py world:=warehouse_v2.world.sdf
-    ign topic -e -t /plan_view_camera/image_raw -n 1 --json-output > plan.json
-
-then decode it with scripts/paper_figures/capture_overview_frame.py.
+    see figures/capture_plan_view.py
 """
 from __future__ import annotations
 
@@ -38,7 +35,7 @@ from paths import repo_root  # noqa: E402
 
 REPO = repo_root()
 WORLD = REPO / 'src/sim/gazebo_worlds/worlds/warehouse_v2.world.sdf'
-OUT = REPO / 'logs/studies/thesis_setup_figure_20260908'
+OUT = REPO / 'logs' / 'thesis' / 'figures'
 PLAN = OUT / 'gazebo_plan_view.png'
 
 CAM_MODELS = {

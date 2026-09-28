@@ -34,9 +34,7 @@ def generate_launch_description():
         default_value="warehouse_amr",
         description=(
             "Robot URDF stem in sim/robot_description/urdf. "
-            "'warehouse_amr' is the 0.80 x 0.55 m low-deck AMR used from "
-            "2026-08-20; pass 'turtlebot3_burger' to reproduce any campaign "
-            "captured before that."
+            "'warehouse_amr' is the 0.80 x 0.55 m low-deck AMR."
         ),
     )
     robot_model = LaunchConfiguration("robot_model")

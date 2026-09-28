@@ -185,8 +185,6 @@ class UnicyclePlannerNode(Node):
         _declare_if_not('camera_network_updates_per_step', 1)
         # The planner models the robot as a disc, so this is the CIRCUMSCRIBED
         # radius. warehouse_amr is 0.800 x 0.550 m -> hypot(0.400, 0.275) = 0.485.
-        # (turtlebot3_burger was 0.125; pass it explicitly to reproduce a
-        # pre-2026-08-20 campaign.)
         _declare_if_not('robot_collision_radius_m', 0.485)
         _declare_if_not('robot_length_m', 0.8)
         _declare_if_not('robot_width_m', 0.55)

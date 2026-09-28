@@ -1711,7 +1711,7 @@ def _diagnostic_row(
 def main() -> int:
     global _ACTIVE_CAPTURE_OUTPUT_GUARD
     parser = argparse.ArgumentParser(description='Capture a YOLO-seg dataset from Gazebo semantic segmentation labels.')
-    parser.add_argument('--world', default='warehouse_aws.world.sdf')
+    parser.add_argument('--world', default='warehouse_v2.world.sdf')
     parser.add_argument('--world-profiles', default=str((REPO_ROOT / 'src' / 'experiments' / 'config' / 'world_profiles.yaml').resolve()))
     parser.add_argument('--out', default='', help='Output dataset folder; defaults under logs/')
     parser.add_argument('--plan-only', action='store_true',

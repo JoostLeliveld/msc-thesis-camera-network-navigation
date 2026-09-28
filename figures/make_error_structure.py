@@ -7,7 +7,7 @@
     calibrated at every level; above it the model is overconfident there.
 (b) Correlation of one camera's whitened error between two of its frames against the time
     between them, along the driven campaign routes, while moving and with the robot stationary
-    (logs/thesis/analysis/temporal_correlation.json, pipeline/analyze_temporal_correlation.py).
+    (logs/thesis/final_campaign/analysis/temporal_correlation.json, pipeline/analyze_temporal_correlation.py).
 
 Writes separate main-text and appendix figures.
 
@@ -29,7 +29,7 @@ KEYS = (("global", "R0_global_full"), ("per_camera", "R1_per_camera_full"),
 def main():
     audit = [json.loads(line) for line in (P.THESIS / "final_audit/evaluated.jsonl").open()]
     audit = [r for r in audit if r["outcome"] == "admitted"]
-    temporal = json.loads((P.THESIS / "analysis/temporal_correlation.json").read_text())
+    temporal = json.loads((P.ANALYSIS / "temporal_correlation.json").read_text())
 
     fig, ax = P.plt.subplots(1, 1, figsize=(P.COLUMN, 2.35))
 

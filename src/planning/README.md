@@ -1,19 +1,19 @@
-# Planning
+# planning
 
-This package contains the existing IWAI expected-free-energy planner and its belief rollout.
-The thesis keeps this planner fixed. Commissioning changes only the future camera model
-supplied to the rollout as the inverse of the matched runtime covariance
-`R_i(p, psi)` of the selected correction.
+Belief-space route planner and the robot's EKF.
 
-Process covariance `Q` is a frozen configuration input. It is not estimated, compared, or
-selected by the thesis pipeline.
+- `planning/nodes/unicycle_planner_node.py`: EKF on encoder odometry and fused camera
+  measurements, and the planner interface.
+- `planning/nodes/efe_agent_node.py`: runtime node used in the campaign. It extends the
+  planner node with the waypoint tracker that follows the route from the belief.
+- `planning/planners/base_planner.py`: route optimisation from the route initialisations.
+- `planning/core/casadi_efe.py`: expected-free-energy objective (risk, ambiguity, no-go
+  penalty).
+- `planning/core/camera_network.py`: expected camera information from the covariance
+  model.
+- `planning/core/belief_correction.py`: EKF camera update with the NIS gate.
+- `planning/core/encoder_noise_model.py`: process noise derived from the encoder model
+  (see `docs/PROCESS_NOISE.md`).
+- `planning/core/nogo_cost.py`: no-go penalty at the belief sigma points.
 
-Primary files:
-
-- `planning/nodes/unicycle_planner_node.py`: ROS wrapper and belief loop;
-- `planning/planners/base_planner.py`: route optimization;
-- `planning/core/casadi_efe.py`: EFE objective;
-- `planning/core/dynamics.py`: frozen unicycle process model;
-- `planning/core/visibility_gp_map.py`: planner-facing commissioned field adapter.
-
-Final run comparisons must follow the reporting rules in `docs/METHOD.md` §11.
+The objective is described in `docs/PLANNER.md`.

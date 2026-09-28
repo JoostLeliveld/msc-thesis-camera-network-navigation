@@ -24,7 +24,7 @@ from unav_common.config import local_controller_type, parse_bev_affine_calibrati
 
 PAPER_LAUNCH_DEFAULTS: Dict[str, str] = {
     'planner': 'visibility_aware_efe',
-    'world': 'warehouse_full_4cam.world.sdf',
+    'world': 'warehouse_v2.world.sdf',
     'task': '',
     'seed': '0',
     'odom_wait_timeout_s': '60.0',
