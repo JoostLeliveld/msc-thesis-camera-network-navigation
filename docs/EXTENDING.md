@@ -88,6 +88,3 @@ overrides, as the dropout conditions in
   poses. The aim is to calibrate a fixed site fully, not to generalise to new
   sites.
 - The recorded images, weights and logs are not public; see [DATA](DATA.md).
-- `src/reliability` still contains modules from earlier experiments that the
-  thesis runtime does not import. Follow imports from
-  `camera_manager_node.py` to find the live path.

@@ -213,6 +213,3 @@ The exact commands, inputs and outputs are in [`REPRODUCING.md`](REPRODUCING.md)
 - `D_dev` in code is the thesis validation set `D_val`. See [`GLOSSARY.md`](GLOSSARY.md).
 - Parameters marked `DIAGNOSTIC ONLY` are not used in campaign runs; the
   campaign runner refuses `use_diagnostic_odom_localization`.
-- The `reliability` package also contains modules from earlier experiments
-  that the thesis runtime does not import; follow the imports from
-  `camera_manager_node.py` to see what is live.

@@ -2,7 +2,6 @@
 
 import pytest
 
-from reliability.bev_reliability import BEVCameraToken
 from reliability.camera_manager import CameraManagerConfig
 from reliability.contracts import (
     CameraObservation,
@@ -34,16 +33,6 @@ def test_false_strings_remain_false_across_operational_contracts():
     assert sample.measurement_stale is False
     assert sample.recent_detector_history == (True, False)
 
-    token = BEVCameraToken(
-        camera_id="camera_A",
-        xy_m=(0.0, 0.0),
-        in_fov="false",
-        detection_valid="off",
-        measurement_stale="no",
-    )
-    assert (token.in_fov, token.detection_valid, token.measurement_stale) == (
-        False, False, False,
-    )
 
 
 def test_manager_false_string_does_not_enable_fallback_or_consistency():
@@ -61,8 +50,6 @@ def test_ambiguous_boolean_contract_values_are_rejected(bad):
         CameraObservation(camera_id="camera_A", detection_valid=bad)
     with pytest.raises(ContractValidationError, match="boolean"):
         CameraManagerConfig(fallback_on_active_camera_loss=bad)
-    with pytest.raises(ContractValidationError, match="boolean"):
-        BEVCameraToken(camera_id="camera_A", xy_m=(0.0, 0.0), in_fov=bad)
 
 
 def test_camera_observation_requires_physical_identity():

@@ -11,9 +11,6 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src" / "reliability"))
 
 from reliability import (  # noqa: E402
-    CameraHealthConfig,
-    CameraHealthMachine,
-    CameraHealthState,
     CameraManagerConfig,
     CameraObservation,
     CameraQuality,
@@ -77,34 +74,6 @@ def _map_obs(
         covariance_m2=((cov, 0.0), (0.0, cov)),
         quality=_quality(camera_id, p),
     )
-
-
-def test_camera_health_transitions_through_loss_and_reacquire() -> None:
-    machine = CameraHealthMachine(
-        camera_id="camera_A",
-        config=CameraHealthConfig(
-            stale_age_s=1.0,
-            degraded_miss_count=1,
-            lost_miss_count=2,
-            reacquire_required_hits=2,
-        ),
-    )
-
-    assert machine.update(_obs("camera_A", 0.8)).state == CameraHealthState.TRACKING
-    assert machine.update(CameraObservation(camera_id="camera_A", timestamp_s=2.0)).state == CameraHealthState.DEGRADED
-    assert machine.update(CameraObservation(camera_id="camera_A", timestamp_s=3.0)).state == CameraHealthState.LOST
-    assert machine.update(_obs("camera_A", 0.8)).state == CameraHealthState.REACQUIRING
-    assert machine.update(_obs("camera_A", 0.8)).state == CameraHealthState.TRACKING
-
-
-def test_camera_health_high_nis_degrades_without_truth() -> None:
-    machine = CameraHealthMachine(
-        camera_id="camera_A",
-        config=CameraHealthConfig(degraded_high_nis_count=1, lost_high_nis_count=2),
-    )
-
-    assert machine.update(_obs("camera_A", 0.8), nis=12.0, accepted=False).state == CameraHealthState.DEGRADED
-    assert machine.update(_obs("camera_A", 0.8), nis=13.0, accepted=False).state == CameraHealthState.LOST
 
 
 def test_selection_policies_choose_expected_observations() -> None:
