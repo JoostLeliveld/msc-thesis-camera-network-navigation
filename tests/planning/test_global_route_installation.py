@@ -264,6 +264,20 @@ def test_diagnostic_odom_has_stable_route_admission_identity():
     assert n._execution_belief_is_current(meta)
 
 
+def test_diagnostic_odom_request_identity_allows_route_installation():
+    n=route_node()
+    n.use_diagnostic_odom_localization=True
+    n.diagnostic_odom_pose=(0.,0.,0.)
+    diagnostic_meta=dict(
+        belief_epoch='diagnostic_odom', belief_revision=0,
+        belief_valid=True, motion_supported=True, belief_frame_id='map_bev')
+    n._resolve_belief_for_planning=lambda: (
+        n.belief_m.copy(), n.belief_S.copy(), diagnostic_meta.copy())
+    n._plan_once()
+    assert n._hier_phase=='LOCAL'
+    assert n._waypoints
+
+
 def test_stop_during_validation_cannot_erase_newer_replacement():
     n=route_node();replacement=np.array([[.1,0.]])
     check=n._global_route_candidate_safe

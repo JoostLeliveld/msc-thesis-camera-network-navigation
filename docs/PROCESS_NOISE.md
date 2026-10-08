@@ -8,7 +8,7 @@ derivation below (the IWAI appendix derivation, unchanged).
 
 ## The simulated encoder
 
-`sim/encoder_noise_node.py`, input_source `ground_truth`: the encoder starts from
+`src/sim/sim/encoder_noise_node.py`, input_source `ground_truth`: the encoder starts from
 the TRUE body velocity (from /ground_truth_tf) and adds only the declared noise:
 
     v_enc = v_sys (1 + s_v) + n_v,   w_enc = w_sys (1 + s_w) + n_w

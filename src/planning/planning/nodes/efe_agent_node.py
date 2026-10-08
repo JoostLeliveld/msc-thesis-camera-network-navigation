@@ -1265,7 +1265,13 @@ class EfeAgentNode(UnicyclePlannerNode):
             return True
         origin = request.get('belief_origin')
         if origin is not None and hasattr(self, '_belief_epoch'):
-            if origin.get('belief_epoch') != self._belief_epoch:
+            # Diagnostic odometry deliberately has a stable synthetic belief
+            # identity.  Comparing that identity with the camera-EKF epoch
+            # rejects every route before the diagnostic controller can start.
+            if getattr(self, 'use_diagnostic_odom_localization', False):
+                if not self._execution_belief_is_current(origin):
+                    return False
+            elif origin.get('belief_epoch') != self._belief_epoch:
                 return False
         return (int(request['stop_generation']) == int(self._command_stop_generation)
                 and request.get('goal') == self._execution_goal_identity()

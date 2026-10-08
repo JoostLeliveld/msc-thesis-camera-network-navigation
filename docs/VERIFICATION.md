@@ -5,7 +5,7 @@ Checks performed on 28 September 2026 against the submission source. See
 analysis and figures are kept outside tracked source; original thesis evidence
 is not rewritten.
 
-- Code-only suite: 1,602 passed, 16 skipped. The skips cover inputs/components
+- Code-only suite (rerun on 8 October 2026): 1,604 passed, 16 skipped. The skips cover inputs/components
   absent from a code-only clone. The suite includes relocation tests that reject
   a changed model hash and do not fall back to an existing original-machine file.
 - Python 3.10 dependency resolution: the complete set in `requirements-lock.txt`

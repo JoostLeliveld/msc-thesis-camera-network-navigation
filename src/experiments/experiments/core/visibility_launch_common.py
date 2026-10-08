@@ -452,6 +452,7 @@ def parse_common_launch_config(context) -> Dict[str, object]:
         'manager_fusion_max_timestamp_spread_s': float(
             _launch_value(context, 'manager_fusion_max_timestamp_spread_s', '0.05')
         ),
+        'manager_correction_decimation': int(_launch_value(context, 'manager_correction_decimation', '1')),
         'manager_covariance_profile': _launch_value(
             context, 'manager_covariance_profile', 'commissioned_sigma_px'
         ).strip().lower(),
@@ -522,6 +523,8 @@ def parse_common_launch_config(context) -> Dict[str, object]:
         # Raw string so the multicam branch can default it ON while still letting
         # a config explicitly opt out (empty = unset -> multicam default True).
         'state_correction_ekf_raw': _launch_value(context, 'state_correction_ekf', '').strip(),
+        'state_correction_envelope_topic': _launch_value(context, 'state_correction_envelope_topic',
+            '/reliability/camera_manager/fused_correction').strip(),
         'pixel_topic': _launch_value(context, 'pixel_topic', PAPER_LAUNCH_DEFAULTS['pixel_topic']).strip(),
         'pixel_timeout_s': float(_launch_value(context, 'pixel_timeout_s', PAPER_LAUNCH_DEFAULTS['pixel_timeout_s'])),
         'pixel_correction_min_interval_s': float(_launch_value(context, 'pixel_correction_min_interval_s', '0.0')),
@@ -1654,6 +1657,12 @@ def build_shared_nodes(cfg: Dict[str, object]) -> Dict[str, object]:
                 'manager_outcome_journal_path': cfg.get(
                     'manager_outcome_journal_path', ''),
                 'use_pixel_correction': cfg['use_pixel_correction'],
+                # Record the diagnostic localization owner in the run manifest.
+                # The planner already receives this flag; omitting it here made
+                # successful odometry-only drives fail provenance verification.
+                'use_diagnostic_odom_localization': cfg[
+                    'use_diagnostic_odom_localization'
+                ],
                 'pixel_timeout_s': cfg['pixel_timeout_s'],
                 'use_ambiguity': cfg['use_ambiguity'],
                 'use_obs_risk': cfg['use_obs_risk'],
@@ -1959,6 +1968,7 @@ def manager_arm_settings(cfg: Dict[str, object]) -> Dict[str, object]:
         'manager_assume_initial_belief_anchor': _as_bool(cfg.get('initial_belief_from_task_start', False)),
         'manager_fusion_max_timestamp_spread_s': float(
             cfg.get('manager_fusion_max_timestamp_spread_s', 0.05)),
+        'manager_correction_decimation': int(cfg.get('manager_correction_decimation', 1)),
         'manager_covariance_profile': str(
             cfg.get('manager_covariance_profile', 'commissioned_sigma_px')),
         'manager_commissioned_calibration_path': str(
@@ -2185,7 +2195,12 @@ def _multicam_perception_nodes(cfg: Dict[str, object]) -> List[object]:
             # Capture stamp, not callback arrival time, defines a round. Keep
             # this below the 0.20 s camera period so round N and N+1 cannot merge.
             'max_batch_stamp_skew_s': cfg['yolo_max_batch_stamp_skew_s'],
-            'max_pending_wall_s': 0.50,
+            # Lockstep holds simulation time while rendering/transport completes.
+            # Expiring a partial same-stamp batch after 0.5 wall seconds can
+            # discard its early cameras forever, deadlocking the scheduler.
+            # Preserve strict capture-stamp matching; allow the scheduler's
+            # bounded barrier to diagnose a genuinely missing camera instead.
+            'max_pending_wall_s': 180.0 if cfg.get('lockstep', False) else 0.50,
             'synchronization_mode': 'strict',
             'input_transport': cfg.get('yolo_input_transport', 'ros'),
             # 0 disables. Non-zero periodically reports frames per camera, batcher
@@ -2387,6 +2402,8 @@ def build_agent_runtime_actions(cfg: Dict[str, object]) -> List[object]:
             'stale_belief_inflate_cap_m2': cfg['stale_belief_inflate_cap_m2'],
             'require_state_correction_envelope': cfg['require_state_correction_envelope'],
             'use_diagnostic_odom_localization': cfg['use_diagnostic_odom_localization'],
+            'state_correction_envelope_topic': cfg.get('state_correction_envelope_topic',
+                '/reliability/camera_manager/fused_correction'),
             'odom_topic': odom_topic,
             'use_odom_for_predict': cfg['use_odom_for_predict'],
             'heading_update_mode': cfg['heading_update_mode'],

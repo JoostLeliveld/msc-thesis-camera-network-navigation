@@ -26,7 +26,7 @@ before table generation. `regenerate.sh` explicitly visits all five tasks rather
 than relying on `make_removal_mechanism.py`'s single-task default.
 
 The dropout colour bar is half the trace of the summed camera precision,
-`0.5 tr sum_i R_(m,i)(p)^-1`, in m^-2. The correlation plot uses the Euclidean
+`0.5 tr sum_i R_i(p)^-1`, in m^-2. The correlation plot uses the Euclidean
 separation of the ground-truth positions, rather than accumulated travel distance.
 Neither plotting correction changes the recorded observations or outcomes.
 

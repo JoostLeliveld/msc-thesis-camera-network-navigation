@@ -124,6 +124,17 @@ def test_pending_wall_timeout_prevents_a_paused_camera_frame_from_later_use() ->
     assert batcher.pending_camera_ids == ("camera_E",)
 
 
+def test_lockstep_retains_same_stamp_frames_across_slow_camera_delivery() -> None:
+    batcher = FourCameraBatcher(max_stamp_skew_s=0.05, max_pending_wall_s=180.0)
+    for i, camera_id in enumerate(CAMERA_ORDER[:-1]):
+        batcher.offer(_frame(camera_id, 36_200_000_000, i * 0.1))
+    assert batcher.expire(2.0) == ()
+    decision = batcher.offer(_frame(CAMERA_ORDER[-1], 36_200_000_000, 2.1))
+    assert decision.status == 'batch_ready'
+    assert [frame.stamp_ns for frame in decision.batch] == [36_200_000_000] * len(CAMERA_ORDER)
+    assert batcher.offer(_frame(CAMERA_ORDER[0], 36_200_000_000, 2.2)).status == 'duplicate'
+
+
 def test_stamp_validation_is_exact_and_rejects_malformed_values() -> None:
     assert stamp_parts_to_ns(12, 345) == 12_000_000_345
     for sec, nanosec in [(-1, 0), (0, -1), (0, 1_000_000_000), ("1", 0), (True, 0)]:

@@ -64,7 +64,7 @@ def main():
                 textcoords="offset points", fontsize=6, color=P.INK, va="center")
     bx.axhline(0, color=P.MUTED, lw=0.6)
     bx.set_xlim(-0.1, 4.0); bx.set_ylim(-0.05, 1.0)
-    bx.set_xlabel("ground-truth displacement between frames (m)")
+    bx.set_xlabel("distance driven between frames (m)")
     bx.set_ylabel("correlation of whitened error")
     bx.set_title("Between-frame correlation", fontsize=8, loc="left")
     bx.legend(fontsize=6.5, frameon=False, loc="upper right")

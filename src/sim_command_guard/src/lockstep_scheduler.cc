@@ -116,6 +116,9 @@ private:
     std::lock_guard<std::mutex> lock(mutex_);
     if (*status == "session_started") detectorReady_ = true;
     if (*status == "published") {
+      // A volatile subscription can miss the one-shot session_started event
+      // during discovery. A real published detector batch also proves readiness.
+      detectorReady_ = true;
       const auto id = JsonString(json, "source_batch_id");
       if (id && *id != lastDetectorBatch_) {
         lastDetectorBatch_ = *id;
@@ -183,7 +186,12 @@ private:
 
   void Run()
   {
-    if (!WaitFor([this]() { return detectorReady_ && odomCount_ > 0; }, "startup")) return;
+    // session_started is emitted before model warm-up and image subscriptions.
+    // Pausing on that event can consume the alignment frame before the detector
+    // subscribes, leaving the first publication barrier permanently unsatisfied.
+    // A real batch proves that subscription, inference and publication work.
+    if (!WaitFor([this]() { return detectorPublishedCount_ > 0 && odomCount_ > 0; },
+                 "first detector publication and odometry")) return;
     std::this_thread::sleep_for(std::chrono::duration<double>(startupDelayS_));
 
     ignition::msgs::WorldControl pause;

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hard integrity audit of the v8 dataset. Exits non-zero on any failure.
+"""Hard integrity audit of the frozen (v11-split) dataset. Exits non-zero on any failure.
 
 Checks, each on the rows `dataset.load_rows()` returns:
 1. no robot-absent run remains (the loader raises otherwise);

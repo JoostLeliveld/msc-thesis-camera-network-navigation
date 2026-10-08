@@ -70,7 +70,7 @@ def main():
         axes[i, 0].text(-0.03, 0.5, "all cameras" if state == "intact" else f"camera {task['removed'][-1]} dropout",
                         transform=axes[i, 0].transAxes, rotation=90, ha="right", va="center", fontsize=8)
     cbar = fig.colorbar(mesh, ax=axes, shrink=0.72, pad=0.01, aspect=28, extend="max")
-    cbar.set_label(r"$\frac{1}{2}\mathrm{tr}\sum_iR_{m,i}(p)^{-1}$ (m$^{-2}$)")
+    cbar.set_label(r"$\frac{1}{2}\mathrm{tr}\sum_i R_i(p)^{-1}$ (m$^{-2}$)")
     cbar.outline.set_linewidth(0.4)
     # camera letter plus task name: the letter alone collides for the two camera-E tasks
     P.save(fig, f"removal_mechanism_{TASK.removeprefix('thesis10_camera_')}")
