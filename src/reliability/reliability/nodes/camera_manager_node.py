@@ -665,6 +665,9 @@ class CameraManagerNode(Node):
         self.declare_parameter("bias_floor_across_slope_m_per_m", 0.0)
         # Views fused into one correction must come from the same detector round.
         self.declare_parameter("fusion_max_timestamp_spread_s", 0.05)
+        # Diagnostic: use every Nth detector batch for correction (1 = all). Lowers the
+        # correction rate at an unchanged R, to test frame-to-frame correlated camera error.
+        self.declare_parameter("correction_decimation", 1)
         # The profile is explicit in every run manifest.
         self.declare_parameter("covariance_profile", COMMISSIONED_COVARIANCE)
         # The number is read from the artifact rather than typed in; set commissioned_sigma_px
@@ -976,6 +979,10 @@ class CameraManagerNode(Node):
             or self.fusion_max_timestamp_spread_s < 0.0
         ):
             raise ValueError("fusion_max_timestamp_spread_s must be finite and non-negative")
+        self.correction_decimation = int(self.get_parameter("correction_decimation").value)
+        if self.correction_decimation < 1:
+            raise ValueError("correction_decimation must be a positive integer")
+        self._decimation_batch_count = 0
         self.covariance_profile = str(
             self.get_parameter("covariance_profile").value
         ).strip().lower()
@@ -1815,6 +1822,15 @@ class CameraManagerNode(Node):
                 disposition="mapped" if reading is not None else "refused",
                 reason="" if reading is not None else self._camera_mapping_reasons.get(contract.camera_id, "mapping_unavailable"),
                 capture_observation=None if reading is None else reading.to_dict()))
+        decimation = getattr(self, "correction_decimation", 1)
+        if decimation > 1:
+            # Skipped batches are decided as all-miss rounds: the scheduler still gets its
+            # decision and nothing is assimilated. Mapping outcomes above stay as observed.
+            count = getattr(self, "_decimation_batch_count", 0)
+            skip = count % decimation != 0
+            self._decimation_batch_count = count + 1
+            if skip:
+                observations = []
         self._publish_map_observations(observations)
         if self.fusion_mode and self.active_pub is not None:
             self._decide_fused(now_s, observations, source_batch_id=source_batch_id)
